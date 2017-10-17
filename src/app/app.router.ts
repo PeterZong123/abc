@@ -123,4 +123,4 @@ const rootRouterConfig: Routes = [
     { path: '**', redirectTo: 'login' }
 ];
 
-export const AppRoute = RouterModule.forRoot(rootRouterConfig);
+export const AppRoute = RouterModule.forRoot(rootRouterConfig, { useHash: true });

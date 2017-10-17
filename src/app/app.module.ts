@@ -9,7 +9,7 @@ import { LocalStorageService } from 'angular-web-storage';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { RoutesModule } from './routes/routes.module';
+//import { RoutesModule } from './routes/routes.module';
 import { LayoutModule } from './layout/layout.module';
 import { StartupService } from './core/services/startup.service';
 import { MenuService } from './core/services/menu.service';
@@ -38,7 +38,7 @@ import { LoginService } from './pages/service/login.service';
 import { FormValidatorService } from './shared/formValidator.service';
 import { HttpModule } from '@angular/http';
 import { CanActivateGuard } from './shared/routerControl/can-activate-guard';
-//import { RootRouterModule } from './app.router';
+import { AppRoute } from './app.router';
 // end
 
 // AoT requires an exported function for factories
@@ -72,7 +72,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
     imports: [
         //add by liangzhifeng
         HttpModule,
-        RoutesModule,
+        AppRoute,
          //end
 
         BrowserModule,
