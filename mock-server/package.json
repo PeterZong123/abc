@@ -1,0 +1,22 @@
+{
+  "name": "mock-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pm2": "pm2 start server.js",
+    "pm2Re": "pm2 restart server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "forever": "^0.15.3",
+    "fs": "^0.0.1-security",
+    "iconv-lite": "^0.4.17",
+    "pm2": "^2.4.6"
+  }
+}

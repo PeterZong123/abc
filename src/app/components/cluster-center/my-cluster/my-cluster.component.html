@@ -1,0 +1,114 @@
+<div class="app flex-row align-items-center">
+
+  <div class="app-body">
+
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- Breadcrumb -->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">镜像中心</li>
+        <li class="breadcrumb-item active">我的集群</li>
+      </ol>
+
+
+      <div class="container-fluid">
+
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-block">
+                  <a [routerLink]="['/content/deployCluster']"  class="btn btn-primary">部署新集群</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-block">
+
+                <!--<p-dataTable  class="table" [value]="clusterList"  [rows]="3" [paginator]="true" [pageLinks]="3"   dataKey="name">-->
+                  <!--<p-column field="Cluster_Name" header="集群名称" ></p-column>-->
+                  <!--<p-column field="Config_Name" header="配置信息"  ></p-column>-->
+                  <!--<p-column field="Flavor" header="集群规格"></p-column>-->
+                  <!--<p-column field="Replicas" header="实例数量" ></p-column>-->
+                  <!--<p-column field="Valid" header="状态" ></p-column>-->
+                  <!--<p-column field="" header="负载均衡" ></p-column>-->
+                  <!--<p-column field="Create_At" header="创建时间" ></p-column>-->
+                  <!--<p-column field="button" header="操作">-->
+                    <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
+                      <!--<span>Dribbble</span>-->
+                    <!--</button>-->
+                    <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
+                      <!--<span>Dribbble</span>-->
+                    <!--</button>-->
+                  <!--</p-column>-->
+                <!--</p-dataTable>-->
+                 <table class="table">
+                   <thead>
+                   <tr>
+                     <th>集群名称</th>
+                     <th>配置信息</th>
+                     <th>集群规格</th>
+                     <th>实例数量</th>
+                     <th>状态</th>
+                     <th>负载均衡</th>
+                     <th>创建时间</th>
+                     <th>操作</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr *ngFor="let post of clusterList">
+                     <td>{{post.Cluster_Name}}</td>
+                     <td>{{post.Config_Name}}</td>
+                     <td>{{post.Flavor}}</td>
+                     <td>{{post.Replicas}}</td>
+                     <td>{{post.Valid}}</td>
+                     <td></td>
+                     <td>{{post.Create_At}}</td>
+                     <td>
+                       <button type="button" [routerLink]="['/content/queryCluster',post.Cluster_Id]" class="btn btn-sm btn-fa" title="查看">
+                        <i class="fa fa-search"></i>
+                       </button>
+                       <button type="button" class="btn btn-sm btn-fa" title="修改">
+                            <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-fa" title="删除">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                     </td>
+                   </tr>
+
+                   </tbody>
+                 </table>
+
+                <ul class="pagination">
+                  <paging (goPage)="gotoPage($event)"
+                          inputCurrentPage="{{searchParam.pageNo}}"
+                          countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+      </div>
+      <!-- /.conainer-fluid -->
+    </main>
+
+  </div>
+
+</div>
+
+
+
+
+
+

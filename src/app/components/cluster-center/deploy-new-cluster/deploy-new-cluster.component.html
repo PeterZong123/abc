@@ -1,0 +1,140 @@
+<div class="app flex-row align-items-center">
+
+  <div class="app-body">
+
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- Breadcrumb -->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">集群中心</li>
+        <li class="breadcrumb-item active">我的集群</li>
+        <li class="breadcrumb-item active">部署新集群</li>
+      </ol>
+
+
+      <div class="container-fluid">
+
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  部署<strong>新集群</strong>
+                </div>
+                <div class="card-block">
+                  <form enctype="multipart/form-data" class="form-horizontal" (ngSubmit)="onSubmit(clusterForm)" [formGroup]="clusterForm">
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">集群名称</label>
+                      <div class="col-md-9">
+                        <input type="text" name="clustername" class="form-control" placeholder="cluster name" formControlName="clustername">
+                        <small *ngIf="formErrors['clustername']" class="txt-error animated fadeIn">{{formErrors['clustername']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">集群描述</label>
+                      <div class="col-md-9">
+                        <input type="text" name="clusterdescription" class="form-control" placeholder="cluster description" formControlName="clusterdescription">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">选择镜像</label>
+                      <div class="col-md-9">
+                        <select name="imageid" class="form-control" size="1" formControlName="imageid">
+                          <option value="0">app 10</option>
+                          <option value="1">app 8</option>
+                          <option value="2">app 6</option>
+                          <option value="3">app 2</option>
+                        </select>
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['imageid']">{{formErrors['imageid']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">挂载配置信息</label>
+                      <div class="col-md-9">
+                        <select name="configid" class="form-control" size="1" formControlName="configid">
+                          <option value="0">config A</option>
+                          <option value="1">config B</option>
+                          <option value="2">config C</option>
+                          <option value="3">config D</option>
+                        </select>
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['configid']">{{formErrors['configid']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">部署区域</label>
+                      <div class="col-md-9">
+                        <select name="regionid" class="form-control" size="1" formControlName="regionid">
+                          <option value="0">上海</option>
+                          <option value="1">北京</option>
+                          <option value="2">广州</option>
+                          <option value="3">香港</option>
+                          <option value="3">多伦多</option>
+                        </select>
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['regionid']">{{formErrors['regionid']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">硬件规格</label>
+                      <div class="col-md-9">
+                        <select name="flavor" class="form-control" size="1" formControlName="flavor">
+                          <option value="0">1核2G</option>
+                          <option value="1">2核4G</option>
+                          <option value="2">3核6G</option>
+                          <option value="3">4核8G</option>
+                        </select>
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['flavor']">{{formErrors['flavor']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">集群实例数量</label>
+                      <div class="col-md-9">
+                        <input type="text" name="instancenumber" class="form-control" placeholder="instance number" formControlName="instancenumber">
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['instancenumber']">{{formErrors['instancenumber']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">持久化存储</label>
+                      <div class="col-md-4">
+                        <input type="text" name="storage" class="form-control" placeholder="30g" formControlName="storage">
+                      </div>
+                      <div class="col-md-5">
+                        <input type="text" name="storagepath" class="form-control" placeholder="挂载位置，例如/home/appuser" formControlName="storagepath">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">实例启动命令</label>
+                      <div class="col-md-9">
+                        <input type="text" name="cmd" class="form-control" placeholder="run cmd" formControlName="cmd">
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-sm btn-primary" [disabled]="clusterForm.invalid"><i class="fa fa-dot-circle-o"></i> 开始部署</button>
+                    </div>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+      </div>
+      <!-- /.conainer-fluid -->
+    </main>
+
+  </div>
+
+</div>
+
+
+
+
+
+

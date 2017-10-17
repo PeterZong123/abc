@@ -1,0 +1,98 @@
+<div class="app flex-row align-items-center">
+      <div class="app-body">
+        <!-- Main content -->
+        <main class="main">
+    
+          <!-- Breadcrumb -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">集群中心</li>
+            <li class="breadcrumb-item active">我的集群</li>
+            <li class="breadcrumb-item active">查询集群信息</li>
+          </ol>
+          <div class="container-fluid">
+            <div class="animated fadeIn">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <strong>集群信息</strong>
+                    </div>
+                    <div class="card-block">
+                      <form enctype="multipart/form-data" class="form-horizontal">
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">集群名称</label>
+                          <div class="col-md-9">
+                            <input type="text" name="clustername" class="form-control" placeholder="cluster name" readonly [(ngModel)]="clusterDetail.App_Name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">集群描述</label>
+                          <div class="col-md-9">
+                            <input type="text" name="clusterdescription" class="form-control" placeholder="cluster description" readonly [(ngModel)]="clusterDetail.App_Des">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">选择镜像</label>
+                          <div class="col-md-9">
+                            <input type="text" name="imageid" class="form-control" placeholder="imageid" readonly [(ngModel)]="clusterDetail.Image_Name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">挂载配置信息</label>
+                          <div class="col-md-9">
+                            <input type="text" name="configid" class="form-control" placeholder="configid" readonly [(ngModel)]="clusterDetail.Config_ID">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">部署区域</label>
+                          <div class="col-md-9">
+                            <input type="text" name="regionid" class="form-control" placeholder="regionid" readonly [(ngModel)]="clusterDetail.App_Name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">硬件规格</label>
+                          <div class="col-md-9">
+                            <input type="text" name="flavor" class="form-control" placeholder="flavor" readonly [(ngModel)]="clusterDetail.Flavor">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">集群实例数量</label>
+                          <div class="col-md-9">
+                            <input type="text" name="instancenumber" class="form-control" placeholder="instance number" readonly [(ngModel)]="clusterDetail.App_Name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">持久化存储</label>
+                          <div class="col-md-4">
+                            <input type="text" name="storage" class="form-control" placeholder="30g" readonly [(ngModel)]="clusterDetail.Storage">
+                          </div>
+                          <div class="col-md-5">
+                            <input type="text" name="storagepath" class="form-control" placeholder="挂载位置，例如/home/appuser" readonly [(ngModel)]="clusterDetail.Image_Url">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">实例启动命令</label>
+                          <div class="col-md-9">
+                            <input type="text" name="cmd" class="form-control" placeholder="run cmd" readonly [(ngModel)]="clusterDetail.CMD">
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.conainer-fluid -->
+        </main>
+    
+      </div>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    

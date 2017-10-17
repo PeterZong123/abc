@@ -1,0 +1,77 @@
+<!--<div class="app flex-row align-items-center">-->
+  <!--<div class="container">-->
+    <!--<div class="row justify-content-center">-->
+      <!--<div class="col-md-6">-->
+        <!--<div class="card-group mb-0">-->
+          <!--<div class="card p-4">-->
+            <!--<div class="card-block">-->
+              <!--<h1>登录系统</h1>-->
+              <!--<p class="text-muted">请输入您的用户名和密码</p>-->
+              <!--<div class="input-group mb-3">-->
+                <!--<span class="input-group-addon"><i class="icon-user"></i></span>-->
+                <!--<input type="text" class="form-control" placeholder="Username" #username (keyup.enter)="login(username.value,password.value)">-->
+              <!--</div>-->
+              <!--<div class="input-group mb-4">-->
+                <!--<span class="input-group-addon"><i class="icon-lock"></i></span>-->
+                <!--<input type="password" class="form-control" placeholder="Password" #password (keyup.enter)="login(username.value,password.value)">-->
+              <!--</div>-->
+              <!--<div class="row">-->
+                <!--<div class="col-6">-->
+                  <!--<button type="button" class="btn btn-primary px-4" (click)="login(username.value,password.value)">登录</button>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="col-6 text-right">-->
+                  <!--<button type="button" class="btn btn-link px-0">Forgot password?</button>-->
+                <!--</div>&ndash;&gt;-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<div class="app flex-row align-items-center">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card-group mb-0">
+        <div class="card p-2">
+          <div class="card-block">
+            <h1>COE 弹性容器云</h1>
+            <p class="text-muted">请输入用户名密码</p>
+            <div class="input-group mb-1">
+                                <span class="input-group-addon"><i class="icon-user"></i>
+                                </span>
+              <input type="text" class="form-control" placeholder="Username" #username>
+            </div>
+            <div class="input-group mb-2">
+                                <span class="input-group-addon"><i class="icon-lock"></i>
+                                </span>
+              <input type="password" class="form-control" placeholder="Password" #password>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <!-- <button type="button" class="btn btn-danger px-2">登陆</button> -->
+                <button type="button" class="btn btn-danger px-2" (click)="login(username.value,password.value)">登录</button>
+                <!--<a href="index.html" class="btn btn-danger px-2">登陆</a>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card py-3 hidden-md-down" style="width:44%">
+          <div class="card-block text-center">
+            <img src="./assets/img/logo.png" alt="">
+            <p>霍尼韦尔（Honeywell）是一家《财富》美国100强之一的互联工业企业，为全球客户提供专业的行业解决方案，涵盖航空和汽车产品及服务，楼宇、住宅和工业控制技术，以及特性材料。从飞机、汽车、住宅、楼宇、制造工厂、供应链到工人，我们的技术致力于万物互联，创造一个更智能、更安全和更可持续发展的世界。</p>
+            <!-- <div>
+                <h2>Sign up</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <button type="button" class="btn btn-primary active mt-1">Register Now!</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

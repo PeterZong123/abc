@@ -1,0 +1,227 @@
+<div class="app flex-row align-items-center">
+  <div class="app-body">
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- Breadcrumb -->
+      <ol class="breadcrumb">
+        <a [routerLink]="['/content']" class="breadcrumb-item">总览</a>
+      </ol>
+
+      <div class="container-fluid">
+
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-sm-6 col-md-4">
+              <div class="card">
+                <div class="card-header"><b>通知</b></div>
+                <div class="card-block">
+                  <p>{{str1}} 申请待审核</p>
+                  <p>月度开支 {{str2}}</p>
+                  <p>账户余额 {{str3}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+              <div class="card">
+                <div class="card-header"><b>监控告警</b></div>
+                <div class="card-block">
+                  <div class="card">
+                    <div class="card-block p-0 clearfix">
+                      <i class="fa fa-bell bg-danger p-2 font-2xl mr-1 float-left"></i>
+                      <div class="h5 text-danger mb-0 pt-1">{{str4}}</div>
+                      <div class="text-muted text-uppercase font-weight-bold font-xs">监控告警</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4">
+              <div class="card">
+                <div class="card-header"><b>日志告警</b></div>
+                <div class="card-block">
+
+                  <div class="card">
+                    <div class="card-block p-0 clearfix">
+                      <i class="fa fa-bell bg-danger p-2 font-2xl mr-1 float-left"></i>
+                      <div class="h5 text-danger mb-0 pt-1">{{str5}}</div>
+                      <div class="text-muted text-uppercase font-weight-bold font-xs">日志告警</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="card">
+                <div class="card-header"><b>已使用的服务</b></div>
+                <div class="card-block">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str6}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">镜像</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" [routerLink]="['/content/myImage']">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str7}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">配置信息</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" [routerLink]="['/content/configManager']">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str8}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">集群</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" [routerLink]="['/content/myCluster']">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str9}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">容器总量</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" href="#">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str10}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">外部负载均衡</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" href="#">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str11}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">内部负载均衡</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" href="#">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str12}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">日志订阅</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" href="#">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str13}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">监控设定</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" href="#">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str14}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">持久化存储</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" href="#">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str15}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">DNS</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" href="#">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="card">
+                        <div class="card-block p-1 clearfix">
+                          <i class="fa fa-laptop bg-info p-1 font-2xl mr-1 float-left"></i>
+                          <div class="h5 text-primary mt-h mb-0">{{str16}}</div>
+                          <div class="text-muted text-uppercase font-weight-bold font-xs">平台服务</div>
+                        </div>
+                        <div class="card-footer px-1 py-h">
+                          <a class="font-weight-bold font-xs btn-block text-muted" href="#">更多<i class="fa fa-angle-right float-right font-lg"></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+
+
+      </div>
+      <!-- /.conainer-fluid -->
+    </main>
+
+  </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+<div class="app flex-row align-items-center">
+    
+      <div class="app-body">
+        <!-- Main content -->
+        <main class="main">
+          <!-- Breadcrumb -->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">集群中心</li>
+            <li class="breadcrumb-item active">配置管理</li>
+            <li class="breadcrumb-item active">查询配置信息</li>
+          </ol>
+          <div class="container-fluid">
+            <div class="animated fadeIn">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <strong>配置信息</strong>
+                    </div>
+                    <div class="card-block">
+                      <form (ngSubmit)="onSubmit(configForm)" enctype="multipart/form-data" class="form-horizontal ">
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">配置名称</label>
+                          <div class="col-md-9">
+                            <input type="text" name="configname" class="form-control" placeholder="配置名" [(ngModel)]="configDetail.name">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">配置描述</label>
+                          <div class="col-md-9">
+                            <input type="text" name="configdescription" class="form-control" placeholder="config description" [(ngModel)]="configDetail.des">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">系统环境变量</label>
+                          <div class="col-md-9">
+                              <textarea  name="envvariable" rows="6" class="form-control" placeholder="key = value" [(ngModel)]="configDetail.envlist"></textarea>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label class="col-md-3 form-control-label" for="text-input">配置文件</label>
+                          <div class="col-md-9">
+                              <textarea  name="configfile" rows="6" class="form-control" placeholder="file name and its absolute path" [(ngModel)]="configDetail.configfiles"></textarea>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.conainer-fluid -->
+        </main>
+    
+      </div>
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    

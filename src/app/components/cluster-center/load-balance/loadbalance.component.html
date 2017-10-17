@@ -1,0 +1,185 @@
+<div class="app flex-row align-items-center">
+  <div class="app-body">
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- Breadcrumb -->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">集群中心</li>
+        <li class="breadcrumb-item active">负载均衡</li>
+      </ol>
+
+      <div class="container-fluid">
+
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-block">
+                  <a href="create-external-lb.html" class="btn btn-primary">创建外部负载均衡</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card">
+                <div class="card-block">
+                  <a href="create-internal-lb.html" class="btn btn-success">创建内部负载均衡</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card card-accent-success">
+                <div class="card-header">外部负载均衡</div>
+                <div class="card-block">
+
+                  <!--<p-dataTable  class="table" [value]="loadbalanceListOut"  [rows]="3" [paginator]="true" [pageLinks]="3"   dataKey="name">-->
+                    <!--<p-column field="name" header="负载均衡名称" ></p-column>-->
+                    <!--<p-column field="balance" header="所属集群"  ></p-column>-->
+                    <!--<p-column field="dns" header="dns"></p-column>-->
+                    <!--<p-column field="protocol" header="协议" ></p-column>-->
+                    <!--<p-column field="port" header="端口" ></p-column>-->
+                    <!--<p-column field="state" header="状态" ></p-column>-->
+                    <!--<p-column field="createTime" header="创建时间" ></p-column>-->
+                    <!--<p-column field="button" header="操作">-->
+                      <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
+                        <!--<span>Dribbble</span>-->
+                      <!--</button>-->
+                      <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
+                        <!--<span>Dribbble</span>-->
+                      <!--</button>-->
+                    <!--</p-column>-->
+                  <!--</p-dataTable>-->
+
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>负载均衡名称</th>
+                      <th>所属集群</th>
+                      <th>VIP</th>
+                      <th>协议</th>
+                      <th>端口</th>
+                      <th>状态</th>
+                      <th>创建时间</th>
+                      <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr *ngFor="let post of loadbalanceListOut">
+                      <td>{{post.name}}</td>
+                      <td>{{post.balance}}</td>
+                      <td>{{post.dns}}</td>
+                      <td>{{post.protocol}}</td>
+                      <td>{{post.port}}</td>
+                      <td>{{post.state}}</td>
+                      <td>{{post.createTime}}</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">
+                          <span>Dribbble</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">
+                          <span>Dribbble</span>
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+                  <ul class="pagination">
+                    <paging (goPage)="gotoPage($event)"
+                               inputCurrentPage="{{searchParam.pageNo}}"
+                               countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-accent-primary">
+                <div class="card-header">内部负载均衡</div>
+                <div class="card-block">
+                  <!--<p-dataTable  class="table" [value]="loadbalanceListIn"  [rows]="3" [paginator]="true" [pageLinks]="5"   dataKey="name">-->
+                    <!--<p-column field="name" header="负载均衡名称" ></p-column>-->
+                    <!--<p-column field="balance" header="所属集群"  ></p-column>-->
+                    <!--<p-column field="dns" header="dns"></p-column>-->
+                    <!--<p-column field="protocol" header="协议" ></p-column>-->
+                    <!--<p-column field="port" header="端口" ></p-column>-->
+                    <!--<p-column field="state" header="状态" ></p-column>-->
+                    <!--<p-column field="createTime" header="创建时间" ></p-column>-->
+                    <!--&lt;!&ndash;<p-column header="操作" [sortable]="false">-->
+                      <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
+                        <!--<span>Dribbble</span>-->
+                      <!--</button>-->
+                      <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
+                        <!--<span>Dribbble</span>-->
+                      <!--</button>-->
+                    <!--</p-column>&ndash;&gt;-->
+                  <!--</p-dataTable>-->
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th>负载均衡名称</th>
+                      <th>所属集群</th>
+                      <th>dns</th>
+                      <th>协议</th>
+                      <th>端口</th>
+                      <th>状态</th>
+                      <th>创建时间</th>
+                      <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr *ngFor="let post of loadbalanceListIn">
+                      <td>{{post.name}}</td>
+                      <td>{{post.balance}}</td>
+                      <td>{{post.dns}}</td>
+                      <td>{{post.protocol}}</td>
+                      <td>{{post.port}}</td>
+                      <td>{{post.state}}</td>
+                      <td>{{post.createTime}}</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">
+                          <span>Dribbble</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">
+                          <span>Dribbble</span>
+                        </button>
+                      </td>
+                    </tr>
+
+                    </tbody>
+                  </table>
+
+                  <ul class="pagination">
+                    <paging (goPage)="gotoPage($event)"
+                            inputCurrentPage="{{searchParam2.pageNo}}"
+                            countPerPage="{{searchParam2.pageSize}}" totalCount="{{totalSize2}}"></paging>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.conainer-fluid -->
+    </main>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
