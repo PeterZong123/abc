@@ -14,6 +14,7 @@ import { DeployNewClusterComponent } from './components/cluster-center/deploy-ne
 import { QueryConfigComponent } from './components/cluster-center/query-config/query-config.component';
 import { QueryClusterComponent } from './components/cluster-center/query-cluster/query-cluster.component';
 import { QueryImageComponent } from './components/image-center/query-image/query-image.component';
+import { EditConfigComponent } from './components/cluster-center/edit-config/edit-config.component';
 
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './pages/login.component';
@@ -77,6 +78,11 @@ const rootRouterConfig: Routes = [
                 canActivate: [CanActivateGuard],
             },
             {
+                path: 'editConfig/:id', //配置管理--修改配置
+                component: EditConfigComponent,
+                canActivate: [CanActivateGuard]
+            },
+            {
                 path: 'deployCluster',  //我的集群－－部署新集群
                 component: DeployNewClusterComponent,
                 canActivate: [CanActivateGuard],
@@ -117,4 +123,4 @@ const rootRouterConfig: Routes = [
     //{ path: '**', redirectTo: 'dashboard' }
 ];
 
-export const RootRouterModule = RouterModule.forRoot(rootRouterConfig);
+export const AppRoute = RouterModule.forRoot(rootRouterConfig);

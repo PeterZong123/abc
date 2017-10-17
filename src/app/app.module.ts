@@ -9,7 +9,7 @@ import { LocalStorageService } from 'angular-web-storage';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { RoutesModule } from './routes/routes.module';
+//import { RoutesModule } from './routes/routes.module';
 import { LayoutModule } from './layout/layout.module';
 import { StartupService } from './core/services/startup.service';
 import { MenuService } from './core/services/menu.service';
@@ -30,7 +30,7 @@ import { MyImageComponent } from './components/image-center/my-image/my-image.co
 import { CreateImageComponent } from './components/image-center/create-image/create-image.component';
 import { EditConfigComponent } from './components/cluster-center/edit-config/edit-config.component';
 
-import { PagingComponent } from './common/paging/paging.component';
+import { PagingComponent } from './shared/paging/paging.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './pages/login.component';
 import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt';
@@ -38,7 +38,7 @@ import { LoginService } from './pages/service/login.service';
 import { FormValidatorService } from './shared/formValidator.service';
 import { HttpModule } from '@angular/http';
 import { CanActivateGuard } from './shared/routerControl/can-activate-guard';
-//import { RootRouterModule } from './app.router';
+import { AppRoute } from './app.router';
 // end
 
 // AoT requires an exported function for factories
@@ -72,7 +72,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
     imports: [
         //add by liangzhifeng
         HttpModule,
-        RoutesModule,
+        AppRoute,
          //end
 
         BrowserModule,
