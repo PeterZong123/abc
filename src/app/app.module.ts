@@ -18,17 +18,17 @@ import { SettingsService } from './core/services/settings.service';
 import { TokenInterceptor } from '@core/net/token/token.interceptor';
 
 //add by liangzhifeng
-import { BaseImageComponent } from './components/image-center/base-image/base-image.component';
-import { ConfigManagerComponent } from './components/cluster-center/config-manager/config-manager.component';
+//import { BaseImageComponent } from './components/image-center/base-image/base-image.component';
+//import { ConfigManagerComponent } from './components/cluster-center/config-manager/config-manager.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { MyClusterComponent } from './components/cluster-center/my-cluster/my-cluster.component';
-import { LoadBalanceComponent } from './components/cluster-center/load-balance/loadbalance.component';
-import { CreateConfigComponent } from './components/cluster-center/create-config/create-config.component';
-import { DeployNewClusterComponent } from './components/cluster-center/deploy-new-cluster/deploy-new-cluster.component';
-import { QueryConfigComponent } from './components/cluster-center/query-config/query-config.component';
-import { MyImageComponent } from './components/image-center/my-image/my-image.component';
-import { CreateImageComponent } from './components/image-center/create-image/create-image.component';
-import { EditConfigComponent } from './components/cluster-center/edit-config/edit-config.component';
+//import { MyClusterComponent } from './components/cluster-center/my-cluster/my-cluster.component';
+//import { LoadBalanceComponent } from './components/cluster-center/load-balance/loadbalance.component';
+//import { CreateConfigComponent } from './components/cluster-center/create-config/create-config.component';
+//import { DeployNewClusterComponent } from './components/cluster-center/deploy-new-cluster/deploy-new-cluster.component';
+//import { QueryConfigComponent } from './components/cluster-center/query-config/query-config.component';
+//import { MyImageComponent } from './components/image-center/my-image/my-image.component';
+//import { CreateImageComponent } from './components/image-center/create-image/create-image.component';
+//import { EditConfigComponent } from './components/cluster-center/edit-config/edit-config.component';
 
 import { PagingComponent } from './shared/paging/paging.component';
 import { IndexComponent } from './index/index.component';
@@ -53,21 +53,21 @@ export function StartupServiceFactory(startupService: StartupService): Function 
 @NgModule({
     declarations: [
         AppComponent,
-        DashboardComponent,
-        MyImageComponent,
-        BaseImageComponent,
-        ConfigManagerComponent,
-        MyClusterComponent,
-        LoadBalanceComponent,
-        CreateImageComponent,
-        CreateConfigComponent,
-        DeployNewClusterComponent,
-        PagingComponent,
-        QueryConfigComponent,
-        PagingComponent,
         IndexComponent,
         LoginComponent,
-        EditConfigComponent
+        PagingComponent,
+
+        DashboardComponent,
+        //MyImageComponent,
+        //BaseImageComponent,
+        //ConfigManagerComponent,
+        //MyClusterComponent,
+        //LoadBalanceComponent,
+        //CreateImageComponent,
+        //CreateConfigComponent,
+        //DeployNewClusterComponent,
+        //QueryConfigComponent,
+        //EditConfigComponent
 ],
     imports: [
         //add by liangzhifeng
