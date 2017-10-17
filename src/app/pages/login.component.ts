@@ -27,7 +27,7 @@ export class LoginComponent {
     }
     this.loginService.login(this.loginRequest).subscribe( (res: any) => {
       if(res.code === 0){
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/content']);
         localStorage.setItem('token', res.detail);
         localStorage.setItem('User', JSON.stringify(this.loginRequest));
       }else{

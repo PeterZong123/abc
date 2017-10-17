@@ -4,6 +4,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ImageCenterRoutingModule}  from './image-center.routes';
+import { SharedModule } from '../../shared/shared.module';
 
 import { MyImageComponent } from './my-image/my-image.component';
 import { CreateImageComponent } from './create-image/create-image.component';

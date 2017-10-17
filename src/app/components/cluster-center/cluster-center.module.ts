@@ -4,6 +4,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ClusterCenterRoutingModule}  from './cluster-center.routes';
+import { SharedModule } from '../../shared/shared.module';
 
 import { ConfigManagerComponent } from './config-manager/config-manager.component';
 import { MyClusterComponent } from './my-cluster/my-cluster.component';
