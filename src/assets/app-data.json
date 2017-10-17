@@ -15,7 +15,7 @@
         "children": [{
             "text": "总揽",
             "translate": "dashboard",
-            "link": "/content",
+            "link": "/dashboard",
             "icon": "icon-speedometer",
             "acl": "role-a"
         }, {
@@ -26,11 +26,11 @@
             "acl": "role-a",
             "children": [{
                 "text": "我的镜像",
-                "link": "/content/myImage",
+                "link": "/imageCenter/myImage",
                 "translate": "我的镜像"
             }, {
                 "text": "基础镜像",
-                "link": "/content/baseImage",
+                "link": "/imageCenter/baseImage",
                 "translate": "基础镜像"
             }]
         }, {
@@ -41,15 +41,15 @@
             "acl": "role-a",
             "children": [{
                 "text": "配置管理",
-                "link": "/content/configManager",
+                "link": "/clusterCenter/configManager",
                 "translate": "配置管理"
             }, {
                 "text": "我的集群",
-                "link": "/content/myCluster",
+                "link": "/clusterCenter/myCluster",
                 "translate": "我的集群"
             }, {
                 "text": "负载均衡",
-                "link": "/content/loadBalance",
+                "link": "/clusterCenter/loadBalance",
                 "translate": "负载均衡"
             }]
         }, {
@@ -60,11 +60,11 @@
             "acl": "role-a",
             "children": [{
                 "text": "我的服务",
-                "link": "/content/",
+                "link": "/dashboard/",
                 "translate": "我的服务"
             }, {
                 "text": "平台服务",
-                "link": "/content/",
+                "link": "/dashboard/",
                 "translate": "平台服务"
             }]
         }]

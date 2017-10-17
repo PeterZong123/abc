@@ -1,7 +1,7 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
-import { FormValidatorService } from '../../../shared/formValidator.service'; 
+import { FormValidatorService } from '../../../shared/formValidator.service';
 import { CreateConfigService } from './create-config.service';
 
 @Component({
@@ -15,11 +15,11 @@ export class CreateConfigComponent implements OnInit {
   configForm: FormGroup;
   formErrors: any;
 
-  constructor(@Inject('help') private helpService, 
-    private createConfigService: CreateConfigService, 
+  constructor(@Inject('help') private helpService,
+    private createConfigService: CreateConfigService,
     private router: Router,
     private fb: FormBuilder,
-    private fValidatorService: FormValidatorService) { 
+    private fValidatorService: FormValidatorService) {
       this.formErrors = this.fValidatorService.formErrors;
     }
 
@@ -40,7 +40,7 @@ export class CreateConfigComponent implements OnInit {
     let data = config.value;
     this.createConfigService.addconfig(data).subscribe((res: any) => {
       if(res.code === 0){
-        this.router.navigate(['/content/configManager']);
+        this.router.navigate(['/cluster/configManager']);
       }else{
         alert('创建新配置失败');
       }

@@ -1,7 +1,7 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
-import { FormValidatorService } from '../../../shared/formValidator.service'; 
+import { FormValidatorService } from '../../../shared/formValidator.service';
 import { DeployNewClusterService } from './deploy-new-cluster.service';
 
 @Component({
@@ -14,11 +14,11 @@ export class DeployNewClusterComponent implements OnInit {
   clusterForm: FormGroup;
   formErrors: any;
 
-  constructor(@Inject('help') private helpService, 
+  constructor(@Inject('help') private helpService,
     private deployNewClusterService: DeployNewClusterService,
     private router: Router,
     private fb: FormBuilder,
-    private fValidatorService: FormValidatorService) { 
+    private fValidatorService: FormValidatorService) {
       this.formErrors = fValidatorService.formErrors;
     }
 
@@ -46,7 +46,7 @@ export class DeployNewClusterComponent implements OnInit {
     let data = cluster.value;
     this.deployNewClusterService.addCluster(data).subscribe((res: any) => {
       if(res.code === 0){
-        this.router.navigate(['/content/myCluster']);
+        this.router.navigate(['/cluster/myCluster']);
       }else{
         alert('部署新集群失败');
       }

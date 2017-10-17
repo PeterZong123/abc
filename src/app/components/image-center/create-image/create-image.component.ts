@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild, AfterViewInit, Inject} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import {CreateImageService} from './create-image.service';
-import {FileValidator} from '../../../shared/fileValidator.directive'; 
-import { FormValidatorService } from '../../../shared/formValidator.service'; 
+import {FileValidator} from '../../../shared/fileValidator.directive';
+import { FormValidatorService } from '../../../shared/formValidator.service';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
 
@@ -13,11 +13,11 @@ import * as $ from 'jquery';
   providers: [CreateImageService]
 })
 export class CreateImageComponent implements OnInit {
-  
+
   creatImgForm: FormGroup;
   formErrors: any;
 
-  constructor(private createImageService: CreateImageService, 
+  constructor(private createImageService: CreateImageService,
     private router: Router,
     @Inject('help') private helpService,
     private fb: FormBuilder,
@@ -50,7 +50,7 @@ export class CreateImageComponent implements OnInit {
 
     this.createImageService.createImg(formData).subscribe((res: any) =>{
       if(res.code === 0){
-        this.router.navigate(['/content/myImage']);
+        this.router.navigate(['/image/myImage']);
       }else{
         alert("构建新镜像失败");
       }

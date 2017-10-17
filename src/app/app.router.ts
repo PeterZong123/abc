@@ -34,78 +34,35 @@ const rootRouterConfig: Routes = [
         component: LoginComponent
     },
     {
-        path: 'content',
+        path: 'dashboard',
         component: LayoutComponent,
         children: [
             {
                 path: '', //  总揽
                 component: DashboardComponent,
                 canActivate: [CanActivateGuard]
-            },
+            }
+        ]
+    },
+    {
+        path: 'cluster',//我的集群
+        component: LayoutComponent,
+        children: [
             {
-                path: 'myImage',//我的镜像
-                loadChildren: './components/image-center/image-center.module#ImageCenterModule'
-            },
-            {
-                path: 'myCluster',//我的集群
+                path: '',
                 loadChildren: './components/cluster-center/cluster-center.module#ClusterCenterModule'
             }
         ]
-
-        //children: [
-
-        //    {
-        //        path: 'myImage', //我的镜像
-        //        component: MyImageComponent,
-        //        canActivate: [CanActivateGuard],
-        //    },
-        //    {
-        //        path: 'createImage', //我的镜像-- 创建新镜像
-        //        component: CreateImageComponent,
-        //        canActivate: [CanActivateGuard],
-        //    },
-        //    {
-        //        path: 'baseImage', //基础镜像
-        //        component: BaseImageComponent,
-        //        canActivate: [CanActivateGuard],
-        //    },
-        //    {
-        //        path: 'configManager',  //配置管理
-        //        component: ConfigManagerComponent,
-        //        canActivate: [CanActivateGuard],
-        //    },
-        //    {
-        //        path: 'createConfig',  //配置管理--创建新配置
-        //        component: CreateConfigComponent,
-        //        canActivate: [CanActivateGuard],
-        //    },
-        //    {
-        //        path: 'queryConfig/:id', //配置管理--查询配置
-        //        component: QueryConfigComponent,
-        //        canActivate: [CanActivateGuard],
-        //    },
-        //    {
-        //        path: 'myCluster',  //我的集群
-        //        component: MyClusterComponent,
-        //        canActivate: [CanActivateGuard],
-        //    },
-        //    {
-        //        path: 'editConfig/:id', //配置管理--修改配置
-        //        component: EditConfigComponent,
-        //        canActivate: [CanActivateGuard]
-        //    },
-        //    {
-        //        path: 'deployCluster',  //我的集群－－部署新集群
-        //        component: DeployNewClusterComponent,
-        //        canActivate: [CanActivateGuard],
-        //    },
-        //
-        //    {
-        //        path: 'loadBalance', //负载均衡
-        //        component: LoadBalanceComponent,
-        //        canActivate: [CanActivateGuard],
-        //    }
-        //]
+    },
+    {
+        path: 'image',//我的镜像
+        component: LayoutComponent,
+        children: [
+            {
+                path: '',
+                loadChildren: './components/image-center/image-center.module#ImageCenterModule'
+            }
+        ]
     },
     { path: '**', redirectTo: 'login' }
 ];
