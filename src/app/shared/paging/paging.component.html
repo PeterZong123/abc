@@ -1,0 +1,20 @@
+<div class="paging">
+    <span class="left">
+            <span>当前显示</span>
+            <span>{{pagingInfo.startIndex}}到</span>
+            <span>{{pagingInfo.endIndex}}条，共</span>
+            <span>{{pagingInfo.totalCount}}条</span>
+        </span>
+
+        <span class="right">
+            <span
+                *ngFor="let btn of pagingInfo.dispBtns"
+                [ngClass]="{preNextBtn: (btn == '上一页' || btn == '下一页') ? true: false,
+                            currentPage: btn == pagingInfo.currentPage ? true : false,
+                           centerBtn: btn == '...' ? true : false}"
+                (click)="gotoPage(btn)"
+            >
+                {{btn}}
+            </span>
+        </span>
+</div>

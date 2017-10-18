@@ -1,0 +1,30 @@
+.paging{
+    /*position: absolute;
+    bottom: 0;*/
+    width: 100%;
+}
+.paging .left span{
+    font-size: 12px;
+}
+.paging .right{
+    float: right;
+}
+.paging .right span{
+    background: #FFFFFF;
+    border: 1px solid #E7E7E7;
+    font-family: PingFangSC-Regular;
+    font-size: 10px;
+    color: #333333;
+    padding: 4px 6px;
+    cursor: pointer;
+}
+.paging .right .centerBtn{
+    border:0;
+    cursor: default;
+}
+.paging .right .currentPage{
+    background: #f6f6f6;
+}
+.paging .right .preNextBtn{
+
+}
