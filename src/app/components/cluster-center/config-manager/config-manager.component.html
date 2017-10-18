@@ -17,7 +17,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-block">
-                  <a  [routerLink]="['/cluster/createConfig']" class="btn btn-primary">创建新配置</a>
+                  <a  [routerLink]="['/content/createConfig']" class="btn btn-primary">创建新配置</a>
                 </div>
                 <!-- <div class="card-footer">*基于已编译的应用构建镜像</div> -->
               </div>
@@ -54,10 +54,10 @@
                     <td>{{post.Config_Des}}</td>
                     <td>{{post.Create_At}}</td>
                     <td>
-                      <button type="button" [routerLink]="['/cluster/queryConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}" class="btn btn-sm btn-fa" title="查看">
+                      <button type="button" [routerLink]="['/content/queryConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}" class="btn btn-sm btn-fa" title="查看">
                         <i class="fa fa-search"></i>
                       </button>
-                      <button type="button" [routerLink]="['/cluster/editConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}" class="btn btn-sm btn-fa" title="修改">
+                      <button type="button" [routerLink]="['/content/editConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}" class="btn btn-sm btn-fa" title="修改">
                         <i class="fa fa-edit"></i>
                       </button>
                       <button type="button" class="btn btn-sm btn-fa" title="删除" (click)="delConfig(post.Row_ID)">

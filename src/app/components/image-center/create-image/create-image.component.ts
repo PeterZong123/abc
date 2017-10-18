@@ -50,7 +50,7 @@ export class CreateImageComponent implements OnInit {
 
     this.createImageService.createImg(formData).subscribe((res: any) =>{
       if(res.code === 0){
-        this.router.navigate(['/image/myImage']);
+        this.router.navigate(['/content/myImage']);
       }else{
         alert("构建新镜像失败");
       }

@@ -40,7 +40,7 @@ export class CreateConfigComponent implements OnInit {
     let data = config.value;
     this.createConfigService.addconfig(data).subscribe((res: any) => {
       if(res.code === 0){
-        this.router.navigate(['/cluster/configManager']);
+        this.router.navigate(['/content/configManager']);
       }else{
         alert('创建新配置失败');
       }

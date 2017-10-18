@@ -21,7 +21,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-block">
-                  <a [routerLink]="['/image/createImage']" class="btn btn-primary">构建新镜像</a>
+                  <a [routerLink]="['/content/createImage']" class="btn btn-primary">构建新镜像</a>
                 </div>
                 <div class="card-footer">*基于已编译的应用构建镜像</div>
               </div>
@@ -61,7 +61,7 @@
                     <td>{{post.buildstatus}}</td>
                     <td>{{post.createdat}}</td>
                     <td>
-                      <button type="button" [routerLink]="['/image/queryImage',post.id]" class="btn btn-sm btn-fa" title="查看">
+                      <button type="button" [routerLink]="['/content/queryImage',post.id]" class="btn btn-sm btn-fa" title="查看">
                         <i class="fa fa-search"></i>
                       </button>
                       <button type="button" class="btn btn-sm btn-fa" title="修改">
