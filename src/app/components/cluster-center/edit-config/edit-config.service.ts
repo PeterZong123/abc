@@ -21,4 +21,14 @@ export class EditConfigService {
       return Observable.throw('查询配置信息失败');
     })
   }
+
+  editconfig(json: any): Observable<Response>{
+    return this.http.post(AppUtil.BACKEND_API_ROOT_URL + '/dashboard/clustercentre/configmng/modifyconfig?token='+this.token,json)
+    .map((res: Response) => {
+      return res.json();
+    })
+    .catch((res: Response) => {
+      return Observable.throw('修改配置信息失败');
+    })
+  }
 }

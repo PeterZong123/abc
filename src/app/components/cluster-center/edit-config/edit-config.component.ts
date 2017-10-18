@@ -20,17 +20,19 @@ export class EditConfigComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private fValidatorService: FormValidatorService) {
+      this.formErrors = this.fValidatorService.formErrors;
     }
 
   ngOnInit() {
+    //建立动态表单
     this.configForm = this.fb.group({
       'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
       'configdescription':[''],
-      'envvariable':['',Validators.required],
-      'configfile':['',Validators.required],
+      'envvariable':[''],
+      'configfile':[''],
     })
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
-    
+    //获取表单数据
     this.configDetail = {
       'id':'',
       'name':'',
@@ -41,7 +43,9 @@ export class EditConfigComponent implements OnInit {
     this.configDetail.name = this.activatedRoute.snapshot.queryParams.name;
     this.configDetail.des = this.activatedRoute.snapshot.queryParams.des;
     this.activatedRoute.params.subscribe(params => {
-      this.editConfigService.queryconfig(params['id']).subscribe((res: any) => {
+      let id = params['id'];
+      this.editConfigService.queryconfig(id).subscribe((res: any) => {
+        this.configDetail.id = id;
         this.configDetail.envlist = JSON.stringify(res.envlist);
         this.configDetail.configfiles = JSON.stringify(res.configfiles);
       })
@@ -49,4 +53,16 @@ export class EditConfigComponent implements OnInit {
     
   }
 
+  onSubmit(config){
+    if(config.inValid){
+      return;
+    }
+    this.editConfigService.editconfig(this.configDetail).subscribe((res: any) => {
+      if(res.code === 0){
+        this.router.navigate(['/content/configManager']);
+      }else{
+        alert('修改配置失败');
+      }
+    })
+  }
 }

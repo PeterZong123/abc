@@ -246,13 +246,22 @@ app.get('/dashboard/clustercentre/configmng/deleteconfig', function(req, res){
 })
 
 //修改配置
-app.get('/dashboard/clustercentre/configmng/modifyconfig', function(req, res){
+app.post('/dashboard/clustercentre/configmng/modifyconfig', function(req, res){
   var result = {
     "code": 0,  
     "detail": "modify config success"   
   }
   res.json(result);
 })
+//集群删除
+app.get('/dashboard/clustercentre/clustermng/deletecluster', function(req, res){
+  var result = {
+    "code": 0,    
+    "detail": "delete cluster success"   
+  }
+  res.json(result);
+})
+
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

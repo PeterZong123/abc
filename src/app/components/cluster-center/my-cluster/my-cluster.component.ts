@@ -46,4 +46,16 @@ export class MyClusterComponent implements OnInit {
     this.searchParam.pageNo = pagingInfo.currentPage;
   }
 
+  //删除集群
+  delCluster(id: string){
+    this.clusterService.delCluster(id).subscribe(res => {
+      if(res.code === 0){
+        this.clusterList = this.clusterList.filter(function(val){
+          return (val.Cluster_Id !== id);
+        })
+      }else{
+        alert('删除集群失败');
+      }
+    })
+  }
 }

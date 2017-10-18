@@ -72,10 +72,10 @@
                        <button type="button" [routerLink]="['/content/queryCluster',post.Cluster_Id]" class="btn btn-sm btn-fa" title="查看">
                         <i class="fa fa-search"></i>
                        </button>
-                       <button type="button" class="btn btn-sm btn-fa" title="修改">
+                       <!-- <button type="button" class="btn btn-sm btn-fa" title="修改">
                             <i class="fa fa-edit"></i>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-fa" title="删除">
+                        </button> -->
+                        <button type="button" class="btn btn-sm btn-fa" title="删除" (click)="delCluster(post.Cluster_Id)">
                             <i class="fa fa-trash"></i>
                         </button>
                      </td>

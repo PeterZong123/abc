@@ -20,4 +20,13 @@ export class ClusterService {
       })
   }
   
+  public delCluster(id: string): Observable<any>{
+    return this.http.get(Const.BACKEND_API_ROOT_URL + '/dashboard/clustercentre/clustermng/deletecluster?token='+this.token+'&clusterid='+id)
+      .map((res: Response) => {
+        return res.json();
+      })
+      .catch((res: Response) => {
+        return Observable.throw('删除集群失败')
+      })
+  }
 }

@@ -20,27 +20,27 @@
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header">
-                      修改<strong>配置</strong>
+                      修改<strong>新配置</strong>
                     </div>
                     <div class="card-block">
                       <form (ngSubmit)="onSubmit(configForm)" enctype="multipart/form-data" class="form-horizontal " [formGroup]="configForm">
                         <div class="form-group row">
                           <label class="col-md-3 form-control-label" for="text-input">配置名称</label>
                           <div class="col-md-9">
-                            <input type="text" name="configname" class="form-control" placeholder="配置名" formControlName="configname">
+                            <input type="text" name="configname" class="form-control" placeholder="配置名" formControlName="configname" [(ngModel)]="configDetail.name">
                             <small class="txt-error animated fadeIn" *ngIf="formErrors['configname']">{{formErrors['configname']}}</small>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 form-control-label" for="text-input">配置描述</label>
                           <div class="col-md-9">
-                            <input type="text" name="configdescription" class="form-control" placeholder="config description" formControlName="configdescription">
+                            <input type="text" name="configdescription" class="form-control" placeholder="config description" formControlName="configdescription" [(ngModel)]="configDetail.des">
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-md-3 form-control-label" for="text-input">系统环境变量</label>
                           <div class="col-md-9">
-                                <textarea  name="envvariable" rows="6" class="form-control" placeholder="key = value" formControlName="envvariable"></textarea>
+                                <textarea  name="envvariable" rows="6" class="form-control" placeholder="key = value" formControlName="envvariable" [(ngModel)]="configDetail.envlist"></textarea>
                                 <!-- <input type="text" name="envvariable" class="form-control" placeholder="key = value" formControlName="envvariable"> -->
                                 <small class="txt-error animated fadeIn" *ngIf="formErrors['envvariable']">{{formErrors['envvariable']}}</small>
                           </div>
@@ -48,13 +48,13 @@
                         <div class="form-group row">
                           <label class="col-md-3 form-control-label" for="text-input">配置文件</label>
                           <div class="col-md-9">
-                                <textarea  name="configfile" rows="6" class="form-control" placeholder="file name and its absolute path" formControlName="configfile"></textarea>
+                                <textarea  name="configfile" rows="6" class="form-control" placeholder="file name and its absolute path" formControlName="configfile" [(ngModel)]="configDetail.configfiles"></textarea>
                                 <!-- <input type="text" name="configfile" class="form-control" placeholder="file name and its absolute path" formControlName="configfile"> -->
                                 <small class="txt-error animated fadeIn" *ngIf="formErrors['configfile']">{{formErrors['configfile']}}</small>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-sm btn-primary" [disabled]="configForm.invalid"><i class="fa fa-dot-circle-o"></i> 创建</button>
+                            <button type="submit" class="btn btn-sm btn-primary" [disabled]="configForm.invalid || configForm.pristine"><i class="fa fa-dot-circle-o"></i> 修改</button>
                         </div>
                       </form>
                     </div>
