@@ -43,27 +43,24 @@ app.get('/dashboard/clustercentre/clustermng/listclusters',function(req,res){
 
 app.get('/dashboard/imagecentre/myimages/newimage/basicimages',function(req,res){
   var result =
-    [{
-      "Cluster_Id":1,
-      "Cluster_Name":"test",
-      "Config_Name":"test2",
-      "Flavor":1,
-      "Storage":32,
-      "Replicas":2,
-      "Create_At":"2017-09-27T11:09:08Z",
-      "Valid":true
-    },
+    [
       {
-        "Cluster_Id":2,
-        "Cluster_Name":"testcluster3",
-        "Config_Name":"test2",
-        "Flavor":2,
-        "Storage":32,
-        "Replicas":8,
-        "Create_At":"2017-09-27T13:49:42Z",
-        "Valid":true
-      }];
-
+          "id": 1,
+          "name": "fabric8/java-centos-openjdk8-jdk"
+      },
+      {
+          "id": 2,
+          "name": "centos/python-27-centos7"
+      },
+      {
+          "id": 3,
+          "name": "centos/ruby-22-centos7"
+      },
+      {
+          "id": 4,
+          "name": "centos/nodejs-4-centos7"
+      }
+    ]   
   res.json(result);
 });
 
@@ -248,6 +245,14 @@ app.get('/dashboard/clustercentre/configmng/deleteconfig', function(req, res){
   res.json(result);
 })
 
+//修改配置
+app.get('/dashboard/clustercentre/configmng/modifyconfig', function(req, res){
+  var result = {
+    "code": 0,  
+    "detail": "modify config success"   
+  }
+  res.json(result);
+})
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

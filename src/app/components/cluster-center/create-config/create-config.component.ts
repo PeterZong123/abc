@@ -1,6 +1,6 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
+import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import { FormValidatorService } from '../../../shared/formValidator.service';
 import { CreateConfigService } from './create-config.service';
 
@@ -15,8 +15,7 @@ export class CreateConfigComponent implements OnInit {
   configForm: FormGroup;
   formErrors: any;
 
-  constructor(@Inject('help') private helpService,
-    private createConfigService: CreateConfigService,
+  constructor(private createConfigService: CreateConfigService,
     private router: Router,
     private fb: FormBuilder,
     private fValidatorService: FormValidatorService) {

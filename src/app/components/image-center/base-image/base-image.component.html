@@ -42,18 +42,14 @@
                   <table class="table">
                     <thead>
                     <tr>
+                      <th>序号</th>
                       <th>镜像名称</th>
-                      <th>操作系统</th>
-                      <th>类型</th>
-                      <th>创建时间</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr *ngFor="let post of clusterList">
-                      <td>{{post.Cluster_Name}}</td>
-                      <td>{{post.Config_Name}}</td>
-                      <td>{{post.Flavor}}</td>
-                      <td>{{post.Create_At}}</td>
+                      <td>{{post.id}}</td>
+                      <td>{{post.name}}</td>
                     </tr>
 
                     </tbody>

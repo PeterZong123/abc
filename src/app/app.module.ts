@@ -26,6 +26,8 @@ import { LoadBalanceComponent } from './components/cluster-center/load-balance/l
 import { CreateConfigComponent } from './components/cluster-center/create-config/create-config.component';
 import { DeployNewClusterComponent } from './components/cluster-center/deploy-new-cluster/deploy-new-cluster.component';
 import { QueryConfigComponent } from './components/cluster-center/query-config/query-config.component';
+import { QueryImageComponent } from './components/image-center/query-image/query-image.component';
+import { QueryClusterComponent } from './components/cluster-center/query-cluster/query-cluster.component';
 import { MyImageComponent } from './components/image-center/my-image/my-image.component';
 import { CreateImageComponent } from './components/image-center/create-image/create-image.component';
 import { EditConfigComponent } from './components/cluster-center/edit-config/edit-config.component';
@@ -53,6 +55,9 @@ export function StartupServiceFactory(startupService: StartupService): Function 
 @NgModule({
     declarations: [
         AppComponent,
+        IndexComponent,
+        LoginComponent,
+        PagingComponent,
         DashboardComponent,
         MyImageComponent,
         BaseImageComponent,
@@ -62,11 +67,9 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         CreateImageComponent,
         CreateConfigComponent,
         DeployNewClusterComponent,
-        PagingComponent,
         QueryConfigComponent,
-        PagingComponent,
-        IndexComponent,
-        LoginComponent,
+        QueryImageComponent,
+        QueryClusterComponent,
         EditConfigComponent
 ],
     imports: [

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
+import { FormValidatorService } from '../../../shared/formValidator.service';
 import { EditConfigService } from './edit-config.service';
 @Component({
   selector: 'app-edit-config',
@@ -10,12 +12,25 @@ import { EditConfigService } from './edit-config.service';
 export class EditConfigComponent implements OnInit {
 
   configDetail: any; 
-  
+  configForm: FormGroup;
+  formErrors: any;
+
   constructor(private editConfigService: EditConfigService,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder,
+    private fValidatorService: FormValidatorService) {
     }
 
   ngOnInit() {
+    this.configForm = this.fb.group({
+      'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
+      'configdescription':[''],
+      'envvariable':['',Validators.required],
+      'configfile':['',Validators.required],
+    })
+    this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
+    
     this.configDetail = {
       'id':'',
       'name':'',

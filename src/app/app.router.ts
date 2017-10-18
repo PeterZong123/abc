@@ -39,61 +39,70 @@ const rootRouterConfig: Routes = [
         canActivate: [CanActivateGuard],
         children: [
             {
-                path: '', //  总揽
-                component: DashboardComponent
+              path: '', //  总揽
+              component: DashboardComponent
             },
             {
-                path: 'myImage', //我的镜像
-                component: MyImageComponent,
-                canActivate: [CanActivateGuard],
+              path: 'myImage', //我的镜像
+              component: MyImageComponent,
+              canActivate: [CanActivateGuard],
             },
             {
-                path: 'createImage', //我的镜像-- 创建新镜像
-                component: CreateImageComponent,
-                canActivate: [CanActivateGuard],
+              path: 'createImage', //我的镜像-- 创建新镜像
+              component: CreateImageComponent,
+              canActivate: [CanActivateGuard],
             },
             {
-                path: 'baseImage', //基础镜像
-                component: BaseImageComponent,
-                canActivate: [CanActivateGuard],
+              path: 'queryImage/:id', //我的镜像--查询镜像
+              component: QueryImageComponent,
+              canActivate: [CanActivateGuard]
             },
             {
-                path: 'configManager',  //配置管理
-                component: ConfigManagerComponent,
-                canActivate: [CanActivateGuard],
+              path: 'baseImage', //基础镜像
+              component: BaseImageComponent,
+              canActivate: [CanActivateGuard],
             },
             {
-                path: 'createConfig',  //配置管理--创建新配置
-                component: CreateConfigComponent,
-                canActivate: [CanActivateGuard],
+              path: 'configManager',  //配置管理
+              component: ConfigManagerComponent,
+              canActivate: [CanActivateGuard],
             },
             {
-                path: 'queryConfig/:id', //配置管理--查询配置
-                component: QueryConfigComponent,
-                canActivate: [CanActivateGuard],
+              path: 'createConfig',  //配置管理--创建新配置
+              component: CreateConfigComponent,
+              canActivate: [CanActivateGuard],
             },
             {
-                path: 'myCluster',  //我的集群
-                component: MyClusterComponent,
-                canActivate: [CanActivateGuard],
+              path: 'queryConfig/:id', //配置管理--查询配置
+              component: QueryConfigComponent,
+              canActivate: [CanActivateGuard],
             },
             {
-                path: 'editConfig/:id', //配置管理--修改配置
-                component: EditConfigComponent,
-                canActivate: [CanActivateGuard]
+              path: 'editConfig/:id', //配置管理--修改配置
+              component: EditConfigComponent,
+              canActivate: [CanActivateGuard]
             },
             {
-                path: 'deployCluster',  //我的集群－－部署新集群
-                component: DeployNewClusterComponent,
-                canActivate: [CanActivateGuard],
+              path: 'myCluster',  //我的集群
+              component: MyClusterComponent,
+              canActivate: [CanActivateGuard],
             },
-
             {
-                path: 'loadBalance', //负载均衡
-                component: LoadBalanceComponent,
-                canActivate: [CanActivateGuard],
+              path: 'deployCluster',  //我的集群－－部署新集群
+              component: DeployNewClusterComponent,
+              canActivate: [CanActivateGuard],
+            },
+            {
+              path: 'queryCluster/:id', //我的集群--查询集群
+              component: QueryClusterComponent,
+              canActivate: [CanActivateGuard],
+            },
+            {
+              path: 'loadBalance', //负载均衡
+              component: LoadBalanceComponent,
+              canActivate: [CanActivateGuard],
             }
-        ]
+          ]
     },
     //{
     //    path: 'content',

@@ -14,8 +14,7 @@ export class DeployNewClusterComponent implements OnInit {
   clusterForm: FormGroup;
   formErrors: any;
 
-  constructor(@Inject('help') private helpService,
-    private deployNewClusterService: DeployNewClusterService,
+  constructor(private deployNewClusterService: DeployNewClusterService,
     private router: Router,
     private fb: FormBuilder,
     private fValidatorService: FormValidatorService) {

@@ -19,7 +19,6 @@ export class CreateImageComponent implements OnInit {
 
   constructor(private createImageService: CreateImageService,
     private router: Router,
-    @Inject('help') private helpService,
     private fb: FormBuilder,
     private fvalidatorService: FormValidatorService) {
       this.formErrors = fvalidatorService.formErrors;
