@@ -36,14 +36,14 @@ export class EditConfigComponent implements OnInit {
     this.configDetail = {
       'id':'',
       'token':'',
-      'name':'',
-      'des':'',
+      'configname':'',
+      'configdescription':'',
       'envvariable':'',
       'configfile':''
     }
     this.configDetail.token = localStorage.getItem('token');
-    this.configDetail.name = this.activatedRoute.snapshot.queryParams.name;
-    this.configDetail.des = this.activatedRoute.snapshot.queryParams.des;
+    this.configDetail.configname = this.activatedRoute.snapshot.queryParams.name;
+    this.configDetail.configdescription = this.activatedRoute.snapshot.queryParams.des;
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
       this.editConfigService.queryconfig(id).subscribe((res: any) => {
@@ -59,7 +59,12 @@ export class EditConfigComponent implements OnInit {
     if(config.inValid){
       return;
     }
-    this.editConfigService.editconfig(this.configDetail).subscribe((res: any) => {
+    let data = config.value;
+    data.id = this.configDetail.id;
+    data.token = this.configDetail.token;
+    data.envvariable = JSON.parse("{" + data.envvariable + "}");
+    data.configfile = JSON.parse("{" + data.configfile + "}");
+    this.editConfigService.editconfig(data).subscribe((res: any) => {
       if(res.code === 0){
         this.router.navigate(['/content/configManager']);
       }else{
