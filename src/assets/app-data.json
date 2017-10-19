@@ -14,7 +14,7 @@
         "group": true,
         "children": [{
             "text": "总揽",
-            "translate": "dashboard",
+            "translate": "总览",
             "link": "/content",
             "icon": "icon-speedometer",
             "acl": "role-a"
