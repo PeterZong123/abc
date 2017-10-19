@@ -27,7 +27,7 @@ export class CreateConfigComponent implements OnInit {
       'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
       'configdescription':[''],
       'envvariable':['',Validators.required],
-      'configfile':['',Validators.required],
+      'configfile':['',[Validators.required,Validators.pattern(new RegExp('^("(\/[a-zA-Z0-9_]+)+\.[a-zA-Z0-9]+":"[\\d\\D]*",)*("(\/[a-zA-Z0-9_]+)+\.[a-zA-Z0-9]+":"[\\d\\D]*")$'))]],
     })
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
   }

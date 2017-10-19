@@ -27,7 +27,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 form-control-label" for="text-input">配置名称</label>
                           <div class="col-md-9">
-                            <input type="text" name="configname" class="form-control" placeholder="配置名" formControlName="configname" [(ngModel)]="configDetail.name">
+                            <input type="text" name="configname" class="form-control" placeholder="config name" formControlName="configname" [(ngModel)]="configDetail.name">
                             <small class="txt-error animated fadeIn" *ngIf="formErrors['configname']">{{formErrors['configname']}}</small>
                           </div>
                         </div>
@@ -40,7 +40,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 form-control-label" for="text-input">系统环境变量</label>
                           <div class="col-md-9">
-                                <textarea  name="envvariable" rows="6" class="form-control" placeholder="key = value" formControlName="envvariable" [(ngModel)]="configDetail.envlist"></textarea>
+                                <textarea  name="envvariable" rows="6" class="form-control" placeholder="key = value" formControlName="envvariable" [(ngModel)]="configDetail.envvariable"></textarea>
                                 <!-- <input type="text" name="envvariable" class="form-control" placeholder="key = value" formControlName="envvariable"> -->
                                 <small class="txt-error animated fadeIn" *ngIf="formErrors['envvariable']">{{formErrors['envvariable']}}</small>
                           </div>
@@ -48,7 +48,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 form-control-label" for="text-input">配置文件</label>
                           <div class="col-md-9">
-                                <textarea  name="configfile" rows="6" class="form-control" placeholder="file name and its absolute path" formControlName="configfile" [(ngModel)]="configDetail.configfiles"></textarea>
+                                <textarea  name="configfile" rows="6" class="form-control" placeholder="file name and its absolute path" formControlName="configfile" [(ngModel)]="configDetail.configfile"></textarea>
                                 <!-- <input type="text" name="configfile" class="form-control" placeholder="file name and its absolute path" formControlName="configfile"> -->
                                 <small class="txt-error animated fadeIn" *ngIf="formErrors['configfile']">{{formErrors['configfile']}}</small>
                             </div>
