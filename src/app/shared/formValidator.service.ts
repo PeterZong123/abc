@@ -62,9 +62,11 @@ export class FormValidatorService {
         },
         'envvariable':{
             'required':'请输入系统环境变量',
+            'pattern':'环境变量格式必须为键值对格式输入'
         },
         'configfile':{
             'required':'请输入配置文件的名称和绝对路径',
+            'pattern':'配置文件及其路径应为linux合法多级绝对路径，并以文件名结尾;不可以以/等非法路径的字符结尾。示例："/conf/foo/app.conf":"appname = aaa"'
         },
     }
 

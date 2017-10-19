@@ -26,8 +26,8 @@ export class CreateConfigComponent implements OnInit {
     this.configForm = this.fb.group({
       'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
       'configdescription':[''],
-      'envvariable':['',Validators.required],
-      'configfile':['',Validators.required],
+      'envvariable':['',[Validators.required,Validators.pattern(new RegExp('^("[\\d\\D]*":"[\\d\\D]*",)*("[\\d\\D]*":"[\\d\\D]*")$'))]],
+      'configfile':['',[Validators.required,Validators.pattern(new RegExp('^("(\/[a-zA-Z0-9_]+)+\.[a-zA-Z0-9]+":"[\\d\\D]*",)*("(\/[a-zA-Z0-9_]+)+\.[a-zA-Z0-9]+":"[\\d\\D]*")$'))]],
     })
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
   }
@@ -37,6 +37,8 @@ export class CreateConfigComponent implements OnInit {
       return;
     }
     let data = config.value;
+    data.envvariable = JSON.parse("{" + data.envvariable + "}");
+    data.configfile = JSON.parse("{" + data.configfile + "}");
     this.createConfigService.addconfig(data).subscribe((res: any) => {
       if(res.code === 0){
         this.router.navigate(['/content/configManager']);

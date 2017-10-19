@@ -28,26 +28,28 @@ export class EditConfigComponent implements OnInit {
     this.configForm = this.fb.group({
       'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
       'configdescription':[''],
-      'envvariable':[''],
-      'configfile':[''],
+      'envvariable':['',Validators.required],
+      'configfile':['',[Validators.required,Validators.pattern(new RegExp('^("(\/[a-zA-Z0-9_]+)+\.[a-zA-Z0-9]+":"[\\d\\D]*",)*("(\/[a-zA-Z0-9_]+)+\.[a-zA-Z0-9]+":"[\\d\\D]*")$'))]],
     })
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
     //获取表单数据
     this.configDetail = {
       'id':'',
-      'name':'',
-      'des':'',
-      'envlist':'',
-      'configfiles':''
+      'token':'',
+      'configname':'',
+      'configdescription':'',
+      'envvariable':'',
+      'configfile':''
     }
-    this.configDetail.name = this.activatedRoute.snapshot.queryParams.name;
-    this.configDetail.des = this.activatedRoute.snapshot.queryParams.des;
+    this.configDetail.token = localStorage.getItem('token');
+    this.configDetail.configname = this.activatedRoute.snapshot.queryParams.name;
+    this.configDetail.configdescription = this.activatedRoute.snapshot.queryParams.des;
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
       this.editConfigService.queryconfig(id).subscribe((res: any) => {
         this.configDetail.id = id;
-        this.configDetail.envlist = JSON.stringify(res.envlist);
-        this.configDetail.configfiles = JSON.stringify(res.configfiles);
+        this.configDetail.envvariable = JSON.stringify(res.envlist);
+        this.configDetail.configfile = JSON.stringify(res.configfiles);
       })
     })
     
@@ -57,7 +59,12 @@ export class EditConfigComponent implements OnInit {
     if(config.inValid){
       return;
     }
-    this.editConfigService.editconfig(this.configDetail).subscribe((res: any) => {
+    let data = config.value;
+    data.id = this.configDetail.id;
+    data.token = this.configDetail.token;
+    data.envvariable = JSON.parse("{" + data.envvariable + "}");
+    data.configfile = JSON.parse("{" + data.configfile + "}");
+    this.editConfigService.editconfig(data).subscribe((res: any) => {
       if(res.code === 0){
         this.router.navigate(['/content/configManager']);
       }else{
