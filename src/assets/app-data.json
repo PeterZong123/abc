@@ -60,11 +60,11 @@
             "acl": "role-a",
             "children": [{
                 "text": "我的服务",
-                "link": "/index",
+                "link": "/content/myService",
                 "translate": "我的服务"
             }, {
                 "text": "平台服务",
-                "link": "/index",
+                "link": "/content/platService",
                 "translate": "平台服务"
             }]
         }]

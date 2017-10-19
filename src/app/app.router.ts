@@ -45,7 +45,8 @@ const rootRouterConfig: Routes = [
             },
             {
               path:'dashboard',
-              component: DashboardComponent
+              component: DashboardComponent,
+              canActivate: [CanActivateGuard],
             },
             {
               path: 'myImage', //我的镜像
@@ -105,6 +106,16 @@ const rootRouterConfig: Routes = [
             {
               path: 'loadBalance', //负载均衡
               component: LoadBalanceComponent,
+              canActivate: [CanActivateGuard],
+            },
+            {
+              path: 'myService',//我的服务
+              component: DashboardComponent,
+              canActivate: [CanActivateGuard],
+            },
+            {
+              path: 'platService',//平台服务
+              component: DashboardComponent,
               canActivate: [CanActivateGuard],
             }
           ]
