@@ -10,8 +10,9 @@ import { QueryConfigService } from './query-config.service';
 })
 export class QueryConfigComponent implements OnInit {
 
-  configDetail: any; 
-  
+  configDetail: any;
+    configForm: any;
+
   constructor(private queryConfigService: QueryConfigService,
     private activatedRoute: ActivatedRoute) {
     }
@@ -32,7 +33,11 @@ export class QueryConfigComponent implements OnInit {
         this.configDetail.configfiles = JSON.stringify(res.configfiles);
       })
     })
-    
+
   }
+
+    onSubmit(configForm) {
+
+    }
 
 }
