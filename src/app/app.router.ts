@@ -40,6 +40,11 @@ const rootRouterConfig: Routes = [
         children: [
             {
               path: '', //  总揽
+              redirectTo:'dashboard',
+              pathMatch: 'full'
+            },
+            {
+              path:'dashboard',
               component: DashboardComponent
             },
             {

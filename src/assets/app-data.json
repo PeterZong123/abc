@@ -15,14 +15,14 @@
         "children": [{
             "text": "总揽",
             "translate": "总览",
-            "link": "/content",
-            "icon": "icon-speedometer",
+            "link": "/content/dashboard",
+            "icon": "icon-star",
             "acl": "role-a"
         }, {
             "text": "镜像中心",
             "translate": "镜像中心",
             "link": "#",
-            "icon": "icon-speedometer",
+            "icon": "icon-screen-desktop",
             "acl": "role-a",
             "children": [{
                 "text": "我的镜像",
@@ -37,7 +37,7 @@
             "text": "集群中心",
             "translate": "集群中心",
             "link": "＃",
-            "icon": "icon-note",
+            "icon": "icon-layers",
             "acl": "role-a",
             "children": [{
                 "text": "配置管理",
@@ -56,15 +56,15 @@
             "text": "服务中心",
             "translate": "服务中心",
             "link": "#",
-            "icon": "icon-graph",
+            "icon": "icon-paper-plane",
             "acl": "role-a",
             "children": [{
                 "text": "我的服务",
-                "link": "/content/",
+                "link": "/index",
                 "translate": "我的服务"
             }, {
                 "text": "平台服务",
-                "link": "/content/",
+                "link": "/index",
                 "translate": "平台服务"
             }]
         }]

@@ -70,7 +70,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         QueryConfigComponent,
         QueryImageComponent,
         QueryClusterComponent,
-        EditConfigComponent
+        EditConfigComponent,
 ],
     imports: [
         //add by liangzhifeng
