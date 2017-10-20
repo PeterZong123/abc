@@ -29,15 +29,11 @@ export class QueryConfigComponent implements OnInit {
     this.configDetail.des = this.activatedRoute.snapshot.queryParams.des;
     this.activatedRoute.params.subscribe(params => {
       this.queryConfigService.queryconfig(params['id']).subscribe((res: any) => {
-        this.configDetail.envlist = JSON.stringify(res.envlist);
-        this.configDetail.configfiles = JSON.stringify(res.configfiles);
+        this.configDetail.envlist = res.envlist;
+        this.configDetail.configfiles = res.configfiles;
       })
     })
 
   }
-
-    onSubmit(configForm) {
-
-    }
 
 }

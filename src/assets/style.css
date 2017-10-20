@@ -2939,9 +2939,9 @@ header.navbar {
   border-bottom: 1px solid #E3E8EC; }
 
 .card-footer {
-  padding: 0.75rem 1.25rem;
+  padding: 2rem 1.25rem 0.75rem 0;
   background-color: #fff;
-  border-top: 1px solid #E3E8EC; }
+  text-align: center; }
 
 .card-header-tabs {
   margin-right: -0.625rem;

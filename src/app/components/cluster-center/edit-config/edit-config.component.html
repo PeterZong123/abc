@@ -41,7 +41,6 @@
                           <label class="col-md-3 form-control-label" for="text-input">系统环境变量</label>
                           <div class="col-md-9">
                                 <textarea  name="envvariable" rows="6" class="form-control" placeholder="key = value" formControlName="envvariable" [(ngModel)]="configDetail.envvariable"></textarea>
-                                <!-- <input type="text" name="envvariable" class="form-control" placeholder="key = value" formControlName="envvariable"> -->
                                 <small class="txt-error animated fadeIn" *ngIf="formErrors['envvariable']">{{formErrors['envvariable']}}</small>
                           </div>
                         </div>
@@ -49,7 +48,6 @@
                           <label class="col-md-3 form-control-label" for="text-input">配置文件</label>
                           <div class="col-md-9">
                                 <textarea  name="configfile" rows="6" class="form-control" placeholder="file name and its absolute path" formControlName="configfile" [(ngModel)]="configDetail.configfile"></textarea>
-                                <!-- <input type="text" name="configfile" class="form-control" placeholder="file name and its absolute path" formControlName="configfile"> -->
                                 <small class="txt-error animated fadeIn" *ngIf="formErrors['configfile']">{{formErrors['configfile']}}</small>
                             </div>
                         </div>

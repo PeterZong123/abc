@@ -20,35 +20,19 @@
                     <div class="card-block">
                       <form method="post" enctype="multipart/form-data" class="form-horizontal">
                         <div class="form-group row">
-                          <label class="col-md-3 form-control-label" for="text-input">镜像名称</label>
-                          <div class="col-md-9">
-                            <input type="text" name="imageName" class="form-control" placeholder="镜像名" readonly [(ngModel)]="imageDetail.name">
-                          </div>
+                          <label class="col-md-3 form-control-label" for="text-input">镜像名称： {{imageDetail.name}}</label>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 form-control-label" for="text-input">镜像描述</label>
-                          <div class="col-md-9">
-                            <input type="text" name="image_description" class="form-control" placeholder="image description" readonly [(ngModel)]="imageDetail.description">
-                          </div>
+                          <label class="col-md-3 form-control-label" for="text-input">镜像描述： {{imageDetail.description}}</label>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 form-control-label" for="select">基础镜像</label>
-                          <div class="col-md-9">
-                            <input type="text" name="basic_image" class="form-control" placeholder="basic_image" readonly [(ngModel)]="imageDetail.buildfrom">
-                          </div>
+                          <label class="col-md-3 form-control-label" for="select">基础镜像： {{imageDetail.buildfrom}}</label>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 form-control-label" for="file-input">上传已编译好的应用</label>
-                          <div class="col-md-9">
-                              <input type="text" name="app_filename" class="form-control" placeholder="app_filename" readonly [(ngModel)]="imageDetail.uploadfile">
-                            <!-- <input style="display:block" type="file" name="app_filename" > -->
-                          </div>
+                          <label class="col-md-3 form-control-label" for="file-input">上传已编译好的应用： {{imageDetail.uploadfile}}</label>
                         </div>
                         <div class="form-group row">
-                          <label class="col-md-3 form-control-label" for="text-input">指定应用存放路径</label>
-                          <div class="col-md-9">
-                            <input type="text" name="store_path" class="form-control" placeholder="默认路径为/opt/app" readonly [(ngModel)]="imageDetail.storepath">
-                        </div>
+                          <label class="col-md-3 form-control-label" for="text-input">指定应用存放路径： {{imageDetail.storepath}}</label>
                         </div>
                       </form>
                     </div>

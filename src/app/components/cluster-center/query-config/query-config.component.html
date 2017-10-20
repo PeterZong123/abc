@@ -18,30 +18,52 @@
                     <strong>配置信息</strong>
                   </div>
                   <div class="card-block">
-                    <form (ngSubmit)="onSubmit(configForm)" enctype="multipart/form-data" class="form-horizontal ">
+                    <form enctype="multipart/form-data" class="form-horizontal ">
                       <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="text-input">配置名称</label>
-                        <div class="col-md-9">
-                          <input type="text" name="configname" class="form-control" placeholder="配置名" readonly [(ngModel)]="configDetail.name">
-                        </div>
+                        <label class="col-md-3 form-control-label" for="text-input">配置名称： {{configDetail.name}}</label>
                       </div>
                       <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="text-input">配置描述</label>
-                        <div class="col-md-9">
-                          <input type="text" name="configdescription" class="form-control" placeholder="config description" readonly [(ngModel)]="configDetail.des">
-                        </div>
+                        <label class="col-md-3 form-control-label" for="text-input">配置描述： {{configDetail.des}}</label>
                       </div>
                       <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="text-input">系统环境变量</label>
-                        <div class="col-md-9">
-                            <textarea  name="envvariable" rows="6" class="form-control" placeholder="key = value" readonly [(ngModel)]="configDetail.envlist"></textarea>
-                        </div>
+                        <label class="col-md-3 form-control-label" for="text-input">系统环境变量：</label>
+                      </div>
+                      <div class="form-group row table-wrapper" *ngIf="configDetail.envlist.length > 0">
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>序号</th>
+                                <th>环境变量</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let env of configDetail.envlist;let i=index;">
+                                <td>{{i+1}}</td>
+                                <td>{{env['ENV_Key']}}={{env['ENV_Val']}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
                       </div>
                       <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="text-input">配置文件</label>
-                        <div class="col-md-9">
-                            <textarea  name="configfile" rows="6" class="form-control" placeholder="file name and its absolute path" readonly [(ngModel)]="configDetail.configfiles"></textarea>
-                        </div>
+                        <label class="col-md-3 form-control-label" for="text-input">配置文件：</label>
+                      </div>
+                      <div class="form-group row table-wrapper" *ngIf="configDetail.configfiles.length > 0">
+                          <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th>序号</th>
+                                <th>文件名</th>
+                                <th>配置数据</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let config of configDetail.configfiles;let i=index;">
+                                <td>{{i+1}}</td>
+                                <td>{{config.Config_File}}</td>
+                                <td>{{config.Config_Data}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
                       </div>
                     </form>
                   </div>
