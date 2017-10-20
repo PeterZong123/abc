@@ -42,10 +42,7 @@
                       <label class="col-md-3 form-control-label" for="text-input">选择镜像</label>
                       <div class="col-md-9">
                         <select name="imageid" class="form-control" size="1" formControlName="imageid">
-                          <option value="0">app 10</option>
-                          <option value="1">app 8</option>
-                          <option value="2">app 6</option>
-                          <option value="3">app 2</option>
+                          <option value="{{image.id}}" *ngFor="let image of imageList">{{image.name}}</option>
                         </select>
                         <small class="txt-error animated fadeIn" *ngIf="formErrors['imageid']">{{formErrors['imageid']}}</small>
                       </div>
@@ -54,10 +51,7 @@
                       <label class="col-md-3 form-control-label" for="text-input">挂载配置信息</label>
                       <div class="col-md-9">
                         <select name="configid" class="form-control" size="1" formControlName="configid">
-                          <option value="0">config A</option>
-                          <option value="1">config B</option>
-                          <option value="2">config C</option>
-                          <option value="3">config D</option>
+                            <option value="{{config.Row_ID}}" *ngFor="let config of configList">{{config.Config_Name}}</option>
                         </select>
                         <small class="txt-error animated fadeIn" *ngIf="formErrors['configid']">{{formErrors['configid']}}</small>
                       </div>

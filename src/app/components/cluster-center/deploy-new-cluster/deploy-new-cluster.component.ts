@@ -1,27 +1,34 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
+import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 import { FormValidatorService } from '../../../shared/formValidator.service';
 import { DeployNewClusterService } from './deploy-new-cluster.service';
+import { ConfigManagerService } from '../config-manager/config-manager.service';
+import { MyImageService } from '../../image-center/my-image/my-image.service';
 
 @Component({
   selector: 'app-deploy-new-cluster',
   templateUrl: './deploy-new-cluster.component.html',
   styleUrls: ['./deploy-new-cluster.component.scss'],
-  providers: [DeployNewClusterService]
+  providers: [DeployNewClusterService,ConfigManagerService,MyImageService]
 })
 export class DeployNewClusterComponent implements OnInit {
   clusterForm: FormGroup;
   formErrors: any;
+  configList: any;
+  imageList: any;
 
   constructor(private deployNewClusterService: DeployNewClusterService,
-    private router: Router,
-    private fb: FormBuilder,
-    private fValidatorService: FormValidatorService) {
+              private configManagerService: ConfigManagerService,
+              private myImageService: MyImageService,
+              private router: Router,
+              private fb: FormBuilder,
+              private fValidatorService: FormValidatorService) {
       this.formErrors = fValidatorService.formErrors;
-    }
+  }
 
   ngOnInit() {
+    //构建表单
     this.clusterForm = this.fb.group({
       'clustername':['', [Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
       'clusterdescription':[''],
@@ -34,8 +41,19 @@ export class DeployNewClusterComponent implements OnInit {
       'storagepath':[''],
       'cmd':['']
     })
-
     this.clusterForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.clusterForm));
+    //获取配置数据
+    this.configManagerService.getInfo({}).subscribe(res => {
+      this.configList =  res;
+    }, error => {
+      console.log(error);
+    })
+    //获取集群数据
+    this.myImageService.getInfo({}).subscribe( res => {
+      this.imageList = res;
+    }, error => {
+      console.log(error);
+    })
   }
 
   onSubmit(cluster){
