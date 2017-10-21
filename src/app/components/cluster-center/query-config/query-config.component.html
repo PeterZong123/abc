@@ -20,13 +20,13 @@
                   <div class="card-block">
                     <form enctype="multipart/form-data" class="form-horizontal ">
                       <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="text-input">配置名称： {{configDetail.name}}</label>
+                        <label class="form-control-label" for="text-input">配置名称： {{configDetail.name}}</label>
                       </div>
                       <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="text-input">配置描述： {{configDetail.des}}</label>
+                        <label class="form-control-label" for="text-input">配置描述： {{configDetail.des}}</label>
                       </div>
                       <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="text-input">系统环境变量：</label>
+                        <label class="form-control-label" for="text-input">系统环境变量：</label>
                       </div>
                       <div class="form-group row table-wrapper" *ngIf="configDetail.envlist.length > 0">
                           <table class="table table-bordered">
@@ -45,7 +45,7 @@
                           </table>
                       </div>
                       <div class="form-group row">
-                        <label class="col-md-3 form-control-label" for="text-input">配置文件：</label>
+                        <label class="form-control-label" for="text-input">配置文件：</label>
                       </div>
                       <div class="form-group row table-wrapper" *ngIf="configDetail.configfiles.length > 0">
                           <table class="table table-bordered">
