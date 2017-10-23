@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild, AfterViewInit, Inject} from '@angular/core';
 import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import {CreateImageService} from './create-image.service';
+import { BaseImageService } from '../base-image/base-image.service';
 import {FileValidator} from '../../../shared/fileValidator.directive';
 import { FormValidatorService } from '../../../shared/formValidator.service';
 import {Router} from '@angular/router';
@@ -10,14 +11,16 @@ import * as $ from 'jquery';
   selector: 'app-create-image',
   templateUrl: './create-image.component.html',
   styleUrls: ['./create-image.component.scss'],
-  providers: [CreateImageService]
+  providers: [CreateImageService, BaseImageService]
 })
 export class CreateImageComponent implements OnInit {
 
   creatImgForm: FormGroup;
   formErrors: any;
+  baseImageList: Array<any>;
 
   constructor(private createImageService: CreateImageService,
+    private baseImageService: BaseImageService,
     private router: Router,
     private fb: FormBuilder,
     private fvalidatorService: FormValidatorService) {
@@ -33,6 +36,15 @@ export class CreateImageComponent implements OnInit {
      'app_filename':['',FileValidator.validate],
    });
    this.creatImgForm.valueChanges.subscribe(() => this.fvalidatorService.onValueChanges(this.creatImgForm));
+
+   //获取基础镜像
+   this.baseImageService.getInfo({}).subscribe(
+    res => {
+      this.baseImageList = res;
+    },
+    error => {
+      console.log('获取基础镜像失败');
+    });
   }
 
   //提交表单，构建新镜像

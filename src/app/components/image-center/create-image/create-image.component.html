@@ -43,10 +43,7 @@
                       <label class="col-md-3 form-control-label" for="select">基础镜像</label>
                       <div class="col-md-9">
                         <select id="select" name="basic_image" class="form-control" size="1" required formControlName="basic_image">
-                          <option value="0">jdk 6 centos</option>
-                          <option value="1">jdk 8 centos</option>
-                          <option value="2">debian</option>
-                          <option value="3">ubuntu</option>
+                          <option value="{{base.id}}" *ngFor="let base of baseImageList">{{base.name}}</option>
                         </select>
                         <small class="txt-error animated fadeIn" *ngIf="formErrors['basic_image']">{{formErrors['basic_image']}}</small>
                       </div>
