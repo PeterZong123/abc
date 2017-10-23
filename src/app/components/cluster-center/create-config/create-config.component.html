@@ -40,11 +40,7 @@
                     <div class="form-group row form-margin-bottom">
                       <label class="col-md-3 form-control-label" for="text-input">系统环境变量</label>
                       <div class="col-md-9">
-                          <div class="input-group">
-                              <input type="text" name="envvariable" class="form-control" placeholder="key = value" formControlName="envvariable" [(ngModel)]="envvariable">
-                              <span class="input-group-addon fa fa-plus"  (click)="addEnv()"></span>
-                          </div>
-                          <small class="txt-error animated fadeIn" *ngIf="formErrors['envvariable']">{{formErrors['envvariable']}}</small>
+                          <env-modal (addEnv)="addEnv($event)"></env-modal>
                       </div>
                     </div>
                     <div class="form-group row table-wrapper" *ngIf="envList.length > 0">
@@ -67,16 +63,9 @@
                     </div>
                     <div class="form-group row form-margin-bottom">
                       <label class="col-md-3 form-control-label" for="text-input">配置文件</label>
-                    </div>
-                    <div class="form-group row">
-                      <div class="form-group col-md-12 margin-zero">
-                        <div class="input-group">
-                            <input type="text" name="configfile" class="form-control " placeholder="file name and its absolute path" formControlName="configfile" [(ngModel)]="configfile">
-                            <span class="input-group-addon fa fa-plus" (click)="addConfigfile()"></span>  
+                        <div class="col-md-9">
+                            <config-modal (addConfig)="addConfig($event)"></config-modal>
                         </div>
-                        <small class="txt-error animated fadeIn" *ngIf="formErrors['configfile']">{{formErrors['configfile']}}</small>
-                        <textarea rows="8" class="form-control textarea-margin-top" placeholder="config data" formControlName="configdata" [(ngModel)]="configdata"></textarea>                      
-                      </div>
                     </div>
                     <div class="form-group row table-wrapper" *ngIf="configList.length > 0">
                         <table class="table table-bordered">
@@ -91,8 +80,8 @@
                           <tbody>
                             <tr *ngFor="let config of configList;let i=index;">
                               <td>{{i+1}}</td>
-                              <td>{{config.name}}</td>
-                              <td>{{config.data}}</td>
+                              <td>{{config.Config_File}}</td>
+                              <td>{{config.Config_Data}}</td>
                               <td><i class="fa fa-trash" (click)="delConfigfile(i)"></i></td>
                             </tr>
                           </tbody>
@@ -102,6 +91,7 @@
                         <button type="submit" class="btn btn-sm btn-primary" [disabled]="configForm.invalid"><i class="fa fa-dot-circle-o"></i> 创建</button>
                     </div>
                   </form>
+                  
                 </div>
                 
               </div>
@@ -118,6 +108,13 @@
       <!-- /.conainer-fluid -->
     </main>
 
+    <!-- 添加环境变量Modal -->
+    <!-- <ng-template #modalContent>
+        <div class="input-group">
+            <input type="text" name="envvariable" class="form-control" placeholder="key = value" formControlName="envvariable" [(ngModel)]="envvariable">
+        </div>
+        <small class="txt-error animated fadeIn" *ngIf="formErrors['envvariable']">{{formErrors['envvariable']}}</small>
+    </ng-template> -->
   </div>
 
 </div>

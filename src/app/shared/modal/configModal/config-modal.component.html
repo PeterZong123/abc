@@ -1,0 +1,28 @@
+<!-- 添加配置文件Modal -->
+<ng-template #modalContent>
+    <form enctype="multipart/form-data" class="form-horizontal " [formGroup]="configForm">
+        <div class="form-group row">
+            <label class="col-md-2 form-control-label" for="text-input">文件名</label>
+            <div class="col-md-10">
+                <input type="text" name="configfile" class="form-control " placeholder="file name and its absolute path" formControlName="configfile" [(ngModel)]="configfile">
+                <small class="txt-error animated fadeIn" *ngIf="formErrors['configfile']">{{formErrors['configfile']}}</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 form-control-label" for="text-input">配置数据</label>
+            <div class="col-md-10">
+                <textarea rows="8" class="form-control" placeholder="config data" formControlName="configdata" [(ngModel)]="configdata"></textarea>                      
+                <small class="txt-error animated fadeIn" *ngIf="formErrors['configdata']">{{formErrors['configdata']}}</small>
+            </div>
+        </div>      
+    </form>
+</ng-template>
+<ng-template #modalFooter>
+    <div>
+        <button class="btn btn-sm btn-primary" type="submit" [disabled]="configForm.invalid" (click)="onSubmit(configForm,$event)">
+            <i class="fa fa-dot-circle-o"></i>&nbsp;&nbsp;保存
+        </button>
+    </div>
+</ng-template>
+
+<span class="input-group-addon fa fa-plus" (click)="showConfigModal(modalContent,modalFooter)"></span>

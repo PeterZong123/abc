@@ -33,6 +33,8 @@ import { CreateImageComponent } from './components/image-center/create-image/cre
 import { EditConfigComponent } from './components/cluster-center/edit-config/edit-config.component';
 
 import { PagingComponent } from './shared/paging/paging.component';
+import { EnvModalComponent } from './shared/modal/envModal/env-modal.component';
+import { ConfigModalComponent } from './shared/modal/configModal/config-modal.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './pages/login.component';
 import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt';
@@ -58,6 +60,8 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         IndexComponent,
         LoginComponent,
         PagingComponent,
+        EnvModalComponent,
+        ConfigModalComponent,
         DashboardComponent,
         MyImageComponent,
         BaseImageComponent,

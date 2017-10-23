@@ -15,10 +15,7 @@ export class CreateConfigComponent implements OnInit {
   configForm: FormGroup;
   formErrors: any;
   envList: Array<string>;
-  envvariable: string;
   configList: Array<any>;
-  configfile: string;
-  configdata: string;
 
   constructor(private createConfigService: CreateConfigService,
     private router: Router,
@@ -33,9 +30,6 @@ export class CreateConfigComponent implements OnInit {
     this.configForm = this.fb.group({
       'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
       'configdescription':[''],
-      'envvariable':['',[Validators.required,Validators.pattern(new RegExp('^[^=]*=[^=]*$'))]],
-      'configfile':['',[Validators.required,Validators.pattern(new RegExp('^(\/[a-zA-Z0-9_]+){2,}\.[a-zA-Z0-9]+$'))]],
-      'configdata':['']
     })
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
   }
@@ -56,18 +50,18 @@ export class CreateConfigComponent implements OnInit {
     })
   }
 
-  addEnv(){
-    this.envList.push(this.envvariable);
+  addEnv(env){
+    this.envList.push(env.envvariable);
   }
 
   delEnv(idx){
     this.envList.splice(idx,1);
   }
 
-  addConfigfile(){
+  addConfig(con){
     let config = {
-      name:this.configfile,
-      data:this.configdata
+      Config_File:con.configfile,
+      Config_Data:con.configdata
     }
     this.configList.push(config)
   }
@@ -81,7 +75,8 @@ export class CreateConfigComponent implements OnInit {
     for (let index = 0; index < list.length; index++) {
       let element = list[index];
       let arr = element.split("=");
-      result[arr[0]] = arr[1];
+      let key = '"' + arr[0] + '"';
+      result[key] = arr[1];
     }
     return result;
   }
@@ -90,7 +85,8 @@ export class CreateConfigComponent implements OnInit {
     let result = {};
     for (let index = 0; index < list.length; index++) {
       let element = list[index];
-      result[element['name']] = element['data'];
+      let key = '"' + element['Config_File'] + '"';
+      result[key] = element['Config_Data'];
     }
     return result;
   }

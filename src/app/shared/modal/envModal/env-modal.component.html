@@ -1,0 +1,21 @@
+<!-- 添加环境变量Modal -->
+<ng-template #modalContent>
+    <form enctype="multipart/form-data" class="form-horizontal " [formGroup]="configForm">
+        <div class="form-group row">
+            <label class="col-md-2 form-control-label" for="text-input">环境变量</label>
+            <div class="col-md-10">
+                <input type="text" name="envvariable" class="form-control" placeholder="key = value" formControlName="envvariable" [(ngModel)]="envvariable">
+                <small class="txt-error animated fadeIn" *ngIf="formErrors['envvariable']">{{formErrors['envvariable']}}</small>
+            </div>
+        </div>
+    </form>
+</ng-template>
+<ng-template #modalFooter>
+    <div>
+        <button class="btn btn-sm btn-primary" type="submit" [disabled]="configForm.invalid" (click)="onSubmit(configForm,$event)">
+            <i class="fa fa-dot-circle-o"></i>&nbsp;&nbsp;保存
+        </button>
+    </div>
+</ng-template>
+
+<span class="input-group-addon fa fa-plus" (click)="showEnvModal(modalContent,modalFooter)"></span>
