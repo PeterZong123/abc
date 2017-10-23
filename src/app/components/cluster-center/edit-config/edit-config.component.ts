@@ -122,7 +122,7 @@ export class EditConfigComponent implements OnInit {
     let result = [];
     for (let index = 0; index < list.length; index++) {
       let element = list[index];
-      result.push(element['ENV_Key']+"+"+element['ENV_Val']);
+      result.push(element['ENV_Key']+"="+element['ENV_Val']);
     }
     return result;
   }

@@ -24,7 +24,7 @@ export class ConfigModalComponent implements OnInit {
 
   ngOnInit() {
     this.configForm = this.fb.group({
-        'configfile':['',[Validators.required,Validators.pattern(new RegExp('^(\/[a-zA-Z0-9_]+){2,}\.[a-zA-Z0-9]+$'))]],
+        'configfile':['',[Validators.required,Validators.pattern(/^(\/[a-zA-Z0-9_]+){2,}\.([a-zA-Z0-9]+)$/)]],
         'configdata':['',Validators.required]
     })
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
