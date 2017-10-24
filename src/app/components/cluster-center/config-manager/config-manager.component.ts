@@ -1,4 +1,5 @@
 import { Component, OnInit,Inject } from '@angular/core';
+import swal from 'sweetAlert';
 import {ConfigManagerService} from './config-manager.service';
 
 class SearchParam{
@@ -45,14 +46,38 @@ export class ConfigManagerComponent implements OnInit {
 
   //删除配置
   delConfig(id){
-    this.configManagerService.deleteConfig(id).subscribe((res: any) => {
-      if(res.code === 0){
-        this.list = this.list.filter(function(val){
-          return (val.Row_ID !== id)
-        })
-      }else{
-        alert('删除配置失败')
+    swal({
+      title: '确认删除?',
+      text: '删除后，配置文件将无法恢复!',
+      icon: 'warning',
+      buttons: ['取消','确认']
+    })
+    .then(willDelete => {
+      if(willDelete){
+        return this.configManagerService.deleteConfig(id).toPromise();
       }
     })
+    .then(res => {
+      if(res){
+        if(res.code === 0){
+          this.list = this.list.filter(function(val){
+            return (val.Row_ID !== id)
+          })
+          swal(
+            '删除成功!',
+            '配置文件已经被移除.',
+            'success'
+          )
+        }else{
+          swal(
+            '删除失败!',
+            '服务器网络出现问题.',
+            'error'
+          )
+        }
+      }
+      
+    })
+   
   }
 }
