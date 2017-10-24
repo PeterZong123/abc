@@ -60,6 +60,39 @@ app.get('/dashboard/imagecentre/myimages/newimage/basicimages',function(req,res)
           "id": 4,
           "name": "centos/nodejs-4-centos7"
       }
+      ,{
+        "id": 5,
+        "name": "fabric8/java-centos-openjdk8-jdk"
+        },
+        {
+            "id": 6,
+            "name": "centos/python-27-centos7"
+        },
+        {
+            "id": 7,
+            "name": "centos/ruby-22-centos7"
+        },
+        {
+            "id": 8,
+            "name": "centos/nodejs-4-centos7"
+        }
+
+        ,{
+          "id": 9,
+          "name": "fabric8/java-centos-openjdk8-jdk"
+        },
+        {
+            "id": 10,
+            "name": "centos/python-27-centos7"
+        },
+        {
+            "id": 11,
+            "name": "centos/ruby-22-centos7"
+        },
+        {
+            "id": 12,
+            "name": "centos/nodejs-4-centos7"
+        }
     ]   
   res.json(result);
 });
