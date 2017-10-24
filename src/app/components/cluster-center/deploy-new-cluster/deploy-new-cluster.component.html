@@ -42,7 +42,7 @@
                       <label class="col-md-3 form-control-label" for="text-input">选择镜像</label>
                       <div class="col-md-9">
                         <select name="imageid" class="form-control" size="1" formControlName="imageid">
-                          <option value="{{image.id}}" *ngFor="let image of imageList">{{image.name}}</option>
+                          <option value="{{image.id}}" *ngFor="let image of imageList">{{image.name}} : {{image.tag}}</option>
                         </select>
                         <small class="txt-error animated fadeIn" *ngIf="formErrors['imageid']">{{formErrors['imageid']}}</small>
                       </div>
