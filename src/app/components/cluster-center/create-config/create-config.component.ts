@@ -28,7 +28,7 @@ export class CreateConfigComponent implements OnInit {
 
   ngOnInit() {
     this.configForm = this.fb.group({
-      'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
+    'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-z][a-z0-9.-]*[a-z]$|^[a-z]$/)]],
       'configdescription':[''],
     })
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
@@ -39,6 +39,7 @@ export class CreateConfigComponent implements OnInit {
       return;
     }
     let data = config.value;
+    data.token = localStorage.getItem('token');
     data.envvariable = this.filterEnvList(this.envList);
     data.configfile = this.filterConfigList(this.configList);
     this.createConfigService.addconfig(data).subscribe((res: any) => {
@@ -75,7 +76,7 @@ export class CreateConfigComponent implements OnInit {
     for (let index = 0; index < list.length; index++) {
       let element = list[index];
       let arr = element.split("=");
-      let key = '"' + arr[0] + '"';
+      let key = arr[0];
       result[key] = arr[1];
     }
     return result;
@@ -85,7 +86,7 @@ export class CreateConfigComponent implements OnInit {
     let result = {};
     for (let index = 0; index < list.length; index++) {
       let element = list[index];
-      let key = '"' + element['Config_File'] + '"';
+      let key = element['Config_File'];
       result[key] = element['Config_Data'];
     }
     return result;

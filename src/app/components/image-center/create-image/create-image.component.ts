@@ -29,7 +29,7 @@ export class CreateImageComponent implements OnInit {
 
   ngOnInit() {
    this.creatImgForm = this.fb.group({
-     'image_name':['',[Validators.required,Validators.maxLength(50),Validators.pattern('^[a-zA-Z]+[a-zA-Z0-9.-]*[a-zA-Z0-9]+$|^[a-zA-Z]+$')]],
+     'image_name':['',[Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-zA-Z]+[a-zA-Z0-9.-]*[a-zA-Z0-9]+$|^[a-zA-Z]+$/)]],
      'image_description':[''],
      'basic_image':['',Validators.required],
      'store_path':[''],
@@ -57,7 +57,7 @@ export class CreateImageComponent implements OnInit {
     formData.append("image_description",form.value.image_description);
     formData.append("basic_image",form.value.basic_image);
     formData.append("store_path",form.value.store_path);
-    formData.append("app_filename",form.value.app_filename);
+    formData.append("app_filename",form.value.app_filename[0]);
 
     this.createImageService.createImg(formData).subscribe((res: any) =>{
       if(res.code === 0){

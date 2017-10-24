@@ -11,8 +11,7 @@ export class CreateImageService {
 
   token:String;
   constructor(private http: Http) {
-    // this.token = localStorage.getItem('token');
-    this.token = "test";
+    this.token = localStorage.getItem('token');
   }
 
   getList(query: any): Observable<any[]>{

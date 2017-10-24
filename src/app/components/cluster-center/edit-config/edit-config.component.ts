@@ -30,7 +30,7 @@ export class EditConfigComponent implements OnInit {
   ngOnInit() {
     //建立动态表单
     this.configForm = this.fb.group({
-      'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
+    'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-z][a-z0-9.-]*[a-z]$|^[a-z]$/)]],
       'configdescription':[''],
     })
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
@@ -49,7 +49,7 @@ export class EditConfigComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id'];
       this.editConfigService.queryconfig(id).subscribe((res: any) => {
-        this.configDetail.id = id;
+        this.configDetail.id = Number.parseInt(id);
         this.configDetail.envvariable = JSON.stringify(res.envlist);
         this.configDetail.configfile = JSON.stringify(res.configfiles);
         this.envList = this.changeEnvToEqual(res.envlist);
@@ -64,7 +64,7 @@ export class EditConfigComponent implements OnInit {
       return;
     }
     let data = config.value;
-    data.id = this.configDetail.id;
+    data.configid = this.configDetail.id;
     data.token = this.configDetail.token;
     data.envvariable = this.filterEnvList(this.envList);
     data.configfile = this.filterConfigList(this.configList);
@@ -72,7 +72,7 @@ export class EditConfigComponent implements OnInit {
       if(res.code === 0){
         this.router.navigate(['/content/configManager']);
       }else{
-        alert('修改配置失败');
+        alert(res.detail);
       }
     })
   }
@@ -102,7 +102,7 @@ export class EditConfigComponent implements OnInit {
     for (let index = 0; index < list.length; index++) {
       let element = list[index];
       let arr = element.split("=");
-      let key = '"' + arr[0] + '"';
+      let key = arr[0];
       result[key] = arr[1];
     }
     return result;
@@ -112,7 +112,7 @@ export class EditConfigComponent implements OnInit {
     let result = {};
     for (let index = 0; index < list.length; index++) {
       let element = list[index];
-      let key = '"' + element['Config_File'] + '"';
+      let key =  element['Config_File'];
       result[key] = element['Config_Data'];
     }
     return result;

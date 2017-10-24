@@ -30,7 +30,7 @@ export class DeployNewClusterComponent implements OnInit {
   ngOnInit() {
     //构建表单
     this.clusterForm = this.fb.group({
-      'clustername':['', [Validators.required,Validators.maxLength(50),Validators.pattern('[a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*')]],
+      'clustername':['', [Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-z][a-z0-9.-]*[a-z]$|^[a-z]$/)]],
       'clusterdescription':[''],
       'imageid':['', Validators.required],
       'configid':['', Validators.required],
@@ -39,7 +39,7 @@ export class DeployNewClusterComponent implements OnInit {
       'instancenumber':['', Validators.required],
       'storage':[''],
       'storagepath':[''],
-      'cmd':['']
+      'cmd':['',Validators.required]
     })
     this.clusterForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.clusterForm));
     //获取配置数据
@@ -61,6 +61,13 @@ export class DeployNewClusterComponent implements OnInit {
       return;
     }
     let data = cluster.value;
+    data.imageid = Number.parseInt(data.imageid);
+    data.configid = Number.parseInt(data.configid);
+    data.regionid = Number.parseInt(data.regionid);
+    data.flavor = Number.parseInt(data.flavor);
+    data.instancenumber = Number.parseInt(data.instancenumber);
+    data.storage = Number.parseInt(data.storage);
+    data.token = localStorage.getItem('token');
     this.deployNewClusterService.addCluster(data).subscribe((res: any) => {
       if(res.code === 0){
         this.router.navigate(['/content/myCluster']);
