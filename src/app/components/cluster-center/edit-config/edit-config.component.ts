@@ -53,7 +53,7 @@ export class EditConfigComponent implements OnInit {
         this.configDetail.envvariable = JSON.stringify(res.envlist);
         this.configDetail.configfile = JSON.stringify(res.configfiles);
         this.envList = this.changeEnvToEqual(res.envlist);
-        this.configList = res.configfiles;
+        this.configList = res.configfiles ? res.configfiles : [];
       })
     })
     
@@ -120,9 +120,11 @@ export class EditConfigComponent implements OnInit {
 
   changeEnvToEqual(list){
     let result = [];
-    for (let index = 0; index < list.length; index++) {
-      let element = list[index];
-      result.push(element['ENV_Key']+"="+element['ENV_Val']);
+    if(list){
+      for (let index = 0; index < list.length; index++) {
+        let element = list[index];
+        result.push(element['ENV_Key']+"="+element['ENV_Val']);
+      }
     }
     return result;
   }
