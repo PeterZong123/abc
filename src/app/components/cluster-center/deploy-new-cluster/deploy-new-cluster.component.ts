@@ -17,6 +17,7 @@ export class DeployNewClusterComponent implements OnInit {
   formErrors: any;
   configList: any;
   imageList: any;
+  slideValue: number=0;
 
   constructor(private deployNewClusterService: DeployNewClusterService,
               private configManagerService: ConfigManagerService,
@@ -36,12 +37,13 @@ export class DeployNewClusterComponent implements OnInit {
       'configid':['', Validators.required],
       'regionid':['', Validators.required],
       'flavor':['', Validators.required],
-      'instancenumber':['', Validators.required],
+      'instancenumber':['', Validators.min(1)],
       'storage':[''],
       'storagepath':[''],
       'cmd':['',Validators.required]
     })
     this.clusterForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.clusterForm));
+
     //获取配置数据
     this.configManagerService.getInfo({}).subscribe(res => {
       this.configList =  res;
@@ -75,5 +77,10 @@ export class DeployNewClusterComponent implements OnInit {
         alert('部署新集群失败');
       }
     })
+  }
+
+  //由于nzStep不同，所以集群规格变化，滑块初始化到默认位置
+  flavorChange(){
+    this.slideValue = 0;
   }
 }
