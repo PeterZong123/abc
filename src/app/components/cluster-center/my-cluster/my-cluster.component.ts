@@ -52,7 +52,17 @@ export class MyClusterComponent implements OnInit {
       title: '确认删除?',
       text: '删除后，集群文件将无法恢复!',
       icon: 'warning',
-      buttons: ['取消','确认']
+      buttons: {
+        cancel: {
+          text: '取消',
+          closeModal: true,
+          visible: true,
+        },
+        confirm: {
+          text: '确认',
+          closeModal: false
+        }
+      }
     })
     .then(willDelete => {
       if(willDelete){

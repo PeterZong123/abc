@@ -50,11 +50,21 @@ export class ConfigManagerComponent implements OnInit {
       title: '确认删除?',
       text: '删除后，配置文件将无法恢复!',
       icon: 'warning',
-      buttons: ['取消','确认']
+      buttons: {
+        cancel: {
+          text: '取消',
+          closeModal: true,
+          visible: true,
+        },
+        confirm: {
+          text: '确认',
+          closeModal: false
+        }
+      }
     })
     .then(willDelete => {
       if(willDelete){
-        return this.configManagerService.deleteConfig(id).toPromise();
+          return this.configManagerService.deleteConfig(id).toPromise();
       }
     })
     .then(res => {
@@ -76,7 +86,6 @@ export class ConfigManagerComponent implements OnInit {
           )
         }
       }
-      
     })
    
   }
