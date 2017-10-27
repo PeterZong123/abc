@@ -44,7 +44,7 @@ export class CreateConfigComponent implements OnInit {
     data.configfile = this.filterConfigList(this.configList);
     this.createConfigService.addconfig(data).subscribe((res: any) => {
       if(res.code === 0){
-        this.router.navigate(['/content/configManager']);
+        this.router.navigate(['/content/cluster-center/configManager']);
       }else{
         alert('创建新配置失败');
       }

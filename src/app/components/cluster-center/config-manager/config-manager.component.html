@@ -17,62 +17,48 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-block">
-                  <a  [routerLink]="['/content/createConfig']" class="btn btn-primary">创建新配置</a>
+                  <a [routerLink]="['../createConfig']" class="btn btn-primary">创建新配置</a>
                 </div>
-                <!-- <div class="card-footer">*基于已编译的应用构建镜像</div> -->
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
               <div class="card card-block">
-                <!--<p-dataTable  class="table" [value]="list"  [rows]="3" [paginator]="true" [pageLinks]="3"   dataKey="name">-->
-                  <!--<p-column field="Config_Name" header="配置名称" ></p-column>-->
-                  <!--<p-column field="Config_Des" header="描述"  ></p-column>-->
-                  <!--<p-column field="Create_At" header="创建时间" ></p-column>-->
-                  <!--<p-column field="button" header="操作">-->
-                    <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
-                      <!--<span>Dribbble</span>-->
-                    <!--</button>-->
-                    <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
-                      <!--<span>Dribbble</span>-->
-                    <!--</button>-->
-                  <!--</p-column>-->
-                <!--</p-dataTable>-->
                 <table class="table">
                   <thead>
-                  <tr>
-                    <th>配置名称</th>
-                    <th>描述</th>
-                    <th>创建时间</th>
-                    <th>操作</th>
-                  </tr>
+                    <tr>
+                      <th>配置名称</th>
+                      <th>描述</th>
+                      <th>创建时间</th>
+                      <th>操作</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr *ngFor="let post of list">
-                    <td>{{post.Config_Name}}</td>
-                    <td>{{post.Config_Des}}</td>
-                    <td>{{post.Create_At}}</td>
-                    <td>
-                      <button type="button" [routerLink]="['/content/queryConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}" class="btn btn-sm btn-fa" title="查看">
-                        <i class="fa fa-search"></i>
-                      </button>
-                      <button type="button" [routerLink]="['/content/editConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}" class="btn btn-sm btn-fa" title="修改">
-                        <i class="fa fa-edit"></i>
-                      </button>
-                      <button type="button" class="btn btn-sm btn-fa" title="删除" (click)="delConfig(post.Row_ID)">
+                    <tr *ngFor="let post of list">
+                      <td>{{post.Config_Name}}</td>
+                      <td>{{post.Config_Des}}</td>
+                      <td>{{post.Create_At}}</td>
+                      <td>
+                        <button type="button" [routerLink]="['../queryConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}"
+                          class="btn btn-sm btn-fa" title="查看">
+                          <i class="fa fa-search"></i>
+                        </button>
+                        <button type="button" [routerLink]="['../editConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}"
+                          class="btn btn-sm btn-fa" title="修改">
+                          <i class="fa fa-edit"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-fa" title="删除" (click)="delConfig(post.Row_ID)">
                           <i class="fa fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
+                        </button>
+                      </td>
+                    </tr>
 
                   </tbody>
                 </table>
 
                 <ul class="pagination">
-                  <paging (goPage)="gotoPage($event)"
-                          inputCurrentPage="{{searchParam.pageNo}}"
-                          countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
+                  <paging (goPage)="gotoPage($event)" inputCurrentPage="{{searchParam.pageNo}}" countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
                 </ul>
               </div>
             </div>
@@ -86,9 +72,3 @@
   </div>
 
 </div>
-
-
-
-
-
-

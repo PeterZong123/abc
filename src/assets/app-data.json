@@ -26,11 +26,11 @@
             "acl": "role-a",
             "children": [{
                 "text": "我的镜像",
-                "link": "/content/myImage",
+                "link": "/content/image-center/myImage",
                 "translate": "我的镜像"
             }, {
                 "text": "基础镜像",
-                "link": "/content/baseImage",
+                "link": "/content/image-center/baseImage",
                 "translate": "基础镜像"
             }]
         }, {
@@ -41,15 +41,15 @@
             "acl": "role-a",
             "children": [{
                 "text": "配置管理",
-                "link": "/content/configManager",
+                "link": "/content/cluster-center/configManager",
                 "translate": "配置管理"
             }, {
                 "text": "我的集群",
-                "link": "/content/myCluster",
+                "link": "/content/cluster-center/myCluster",
                 "translate": "我的集群"
             }, {
                 "text": "负载均衡",
-                "link": "/content/loadBalance",
+                "link": "/content/cluster-center/loadBalance",
                 "translate": "负载均衡"
             }]
         }, {

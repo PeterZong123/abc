@@ -70,7 +70,7 @@ export class EditConfigComponent implements OnInit {
     data.configfile = this.filterConfigList(this.configList);
     this.editConfigService.editconfig(data).subscribe((res: any) => {
       if(res.code === 0){
-        this.router.navigate(['/content/configManager']);
+        this.router.navigate(['/content/cluster-center/configManager']);
       }else{
         alert(res.detail);
       }

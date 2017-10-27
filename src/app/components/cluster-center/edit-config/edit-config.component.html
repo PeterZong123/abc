@@ -88,7 +88,7 @@
                             </table>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-sm btn-primary" [disabled]="configForm.invalid"><i class="fa fa-dot-circle-o"></i> 修改</button>
+                            <button type="submit" class="btn btn-sm btn-primary" [disabled]="configForm.invalid||configForm.pristine"><i class="fa fa-dot-circle-o"></i> 修改</button>
                         </div>
                       </form>
                     </div>

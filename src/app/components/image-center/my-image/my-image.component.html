@@ -1,4 +1,3 @@
-
 <div class="app flex-row align-items-center">
 
 
@@ -6,22 +5,18 @@
 
     <!-- Main content -->
     <main class="main">
-
       <!-- Breadcrumb -->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">镜像中心</li>
         <li class="breadcrumb-item active">我的镜像</li>
       </ol>
-
-
       <div class="container-fluid">
-
         <div class="animated fadeIn">
           <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-block">
-                  <a [routerLink]="['/content/createImage']" class="btn btn-primary">构建新镜像</a>
+                  <a [routerLink]="['../createImage']" class="btn btn-primary">构建新镜像</a>
                 </div>
                 <div class="card-header">*基于已编译的应用构建镜像</div>
               </div>
@@ -30,75 +25,42 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card card-block">
-                <!--<p-dataTable  class="table" [value]="list"  [rows]="3" [paginator]="true" [pageLinks]="3"   dataKey="name">-->
-                  <!--<p-column field="Cluster_Name" header="镜像名称" ></p-column>-->
-                  <!--<p-column field="Config_Name" header="版本号"  ></p-column>-->
-                  <!--<p-column field="Config_Name" header="构建状态"  ></p-column>-->
-                  <!--<p-column field="Create_At" header="创建时间" ></p-column>-->
-                  <!--<p-column field="button" header="操作">-->
-                    <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
-                      <!--<span>Dribbble</span>-->
-                    <!--</button>-->
-                    <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
-                      <!--<span>Dribbble</span>-->
-                    <!--</button>-->
-                  <!--</p-column>-->
-                <!--</p-dataTable>-->
                 <table class="table">
                   <thead>
-                  <tr>
-                    <th>镜像名称</th>
-                    <th>版本号</th>
-                    <th>构建状态</th>
-                    <th>创建时间</th>
-                    <th>操作</th>
-                  </tr>
+                    <tr>
+                      <th>镜像名称</th>
+                      <th>版本号</th>
+                      <th>构建状态</th>
+                      <th>创建时间</th>
+                      <th>操作</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr *ngFor="let post of list">
-                    <td>{{post.name}}</td>
-                    <td>{{post.tag}}</td>
-                    <td>{{post.buildstatus}}</td>
-                    <td>{{post.createdat}}</td>
-                    <td>
-                      <button type="button" [routerLink]="['/content/queryImage',post.id]" class="btn btn-sm btn-fa" title="查看">
-                        <i class="fa fa-search"></i>
-                      </button>
-                      <!-- <button type="button" class="btn btn-sm btn-fa" title="修改">
+                    <tr *ngFor="let post of list">
+                      <td>{{post.name}}</td>
+                      <td>{{post.tag}}</td>
+                      <td>{{post.buildstatus}}</td>
+                      <td>{{post.createdat}}</td>
+                      <td>
+                        <button type="button" [routerLink]="['../queryImage',post.id]" class="btn btn-sm btn-fa" title="查看">
+                          <i class="fa fa-search"></i>
+                        </button>
+                        <!-- <button type="button" class="btn btn-sm btn-fa" title="修改">
                           <i class="fa fa-edit"></i>
                       </button> -->
-                    </td>
-                  </tr>
-
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
-
                 <ul class="pagination">
-                  <paging (goPage)="gotoPage($event)"
-                          inputCurrentPage="{{searchParam.pageNo}}"
-                          countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
+                  <paging (goPage)="gotoPage($event)" inputCurrentPage="{{searchParam.pageNo}}" countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
                 </ul>
               </div>
             </div>
           </div>
-
-
         </div>
-
-
-
-
       </div>
       <!-- /.conainer-fluid -->
     </main>
-
   </div>
-
-
 </div>
-
-
-
-
-
-

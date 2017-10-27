@@ -72,7 +72,7 @@ export class DeployNewClusterComponent implements OnInit {
     data.token = localStorage.getItem('token');
     this.deployNewClusterService.addCluster(data).subscribe((res: any) => {
       if(res.code === 0){
-        this.router.navigate(['/content/myCluster']);
+        this.router.navigate(['/content/cluster-center/myCluster']);
       }else{
         alert('部署新集群失败');
       }

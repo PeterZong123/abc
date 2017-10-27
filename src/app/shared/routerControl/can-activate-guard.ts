@@ -1,16 +1,12 @@
-/**
- * Created by liangzhifeng on 2017/5/27.
- */
-import {Injectable} from '@angular/core';
-import {CanActivate} from '@angular/router';
-import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivateChild, Router } from '@angular/router';
 import { LoginService } from '../../pages/service/login.service';
 
 @Injectable()
-export class CanActivateGuard implements  CanActivate{
+export class CanActivateGuard implements  CanActivateChild{
   constructor(private router: Router, private loginService: LoginService){}
 
-  canActivate(){
+  canActivateChild(){
     return true;
     // if (this.loginService.loggedIn()){
     //   return true;
