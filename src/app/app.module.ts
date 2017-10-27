@@ -32,9 +32,9 @@ import { MyImageComponent } from './components/image-center/my-image/my-image.co
 import { CreateImageComponent } from './components/image-center/create-image/create-image.component';
 import { EditConfigComponent } from './components/cluster-center/edit-config/edit-config.component';
 
-import { PagingComponent } from './shared/paging/paging.component';
-import { EnvModalComponent } from './shared/modal/envModal/env-modal.component';
-import { ConfigModalComponent } from './shared/modal/configModal/config-modal.component';
+// import { PagingComponent } from './shared/paging/paging.component';
+// import { EnvModalComponent } from './shared/modal/envModal/env-modal.component';
+// import { ConfigModalComponent } from './shared/modal/configModal/config-modal.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './pages/login.component';
 import { AuthHttp, AuthConfig, AUTH_PROVIDERS, provideAuth } from 'angular2-jwt';
@@ -59,9 +59,9 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         AppComponent,
         IndexComponent,
         LoginComponent,
-        PagingComponent,
-        EnvModalComponent,
-        ConfigModalComponent,
+        // PagingComponent,
+        // EnvModalComponent,
+        // ConfigModalComponent,
         DashboardComponent,
         MyImageComponent,
         BaseImageComponent,
@@ -96,7 +96,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
             }
         })
     ],
-    exports: [PagingComponent],
+    exports: [],
     providers: [
         // code see: https://github.com/unicode-cldr/cldr-core/blob/master/availableLocales.json
         { provide: LOCALE_ID, useValue: 'zh-Hans' },
