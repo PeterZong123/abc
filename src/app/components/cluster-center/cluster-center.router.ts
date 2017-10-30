@@ -31,15 +31,15 @@ const routes: Routes = [
     component: EditConfigComponent,
   },
   {
-    path: 'myCluster',  //我的集群
+    path: 'myCluster',  //我的应用
     component: MyClusterComponent,
   },
   {
-    path: 'deployCluster',  //我的集群－－部署新集群
+    path: 'deployCluster',  //我的应用－－部署新集群
     component: DeployNewClusterComponent,
   },
   {
-    path: 'queryCluster/:id', //我的集群--查询集群
+    path: 'queryCluster/:id', //我的应用--查询集群
     component: QueryClusterComponent,
   },
   {

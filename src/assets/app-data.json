@@ -44,9 +44,9 @@
                 "link": "/content/cluster-center/configManager",
                 "translate": "配置管理"
             }, {
-                "text": "我的集群",
+                "text": "我的应用",
                 "link": "/content/cluster-center/myCluster",
-                "translate": "我的集群"
+                "translate": "我的应用"
             }, {
                 "text": "负载均衡",
                 "link": "/content/cluster-center/loadBalance",
