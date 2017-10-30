@@ -18,7 +18,7 @@ export class QueryClusterService {
       return res.json();
     })
     .catch((res: Response) =>{
-      return Observable.throw('查询集群信息失败');
+      return Observable.throw('查询应用信息失败');
     })
   }
 }

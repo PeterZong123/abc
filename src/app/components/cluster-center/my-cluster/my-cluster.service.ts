@@ -16,7 +16,7 @@ export class ClusterService {
         return res.json();
       })
       .catch((res: Response) => {
-        return Observable.throw('获取集群列表失败')
+        return Observable.throw('获取应用列表失败')
       })
   }
   
@@ -26,7 +26,7 @@ export class ClusterService {
         return res.json();
       })
       .catch((res: Response) => {
-        return Observable.throw('删除集群失败')
+        return Observable.throw('删除应用失败')
       })
   }
 }

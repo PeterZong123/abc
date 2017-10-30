@@ -35,11 +35,11 @@ const routes: Routes = [
     component: MyClusterComponent,
   },
   {
-    path: 'deployCluster',  //我的应用－－部署新集群
+    path: 'deployCluster',  //我的应用－－部署新应用
     component: DeployNewClusterComponent,
   },
   {
-    path: 'queryCluster/:id', //我的应用--查询集群
+    path: 'queryCluster/:id', //我的应用--查询应用
     component: QueryClusterComponent,
   },
   {

@@ -46,11 +46,11 @@ export class MyClusterComponent implements OnInit {
     this.searchParam.pageNo = pagingInfo.currentPage;
   }
 
-  //删除集群
+  //删除应用
   delCluster(id: string){
     swal({
       title: '确认删除?',
-      text: '删除后，集群文件将无法恢复!',
+      text: '删除后，应用文件将无法恢复!',
       icon: 'warning',
       buttons: {
         cancel: {
@@ -77,7 +77,7 @@ export class MyClusterComponent implements OnInit {
           })
           swal(
             '删除成功!',
-            '集群文件已经被移除.',
+            '应用文件已经被移除.',
             'success'
           )
         }else{
@@ -96,7 +96,7 @@ export class MyClusterComponent implements OnInit {
     //       return (val.Cluster_Id !== id);
     //     })
     //   }else{
-    //     alert('删除集群失败');
+    //     alert('删除应用失败');
     //   }
     // })
     

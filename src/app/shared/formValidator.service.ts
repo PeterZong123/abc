@@ -9,7 +9,7 @@ export class FormValidatorService {
         'basic_image':'',
         'store_path':'',
         'app_filename':'',
-        //创建新集群
+        //创建新应用
         'clustername':'',
         'imageid':'',
         'configid':'',
@@ -27,7 +27,7 @@ export class FormValidatorService {
         //构建新镜像
         'image_name':{
             'required':'镜像名不能为空！',
-            'maxlength':'集群名称最多为50个字符！',
+            'maxlength':'应用名称最多为50个字符！',
             'pattern':'字母开头，可以包含. - 数字在镜像名称中，. - 不可以作为名称的终结字符！'
         },
         'basic_image':{
@@ -36,11 +36,11 @@ export class FormValidatorService {
         'app_filename':{
             'required':'请上传已编译好的应用文件！',
         },
-        //创建新集群
+        //创建新应用
         'clustername':{
-            'required':'集群名称不能为空！',
-            'maxlength':'集群名称最多为50个字符！',
-            'pattern':'集群名称由小写字母开头并结尾，可包含数字、小写字母、“-”和“.”字符！'
+            'required':'应用名称不能为空！',
+            'maxlength':'应用名称最多为50个字符！',
+            'pattern':'应用名称由小写字母开头并结尾，可包含数字、小写字母、“-”和“.”字符！'
         },
         'imageid':{
             'required':'请选择一个镜像！',

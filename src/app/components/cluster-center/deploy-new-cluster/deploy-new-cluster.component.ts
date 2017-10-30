@@ -50,7 +50,7 @@ export class DeployNewClusterComponent implements OnInit {
     }, error => {
       console.log(error);
     })
-    //获取集群数据
+    //获取应用数据
     this.myImageService.getInfo({}).subscribe( res => {
       this.imageList = res;
     }, error => {
@@ -74,12 +74,12 @@ export class DeployNewClusterComponent implements OnInit {
       if(res.code === 0){
         this.router.navigate(['/content/cluster-center/myCluster']);
       }else{
-        alert('部署新集群失败');
+        alert('部署新应用失败');
       }
     })
   }
 
-  //由于nzStep不同，所以集群规格变化，滑块初始化到默认位置
+  //由于nzStep不同，所以应用规格变化，滑块初始化到默认位置
   flavorChange(){
     this.slideValue = 0;
   }

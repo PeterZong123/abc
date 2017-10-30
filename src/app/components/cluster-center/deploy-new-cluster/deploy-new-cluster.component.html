@@ -10,7 +10,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item">应用中心</li>
         <li class="breadcrumb-item active">我的应用</li>
-        <li class="breadcrumb-item active">部署新集群</li>
+        <li class="breadcrumb-item active">部署新应用</li>
       </ol>
 
 
@@ -21,19 +21,19 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <strong>部署新集群</strong>
+                  <strong>部署新应用</strong>
                 </div>
                 <div class="card-block">
                   <form enctype="multipart/form-data" class="form-horizontal" (ngSubmit)="onSubmit(clusterForm)" [formGroup]="clusterForm">
                     <div class="form-group row">
-                      <label class="col-md-3 form-control-label" for="text-input">集群名称</label>
+                      <label class="col-md-3 form-control-label" for="text-input">应用名称</label>
                       <div class="col-md-9">
                         <input type="text" name="clustername" class="form-control" placeholder="cluster name" formControlName="clustername">
                         <small *ngIf="formErrors['clustername']" class="txt-error animated fadeIn">{{formErrors['clustername']}}</small>
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-md-3 form-control-label" for="text-input">集群描述</label>
+                      <label class="col-md-3 form-control-label" for="text-input">应用描述</label>
                       <div class="col-md-9">
                         <input type="text" name="clusterdescription" class="form-control" placeholder="cluster description" formControlName="clusterdescription">
                       </div>
