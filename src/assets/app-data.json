@@ -34,8 +34,8 @@
                 "translate": "基础镜像"
             }]
         }, {
-            "text": "集群中心",
-            "translate": "集群中心",
+            "text": "应用中心",
+            "translate": "应用中心",
             "link": "＃",
             "icon": "icon-layers",
             "acl": "role-a",
