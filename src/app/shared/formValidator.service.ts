@@ -55,7 +55,7 @@ export class FormValidatorService {
             'required':'请选择硬件规格！',
         },
         'instancenumber':{
-            'min':'集群实例数量不能为零！',
+            'min':'副本数量不能为零！',
         },
         //创建新配置
         'configname':{
