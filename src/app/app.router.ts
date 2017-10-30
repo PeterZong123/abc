@@ -1,5 +1,6 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { CanActivateGuard } from './shared/routerControl/can-activate-guard';
+import { SelectivePreloadingStrategy } from './shared/routerControl/selective-preloading-strategy';
 import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { IndexComponent } from './index/index.component';
@@ -34,24 +35,43 @@ const rootRouterConfig: Routes = [
               component: DashboardComponent,
             },
             {
-              path: 'image-center',
-              loadChildren: './components/image-center/image-center.module#ImageCenterModule'
+              path: 'image-center', // 镜像中心
+              loadChildren: './components/image-center/image-center.module#ImageCenterModule',
+              data: {
+                preload: true
+              }
             },
             {
-              path: 'cluster-center',
-              loadChildren: './components/cluster-center/cluster-center.module#ClusterCenterModule'
+              path: 'cluster-center',// 应用中心
+              loadChildren: './components/cluster-center/cluster-center.module#ClusterCenterModule',
+              data: {
+                preload: true
+              }
             },
             {
-              path: 'myService',//我的服务
-              component: DashboardComponent,
+              path: 'service-center',// 服务中心
+              loadChildren: './components/service-center/service-center.module#ServiceCenterModule',
+              data: {
+                preload: true
+              }
             },
             {
-              path: 'platService',//平台服务
-              component: DashboardComponent,
-            }
+              path: 'manager-center',// 管理中心
+              loadChildren: './components/manager-center/manager-center.module#ManagerCenterModule',
+              data: {
+                preload: true
+              }
+            },
+            {
+              path: 'operation-center',// 运维中心
+              loadChildren: './components/operation-center/operation-center.module#OperationCenterModule',
+              data: {
+                preload: true
+              }
+            },
           ]
     },
     { path: '**', redirectTo: 'login' }
 ];
 
-export const AppRoute = RouterModule.forRoot(rootRouterConfig, { useHash: true });
+export const AppRoute = RouterModule.forRoot(rootRouterConfig, { preloadingStrategy: SelectivePreloadingStrategy, useHash: true });

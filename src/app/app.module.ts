@@ -26,6 +26,8 @@ import { FormValidatorService } from './shared/formValidator.service';
 import { HttpModule } from '@angular/http';
 import { CanActivateGuard } from './shared/routerControl/can-activate-guard';
 import { AppRoute } from './app.router';
+//Strategy
+import { SelectivePreloadingStrategy } from './shared/routerControl/selective-preloading-strategy';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -75,6 +77,7 @@ export function StartupServiceFactory(startupService: StartupService): Function 
 
         //add by liangzhifeng
         CanActivateGuard,
+        SelectivePreloadingStrategy,
         LoginService,
         AuthHttp,
         FormValidatorService
