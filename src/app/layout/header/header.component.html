@@ -110,6 +110,12 @@
                 </div>
             </nz-dropdown>
         </li>
+        <!-- logout -->
+        <li>
+            <button nz-button [nzType]="'primary'" (click)="logout()">
+                <i class="anticon anticon-logout"></i>
+            </button>
+        </li>
         <!-- App Icons -->
         <!-- <li class="hidden-xs">
             <nz-dropdown nzTrigger="click" nzPlacement="bottomRight" (nzVisibleChange)="appChange()">

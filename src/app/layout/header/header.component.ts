@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import * as screenfull from 'screenfull';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { LocalStorageService } from 'angular-web-storage';
+import { Router } from '@angular/router';
 
 import { SettingsService, SidebarThemeType } from '@core/services/settings.service';
 import { ThemesService } from '@core/services/themes.service';
@@ -43,7 +44,8 @@ export class HeaderComponent {
         private themeServ: ThemesService,
         private confirmServ: NzModalService,
         private storageServ: LocalStorageService,
-        private messageServ: NzMessageService
+        private messageServ: NzMessageService,
+        private router: Router
     ) {
     }
 
@@ -96,5 +98,10 @@ export class HeaderComponent {
                 this.messageServ.success('Clear Finished!');
             }
         });
+    }
+
+    logout() {
+        localStorage.removeItem('token');
+        this.router.navigateByUrl('/login');
     }
 }
