@@ -8,8 +8,8 @@
             </div>
         </div>
         <ul nz-menu>
-            <li nz-menu-item (click)="msgSrv.success('profile')">{{ 'profile' | translate }}</li>
-            <li nz-menu-item [routerLink]="['/content/profile-settings']">{{ 'settings' | translate }}</li>
+            <li nz-menu-item [routerLink]="['/content/profile-settings/profile']">{{ 'profile' | translate }}</li>
+            <li nz-menu-item [routerLink]="['/content/profile-settings/password']">{{ 'editPassword' | translate }}</li>
             <li nz-menu-item (click)="logout()">{{ 'logout' | translate }}</li>
         </ul>
     </nz-dropdown>

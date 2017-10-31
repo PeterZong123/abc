@@ -1,16 +1,21 @@
 import { Routes, RouterModule } from '@angular/router';
-import { ProfileSettingsComponent } from './profile-settings.component';
+import { EditPasswordComponent } from './edit-password/edit-password.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
     {
-        path: '',
-        redirectTo: 'profileSettings',
+        path: '', 
+        redirectTo: 'profile',
         pathMatch: 'full'
     },
     {
-        path: 'profileSettings', // 个人信息设置
-        component: ProfileSettingsComponent,
+        path: 'password',// 修改密码
+        component: EditPasswordComponent
     },
+    {
+        path: 'profile',// 修改资料
+        component: EditProfileComponent
+    }
 ]
 
 export const ProfileRoutes = RouterModule.forChild(routes);
