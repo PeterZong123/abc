@@ -69,6 +69,13 @@ const rootRouterConfig: Routes = [
                 preload: true
               }
             },
+            {
+              path: 'profile-settings',// 个人信息设置
+              loadChildren: './components/profile-settings/profile-settings.module#ProfileSettingsModule',
+              data: {
+                preload: true
+              }
+            },
           ]
     },
     { path: '**', redirectTo: 'login' }

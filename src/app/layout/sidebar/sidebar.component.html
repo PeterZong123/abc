@@ -3,13 +3,13 @@
         <div nz-dropdown class="user-block-dropdown">
             <nz-avatar class="avatar" [nzIcon]="'user'" [nzSize]="'large'"></nz-avatar>
             <div class="info">
-                <strong>{{user.username}}</strong>
-                <!-- <p>{{settings.user.email}}</p> -->
+                <strong class="user-name">{{user.username}}</strong>
+                <p>{{settings.user.email}}</p>
             </div>
         </div>
         <ul nz-menu>
             <li nz-menu-item (click)="msgSrv.success('profile')">{{ 'profile' | translate }}</li>
-            <!-- <li nz-menu-item (click)="msgSrv.success('settings')">{{ 'settings' | translate }}</li> -->
+            <li nz-menu-item [routerLink]="['/content/profile-settings']">{{ 'settings' | translate }}</li>
             <li nz-menu-item (click)="logout()">{{ 'logout' | translate }}</li>
         </ul>
     </nz-dropdown>
