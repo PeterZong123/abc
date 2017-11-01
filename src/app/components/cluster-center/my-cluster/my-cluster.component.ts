@@ -21,7 +21,7 @@ class SearchParam{
 })
 export class MyClusterComponent implements OnInit {
 
-  public clusterList: Array<any>;
+  public clusterList: Array<any> = [];
   public searchParam:SearchParam;
   public totalSize:Number;
 

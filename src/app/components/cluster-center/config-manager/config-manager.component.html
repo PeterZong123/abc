@@ -13,54 +13,54 @@
       <div class="container-fluid">
 
         <div class="animated fadeIn">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-block">
-                  <a [routerLink]="['../createConfig']" class="btn btn-primary">创建新配置</a>
-                </div>
+          <div nz-row [nzGutter]="16">
+              <div nz-col>
+                <nz-card [nzNoHovering]="true">
+                  <ng-template #body>
+                    <button nz-button [nzType]="'primary'" [routerLink]="['../createConfig']">
+                      <span>创建新配置</span>
+                    </button>
+                  </ng-template>
+                </nz-card>
               </div>
-            </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card card-block">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>配置名称</th>
-                      <th>描述</th>
-                      <th>创建时间</th>
-                      <th>操作</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let post of list">
-                      <td>{{post.Config_Name}}</td>
-                      <td>{{post.Config_Des}}</td>
-                      <td>{{post.Create_At}}</td>
-                      <td>
-                        <button type="button" [routerLink]="['../queryConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}"
-                          class="btn btn-sm btn-fa" title="查看">
-                          <i class="fa fa-search"></i>
-                        </button>
-                        <button type="button" [routerLink]="['../editConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}"
-                          class="btn btn-sm btn-fa" title="修改">
-                          <i class="fa fa-edit"></i>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-fa" title="删除" (click)="delConfig(post.Row_ID)">
-                          <i class="fa fa-trash"></i>
-                        </button>
-                      </td>
-                    </tr>
 
-                  </tbody>
-                </table>
-
-                <ul class="pagination">
-                  <paging (goPage)="gotoPage($event)" inputCurrentPage="{{searchParam.pageNo}}" countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
-                </ul>
-              </div>
+          <div nz-row [nzGutter]="16">
+            <div nz-col>
+              <nz-card>
+                <ng-template #body>
+                  <nz-table #nzTable [nzDataSource]="list" [nzPageSize]="10">
+                      <thead nz-thead>
+                        <tr>
+                          <th>配置名称</th>
+                          <th>描述</th>
+                          <th>创建时间</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody nz-tbody>
+                        <tr nz-tbody-tr *ngFor="let post of nzTable.data">
+                          <td>{{post.Config_Name}}</td>
+                          <td>{{post.Config_Des}}</td>
+                          <td>{{post.Create_At}}</td>
+                          <td>
+                            <button type="button" [routerLink]="['../queryConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}"
+                              class="btn btn-sm btn-fa" title="查看">
+                              <i class="fa fa-search"></i>
+                            </button>
+                            <button type="button" [routerLink]="['../editConfig',post.Row_ID]" [queryParams]="{name:post.Config_Name,des:post.Config_Des}"
+                              class="btn btn-sm btn-fa" title="修改">
+                              <i class="fa fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-fa" title="删除" (click)="delConfig(post.Row_ID)">
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                  </nz-table>
+                </ng-template>
+              </nz-card>
             </div>
           </div>
         </div>

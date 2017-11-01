@@ -19,7 +19,7 @@ class SearchParam{
 })
 export class  BaseImageComponent implements OnInit {
 
-  public clusterList: Array<any>;
+  public clusterList: Array<any> = [];
   public searchParam:SearchParam;
   public totalSize:Number;
 

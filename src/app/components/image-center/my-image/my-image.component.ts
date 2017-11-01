@@ -21,7 +21,7 @@ class SearchParam{
 })
 export class MyImageComponent implements OnInit {
 
-  public list: Array<any>;
+  public list: Array<any> = [];
   public searchParam:SearchParam;
   public totalSize:Number;
 

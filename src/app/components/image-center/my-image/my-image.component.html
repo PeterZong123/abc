@@ -12,7 +12,53 @@
       </ol>
       <div class="container-fluid">
         <div class="animated fadeIn">
-          <div class="row">
+          <div nz-row [nzGutter]="16">
+              <div nz-col>
+                <nz-card [nzNoHovering]="true">
+                  <ng-template #body>
+                    <button nz-button [nzType]="'primary'" [routerLink]="['../createImage']">
+                      <span>创建新配置</span>
+                    </button>
+                    <p class="head-txt">*基于已编译的应用构建镜像</p>
+                  </ng-template>
+                </nz-card>
+              </div>
+          </div>
+
+          <div nz-row [nzGutter]="16">
+            <div nz-col>
+              <nz-card>
+                <ng-template #body>
+                  <nz-table #nzTable [nzDataSource]="list" [nzPageSize]="10">
+                      <thead nz-thead>
+                          <tr>
+                            <th>镜像名称</th>
+                            <th>版本号</th>
+                            <th>构建状态</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                          </tr>
+                        </thead>
+                        <tbody nz-tbody>
+                          <tr nz-tbody-tr *ngFor="let post of nzTable.data">
+                            <td>{{post.name}}</td>
+                            <td>{{post.tag}}</td>
+                            <td>{{post.buildstatus}}</td>
+                            <td>{{post.createdat}}</td>
+                            <td>
+                              <button type="button" [routerLink]="['../queryImage',post.id]" class="btn btn-sm btn-fa" title="查看">
+                                <i class="fa fa-search"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                  </nz-table>
+                </ng-template>
+              </nz-card>
+            </div>
+          </div>
+          
+          <!-- <div class="row">
             <div class="col-md-12">
               <div class="card">
                 <div class="card-block">
@@ -45,9 +91,6 @@
                         <button type="button" [routerLink]="['../queryImage',post.id]" class="btn btn-sm btn-fa" title="查看">
                           <i class="fa fa-search"></i>
                         </button>
-                        <!-- <button type="button" class="btn btn-sm btn-fa" title="修改">
-                          <i class="fa fa-edit"></i>
-                      </button> -->
                       </td>
                     </tr>
                   </tbody>
@@ -57,7 +100,7 @@
                 </ul>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- /.conainer-fluid -->

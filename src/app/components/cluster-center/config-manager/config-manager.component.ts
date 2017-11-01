@@ -20,7 +20,7 @@ class SearchParam{
 })
 export class ConfigManagerComponent implements OnInit {
 
-  public list: Array<any>;
+  public list: Array<any> = [];
   public searchParam:SearchParam;
   public totalSize:Number;
 
