@@ -33,8 +33,9 @@ export class EditProfileComponent implements OnInit {
         this.cropperSettings.noFileInput = true;
         this.cropperSettings.width = 200;
         this.cropperSettings.height = 200;
-        this.cropperSettings.canvasWidth = $(window).width()/4 - 20;
-        // this.cropperSettings.canvasHeight = 500;
+        let canvasWidth = $(window).width()/4 - 20;
+        this.cropperSettings.canvasWidth = canvasWidth;
+        this.cropperSettings.canvasHeight = canvasWidth;
         this.cropperSettings.minWidth = 100;
         this.cropperSettings.minHeight = 100;
         this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
