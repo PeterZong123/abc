@@ -1,0 +1,23 @@
+<!-- 应用扩容Modal -->
+<ng-template #modalContent>
+    <form nz-form [formGroup]="validateForm" >
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="4">
+                <label for="instancenumber" nz-form-item-required>副本数量</label>   
+            </div>
+            <div nz-form-control nz-col [nzSpan]="20" [nzValidateStatus]="getFormControl('instancenumber')" [ngClass]="{'has-error':getFormControl('instancenumber').dirty && getFormControl('instancenumber').hasError('min')}">
+                <nz-slider formControlName="instancenumber"></nz-slider>
+                <div nz-form-explain *ngIf="getFormControl('instancenumber').dirty && getFormControl('instancenumber').hasError('min')">副本数量不能为空!</div>
+            </div>
+        </div>
+    </form>
+</ng-template>
+<ng-template #modalFooter>
+    <button nz-button [nzType]="'primary'" [disabled]="validateForm.pristine || validateForm.invalid" (click)="onSubmit(validateForm)">
+        <span>扩容</span>
+    </button>
+</ng-template>
+
+<button nz-button [nzType]="'primary'"  title="扩容" (click)="showModal(modalContent,modalFooter)">
+    <i class="anticon anticon-switcher"></i>
+</button>

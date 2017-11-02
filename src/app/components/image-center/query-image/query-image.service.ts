@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import * as AppUtil from '../../../config/const';
+import * as AppUtil from 'app/config/const';
 
 @Injectable()
 export class QueryImageService {

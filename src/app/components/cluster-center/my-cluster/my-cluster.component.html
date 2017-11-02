@@ -53,11 +53,15 @@
                         <td></td>
                         <td>{{post.Create_At}}</td>
                         <td>
-                          <button type="button" [routerLink]="['../queryCluster',post.Cluster_Id]" class="btn btn-sm btn-fa" title="查看">
-                            <i class="fa fa-search"></i>
+                          <button nz-button [nzType]="'primary'" [routerLink]="['../queryCluster',post.Cluster_Id]" title="查看">
+                            <i class="anticon anticon-search"></i>
                           </button>
-                          <button type="button" class="btn btn-sm btn-fa" title="删除" (click)="delCluster(post.Cluster_Id)">
-                            <i class="fa fa-trash"></i>
+                          <button nz-button [nzType]="'primary'"  title="修改" (click)="edit(post.Cluster_Id)">
+                              <i class="anticon anticon-edit"></i>
+                          </button>
+                          <scale-cluster-modal (scaleCluster)="scaleCluster($event)"></scale-cluster-modal>
+                          <button nz-button [nzType]="'primary'"  title="删除" (click)="delCluster(post.Cluster_Id)">
+                            <i class="anticon anticon-delete"></i>
                           </button>
                         </td>
                       </tr>
@@ -72,7 +76,6 @@
       </div>
       <!-- /.conainer-fluid -->
     </main>
-
   </div>
 
 </div>

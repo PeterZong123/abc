@@ -16,7 +16,7 @@
               <div nz-col>
                 <nz-card [nzNoHovering]="true">
                   <ng-template #body>
-                    <button nz-button [nzType]="'primary'" [routerLink]="['../createImage']">
+                    <button nz-button [nzType]="'primary'" [routerLink]="['./createImage']">
                       <span>创建新配置</span>
                     </button>
                     <p class="head-txt">*基于已编译的应用构建镜像</p>
@@ -46,8 +46,8 @@
                             <td>{{post.buildstatus}}</td>
                             <td>{{post.createdat}}</td>
                             <td>
-                              <button type="button" [routerLink]="['../queryImage',post.id]" class="btn btn-sm btn-fa" title="查看">
-                                <i class="fa fa-search"></i>
+                              <button nz-button [nzType]="'primary'" [routerLink]="['./queryImage',post.id]" title="查看">
+                                <i class="anticon anticon-search"></i>
                               </button>
                             </td>
                           </tr>

@@ -3,8 +3,7 @@ import { Http, Response, Headers } from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import * as AppUtil from '../../../config/const';
-import { SellerResponse } from '../model/response/seller.response';
+import * as AppUtil from 'app/config/const';
 
 @Injectable()
 export class CreateImageService {

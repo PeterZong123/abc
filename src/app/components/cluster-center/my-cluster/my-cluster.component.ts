@@ -24,6 +24,7 @@ export class MyClusterComponent implements OnInit {
   public clusterList: Array<any> = [];
   public searchParam:SearchParam;
   public totalSize:Number;
+  public showScaleModal: Boolean = false;
 
   constructor(public clusterService: ClusterService,
               public router: Router,
@@ -89,16 +90,10 @@ export class MyClusterComponent implements OnInit {
         }
       }
     })
-    
-    // this.clusterService.delCluster(id).subscribe(res => {
-    //   if(res.code === 0){
-    //     this.clusterList = this.clusterList.filter(function(val){
-    //       return (val.Cluster_Id !== id);
-    //     })
-    //   }else{
-    //     alert('删除应用失败');
-    //   }
-    // })
-    
   }
+
+  scaleCluster(data){
+    console.log(data);
+  }
+
 }
