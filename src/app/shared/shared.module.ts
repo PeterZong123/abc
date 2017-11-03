@@ -11,6 +11,7 @@ import { PagingComponent } from './paging/paging.component';
 import { EnvModalComponent } from './modal/envModal/env-modal.component';
 import { ConfigModalComponent } from './modal/configModal/config-modal.component';
 import { ScaleClusterModalComponent } from './modal/scaleClusterModal/scale-cluster-modal.component';
+import { UserModalComponent } from './modal/userModal/user-modal.component';
 //directives
 import { SparklineDirective } from './directives/sparkline/sparkline.directive';
 import { FileValidator } from '@shared/fileValidator.directive';
@@ -23,7 +24,7 @@ import { ModalHelper } from './helper/modal.helper';
 const DIRECTIVES = [SparklineDirective,FileValidator,FileValueAccessor];
 const PIPES = [ KeysPipe, YNPipe];
 const HELPERS = [ ModalHelper ];
-const COMPONENTS = [PagingComponent,EnvModalComponent,ConfigModalComponent,ScaleClusterModalComponent];
+const COMPONENTS = [PagingComponent,EnvModalComponent,ConfigModalComponent,ScaleClusterModalComponent,UserModalComponent];
 
 @NgModule({
     imports: [
