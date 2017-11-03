@@ -51,7 +51,11 @@ export class UserManagerComponent implements OnInit {
     })
     .then(willDelete => {
       if(willDelete){
-
+        swal(
+          '删除成功!',
+          '配置文件已经被移除.',
+          'success'
+        )
       }
     })
     .then(res => {

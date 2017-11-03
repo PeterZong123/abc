@@ -16,7 +16,7 @@
                   <div nz-col>
                     <nz-card [nzNoHovering]="true">
                       <ng-template #body>
-                        <user-modal type="1"></user-modal>
+                        <user-modal type="1" (userEmitter)="addUser()"></user-modal>
                       </ng-template>
                     </nz-card>
                   </div>
@@ -40,7 +40,7 @@
                               <td nz-td> {{data.age}} </td>
                               <td nz-td> {{data.address}} </td>
                               <td nz-td>
-                                <user-modal type="2"></user-modal>
+                                <user-modal type="2" (userEmitter)="editUser()"></user-modal>
                                 <button nz-button [nzType]="'primary'" title="删除" (click)="deleteUser(data.id)">
                                   <i class="anticon anticon-delete"></i>
                                 </button>

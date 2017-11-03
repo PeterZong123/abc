@@ -3,11 +3,11 @@ import { NzModalService } from 'ng-zorro-antd';
 import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'user-modal',
-  templateUrl: './user-modal.component.html',
-  styleUrls: ['./user-modal.component.scss'],
+  selector: 'role-modal',
+  templateUrl: './role-modal.component.html',
+  styleUrls: ['./role-modal.component.scss'],
 })
-export class UserModalComponent implements OnInit {
+export class RoleModalComponent implements OnInit {
 
   public validateForm: FormGroup;
   public currentModal;
@@ -15,7 +15,7 @@ export class UserModalComponent implements OnInit {
   @Input()
   public type: number;
   @Output()
-  public userEmitter: EventEmitter<any> = new EventEmitter();
+  public roleEmitter: EventEmitter<any> = new EventEmitter();
 
   constructor(private modal: NzModalService,private fb: FormBuilder) {
   }
@@ -34,7 +34,7 @@ export class UserModalComponent implements OnInit {
 
   showModal(contentTpl,footerTpl){
     this.currentModal = this.modal.open({
-      title: '添加用户',
+      title: '添加角色',
       content: contentTpl,
       footer:footerTpl,
     });
@@ -46,7 +46,7 @@ export class UserModalComponent implements OnInit {
     }
     this.currentModal.destroy('onOk');
     this.currentModal = null;
-    this.userEmitter.emit(validateForm.value);
+    this.roleEmitter.emit(validateForm.value);
   }
   
 }

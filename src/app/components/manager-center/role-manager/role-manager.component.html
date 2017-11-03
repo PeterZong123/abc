@@ -16,9 +16,7 @@
                 <div nz-col>
                   <nz-card [nzNoHovering]="true">
                     <ng-template #body>
-                      <button nz-button [nzType]="'primary'" class="add-btn">
-                          <span>添加新角色</span>  
-                      </button>
+                      <role-modal type="1" (roleEmitter)="addRole()"></role-modal>
                     </ng-template>
                   </nz-card>
                 </div>
@@ -42,10 +40,8 @@
                             <td nz-td> {{data.age}} </td>
                             <td nz-td> {{data.address}} </td>
                             <td nz-td>
-                              <button nz-button [nzType]="'primary'" title="修改">
-                                <i class="anticon anticon-edit"></i>
-                              </button>
-                              <button nz-button [nzType]="'primary'" title="删除">
+                              <role-modal type="2" (roleEmitter)="editRole()"></role-modal>
+                              <button nz-button [nzType]="'primary'" title="删除" (click)="deleteRole(data.id)">
                                 <i class="anticon anticon-delete"></i>
                               </button>
                             </td>
