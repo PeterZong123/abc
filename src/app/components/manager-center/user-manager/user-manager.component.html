@@ -40,10 +40,8 @@
                               <td nz-td> {{data.age}} </td>
                               <td nz-td> {{data.address}} </td>
                               <td nz-td>
-                                <button nz-button [nzType]="'primary'" title="修改">
-                                  <i class="anticon anticon-edit"></i>
-                                </button>
-                                <button nz-button [nzType]="'primary'" title="删除">
+                                <user-modal type="2"></user-modal>
+                                <button nz-button [nzType]="'primary'" title="删除" (click)="deleteUser(data.id)">
                                   <i class="anticon anticon-delete"></i>
                                 </button>
                               </td>

@@ -37,6 +37,10 @@
     </button>
 </ng-template>
 
+<!--component -->
 <button nz-button [nzType]="'primary'"  title="添加用户" (click)="showModal(modalContent,modalFooter)" *ngIf="type == 1">
     <span>添加用户</span>
+</button>
+<button nz-button [nzType]="'primary'" title="修改" (click)="showModal(modalContent,modalFooter)" *ngIf="type == 2">
+    <i class="anticon anticon-edit"></i>
 </button>
