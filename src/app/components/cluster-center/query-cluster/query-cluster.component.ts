@@ -10,10 +10,17 @@ import { QueryClusterService } from './query-cluster.service';
 })
 export class QueryClusterComponent implements OnInit {
   public clusterDetail: any;
+  public replicaList: Array<any>;
 
   constructor(private queryClusterService: QueryClusterService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.replicaList =[
+      {
+        status: 'success',
+        IP: '192.168.1.1'
+      }
+    ]
     this.clusterDetail = {
       "App_ID":"",
       "App_Name":"",
