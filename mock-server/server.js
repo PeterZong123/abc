@@ -295,6 +295,33 @@ app.get('/dashboard/clustercentre/clustermng/deletecluster', function(req, res){
   res.json(result);
 })
 
+//获取所有副本
+app.get('/dashboard/clustercentre/clustermng/listpods', function(req, res){
+  var result = [
+    {
+      "podip": "",
+      "podname": "test-web-3119570437-5xd0r",
+      "starttime": "2017-11-01T10:58:46Z",
+      "status": "Failed"
+    },
+    {
+        "podip": "121.93.47.27",
+        "podname": "test-web-3119570437-8yugf",
+        "starttime": "2017-11-01T10:58:42Z",
+        "status": "Running"
+    }
+  ]
+  res.json(result);
+})
+
+//查看副本日志
+app.get('/dashboard/clustercentre/clustermng/podlogs', function(req, res){
+  var result ={
+    "log":"1:M 01 Nov 23:13:27.770 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128."
+  }
+  res.json(result);
+})
+
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

@@ -51,7 +51,7 @@
                   </nz-card>
                 </div>
                 <div nz-col [nzSpan]="12">
-                  <nz-card>
+                  <nz-card *ngIf="showCard === 1">
                     <ng-template #title>
                       <strong>副本信息</strong>
                     </ng-template>
@@ -59,19 +59,46 @@
                       <nz-table #nzTable [nzDataSource]="replicaList" [nzPageSize]="10">
                         <thead nz-thead>
                           <tr>
-                            <th>状态</th>
+                            <th>名称</th>
                             <th>IP</th>
+                            <th>状态</th>
+                            <th>开始时间</th>
                             <th>操作</th>
                           </tr>
                         </thead>
                         <tbody nz-tbody>
                           <tr nz-tbody-tr *ngFor="let item of nzTable.data">
+                            <td>{{item.podname}}</td>
+                            <td>{{item.podip}}</td>
                             <td>{{item.status}}</td>
-                            <td>{{item.IP}}</td>
-                            <td></td>
+                            <td>{{item.starttime}}</td>
+                            <td>
+                              <button nz-button [nzType]="'primary'"  (click)="showLog(item.podname)" title="日志">
+                                <i class="anticon anticon-search"></i>
+                              </button>
+                            </td>
                           </tr>
                         </tbody>
                       </nz-table>
+                    </ng-template>
+                  </nz-card>
+                  <nz-card *ngIf="showCard === 2">
+                    <ng-template #title>
+                      <div nz-row>
+                        <button nz-button class="log-back-btn" (click)="showCard = 1">
+                          <i class="anticon anticon-left"></i>
+                        </button>
+                        <strong>日志</strong>
+                      </div>
+                    </ng-template>
+                    <ng-template #body>
+                        <form nz-form>
+                          <div nz-form-item nz-row >
+                            <div nz-form-control>
+                              <nz-input name="log" [nzType]="'textarea'" [(ngModel)]="currentPod.log" [nzRows]="5" [nzReadonly]="true"></nz-input>
+                            </div>
+                          </div>
+                        </form>
                     </ng-template>
                   </nz-card>
                 </div>

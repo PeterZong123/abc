@@ -10,17 +10,13 @@ import { QueryClusterService } from './query-cluster.service';
 })
 export class QueryClusterComponent implements OnInit {
   public clusterDetail: any;
-  public replicaList: Array<any>;
+  public replicaList: Array<any> = [];
+  public currentPod: any = {};
+  public showCard: number = 1;
 
   constructor(private queryClusterService: QueryClusterService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.replicaList =[
-      {
-        status: 'success',
-        IP: '192.168.1.1'
-      }
-    ]
     this.clusterDetail = {
       "App_ID":"",
       "App_Name":"",
@@ -44,9 +40,25 @@ export class QueryClusterComponent implements OnInit {
       "Valid":undefined
     }
     this.activatedRoute.params.subscribe(params => {
-      this.queryClusterService.QueryCluster(params['id']).subscribe( res => {
+      let clusterid = params['id'];
+       //获取集群信息
+      this.queryClusterService.QueryCluster(clusterid).subscribe( res => {
         this.clusterDetail = res;
       })
+      //获取副本列表
+      this.queryClusterService.listpods(clusterid).subscribe( res => {
+        this.replicaList = res;
+      })
+    })
+    
+  }
+
+  //查看副本日志
+  showLog(podname: string){
+    this.showCard = 2;
+    this.currentPod.name = podname;
+    this.queryClusterService.podlogs(podname).subscribe( res =>{
+      this.currentPod.log = res.log;
     })
   }
 
