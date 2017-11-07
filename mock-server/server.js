@@ -322,6 +322,15 @@ app.get('/dashboard/clustercentre/clustermng/podlogs', function(req, res){
   res.json(result);
 })
 
+//修改用户信息
+app.post('/dashboard/usercentre/modify', function(req, res){
+  var result = {
+    "code": 0,  
+    "detail": "modify success"  
+  }
+  res.json(result);
+})
+
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
