@@ -331,6 +331,26 @@ app.post('/dashboard/usercentre/modify', function(req, res){
   res.json(result);
 })
 
+//获取用户列表
+app.get('/dashboard/usercentre/list', function(req, res){
+  var result = [
+    {
+    "id":"1",
+    "name":"test",    
+    "password":"123456",
+    "email":"test@honeywell.com",    
+    "telphone":"13812345678"        
+    },
+    {
+    "id":"2",
+    "name":"test2",    
+    "password":"123456",
+    "email":"test2@honeywell.com",    
+    "telphone":"13888888888"        
+    }
+    ];
+    res.json(result);
+})
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

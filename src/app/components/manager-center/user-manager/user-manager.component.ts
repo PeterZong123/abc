@@ -1,35 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { UserManagerService } from './user-manager.service';
 import swal from 'sweetalert';
 
 @Component({
   selector: 'app-user-manager',
   templateUrl: './user-manager.component.html',
-  styleUrls: ['./user-manager.component.scss']
+  styleUrls: ['./user-manager.component.scss'],
+  providers: [UserManagerService]
 })
 export class UserManagerComponent implements OnInit {
 
-  userList = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-    }, {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-    }, {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-    }
-  ];
+  private userList: Array<any> = [];
 
-  constructor() { }
+  constructor(private userManagerService: UserManagerService) { }
 
   ngOnInit() {
+    this.userManagerService.getUserList().subscribe( res => {
+      this.userList = res;
+    })
   }
 
   deleteUser(id){
