@@ -14,6 +14,8 @@ export class UserModalComponent implements OnInit {
 
   @Input()
   public type: number;
+  @Input()
+  public userInfo: any;
   @Output()
   public userEmitter: EventEmitter<any> = new EventEmitter();
 
@@ -23,9 +25,19 @@ export class UserModalComponent implements OnInit {
   ngOnInit() {
     this.validateForm = this.fb.group({
       'userName':[null,[Validators.required]],
-      'age':[null,[Validators.required,Validators.pattern(/^[1-9]\d?\d?$/)]],
-      'address':[null,[Validators.required]],
+      'password':[null,[Validators.required,]],
+      'email':[null,[Validators.email]],
+      'telphone':[null,[Validators.pattern(/^[1][3,4,5,7,8][0-9]{9}$/)]],
     })
+
+    if(this.type == 2 ){
+      this.validateForm.patchValue({
+        userName: this.userInfo.name,
+        password: this.userInfo.password,
+        email: this.userInfo.email,
+        telphone: this.userInfo.telphone
+      })
+    }
   }
 
   getFormControl(name) {
@@ -34,7 +46,7 @@ export class UserModalComponent implements OnInit {
 
   showModal(contentTpl,footerTpl){
     this.currentModal = this.modal.open({
-      title: '添加用户',
+      title: this.type == 1 ? '添加用户': '修改用户',
       content: contentTpl,
       footer:footerTpl,
     });

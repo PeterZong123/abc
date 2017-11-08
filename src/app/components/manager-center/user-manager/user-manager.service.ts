@@ -19,4 +19,47 @@ export class UserManagerService {
             return Observable.throw('获取用户列表失败!');
         })
     }
+
+    public addUser(json: any): Observable<any>{
+        return this.http.post(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/register',{
+            token: this.token,
+            name: json.name,      
+            password: json.password,
+            email: json.email,
+            telphone: json.telphone
+        })
+        .map((res: Response) => {
+            return res.json();
+        })
+        .catch(( res: Response) => {
+            return Observable.throw('添加用户失败!');
+        })
+    }
+
+    public modifyUser(json: any): Observable<any>{
+        return this.http.post(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/modify',{
+            token: this.token,
+            id: json.id,
+            name: json.name,      
+            password: json.password,
+            email: json.email,
+            telphone: json.telphone
+        })
+        .map((res: Response) => {
+            return res.json();
+        })
+        .catch(( res: Response) => {
+            return Observable.throw('修改用户失败!');
+        })
+    }
+
+    public deleteUser(id: string): Observable<any>{
+        return this.http.get(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/delete?token=' + this.token + '&id=' + id)
+        .map((res: Response) => {
+            return res.json();
+        })
+        .catch(( res: Response) => {
+            return Observable.throw('删除用户失败!');
+        })
+    }
 }

@@ -57,7 +57,7 @@ export class EditProfileComponent implements OnInit {
             if(res.code === 0){
                 this.msg.info('修改用户信息成功!');
             }else{
-                this.msg.info('修改用户信息失败!');
+                this.msg.error('修改用户信息失败!');
             }
         })
     }

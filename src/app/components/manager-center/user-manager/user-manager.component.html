@@ -16,7 +16,7 @@
                   <div nz-col>
                     <nz-card [nzNoHovering]="true">
                       <ng-template #body>
-                        <user-modal type="1" (userEmitter)="addUser()"></user-modal>
+                        <user-modal type="1" (userEmitter)="addUser($event)"></user-modal>
                       </ng-template>
                     </nz-card>
                   </div>
@@ -37,15 +37,15 @@
                             </tr>
                           </thead>
                           <tbody nz-tbody>
-                            <tr nz-tbody-tr *ngFor="let data of nzTable.data">
-                              <td nz-td> {{data.id}} </td>
-                              <td nz-td> {{data.name}} </td>
-                              <td nz-td> {{data.password}} </td>
-                              <td nz-td> {{data.email}} </td>
-                              <td nz-td> {{data.telphone}} </td>
+                            <tr nz-tbody-tr *ngFor="let item of nzTable.data">
+                              <td nz-td> {{item.id}} </td>
+                              <td nz-td> {{item.name}} </td>
+                              <td nz-td> {{item.password}} </td>
+                              <td nz-td> {{item.email}} </td>
+                              <td nz-td> {{item.telphone}} </td>
                               <td nz-td>
-                                <user-modal type="2" (userEmitter)="editUser()"></user-modal>
-                                <button nz-button [nzType]="'primary'" title="删除" (click)="deleteUser(data.id)">
+                                <user-modal type="2" [userInfo]="item" (userEmitter)="editUser($event)"></user-modal>
+                                <button nz-button [nzType]="'primary'" title="删除" (click)="deleteUser(item.id)">
                                   <i class="anticon anticon-delete"></i>
                                 </button>
                               </td>
