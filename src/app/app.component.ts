@@ -7,7 +7,7 @@ import { TranslatorService } from './core/translator/translator.service';
 import { TitleService } from '@core/services/title.service';
 
 @Component({
-  selector: 'body',
+  selector: 'app-root',
   template: `<router-outlet></router-outlet>`
 })
 export class AppComponent implements OnInit {
