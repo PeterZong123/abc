@@ -32,7 +32,10 @@
                   <nz-table #nzTable [nzDataSource]="list" [nzPageSize]="10" [nzLoading]="tableLoading">
                       <thead nz-thead>
                           <tr>
-                            <th>镜像名称</th>
+                            <th>
+                              镜像名称
+                              <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                            </th>
                             <th>版本号</th>
                             <th>构建状态</th>
                             <th>创建时间</th>

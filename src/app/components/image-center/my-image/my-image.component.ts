@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 export class MyImageComponent implements OnInit {
 
   public list: Array<any> = [];
+  public copyList: Array<any> = [];
   public tableLoading: boolean = true;
 
   constructor(private myImageService: MyImageService, private router: Router) {
@@ -22,6 +23,7 @@ export class MyImageComponent implements OnInit {
     this.myImageService.getInfo({}).subscribe(
         res => {
         this.list = res;
+        this.copyList = [...this.list];
         this.tableLoading = false;
       },
         error => {
@@ -31,4 +33,14 @@ export class MyImageComponent implements OnInit {
     );
   }
 
+  //关键词搜索
+  search(e,key){
+    if(e){
+      this.list = this.copyList.filter(function(val){
+        return val[key].indexOf(e) > -1;
+      })
+    }else{
+      this.list = this.copyList;
+    }
+  }
 }

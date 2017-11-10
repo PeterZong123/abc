@@ -29,7 +29,9 @@
                           <thead nz-thead>
                             <tr>
                               <th>ID</th>
-                              <th>姓名</th>
+                              <th>姓名
+                                  <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                              </th>
                               <th>密码</th>
                               <th>邮箱</th>
                               <th>手机号码</th>

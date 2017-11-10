@@ -19,11 +19,14 @@
             <div nz-col>
               <nz-card>
                 <ng-template #body>
-                  <nz-table #nzTable [nzDataSource]="clusterList" [nzPageSize]="10" [nzLoading]="tableLoading">
+                  <nz-table #nzTable [nzDataSource]="list" [nzPageSize]="10" [nzLoading]="tableLoading">
                     <thead nz-thead>
                       <tr>
                         <th>序号</th>
-                        <th>镜像名称</th>
+                        <th nz-th>
+                          镜像名称
+                          <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                        </th>
                       </tr>
                     </thead>
                     <tbody nz-tbody>

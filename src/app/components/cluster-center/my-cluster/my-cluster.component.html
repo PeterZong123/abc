@@ -33,7 +33,10 @@
                   <nz-table #nzTable [nzDataSource]="clusterList" [nzPageSize]="10" [nzLoading]="tableLoading">
                     <thead nz-thead>
                       <tr>
-                        <th>应用名称</th>
+                        <th nz-th>
+                          应用名称
+                          <customer-filter-dropdown (searchEmitter)="search($event,'Cluster_Name')"></customer-filter-dropdown>
+                        </th>
                         <th>配置信息</th>
                         <th>应用规格</th>
                         <th>实例数量</th>

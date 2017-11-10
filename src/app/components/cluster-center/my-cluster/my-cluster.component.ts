@@ -12,6 +12,7 @@ import swal from 'sweetAlert';
 export class MyClusterComponent implements OnInit {
 
   public clusterList: Array<any> = [];
+  public clusterCopyList: Array<any> = [];
   public showScaleModal: Boolean = false;
   public tableLoading: boolean = true;
 
@@ -25,6 +26,7 @@ export class MyClusterComponent implements OnInit {
     this.clusterService.getInfo({}).subscribe(
         res => {
           this.clusterList = res;
+          this.clusterCopyList = [...this.clusterList];
           this.tableLoading = false;
       },
         error => {
@@ -62,6 +64,7 @@ export class MyClusterComponent implements OnInit {
           this.clusterList = this.clusterList.filter(function(val){
             return (val.Cluster_Id !== id);
           })
+          this.clusterCopyList = [...this.clusterList];
           swal(
             '删除成功!',
             '应用文件已经被移除.',
@@ -82,4 +85,14 @@ export class MyClusterComponent implements OnInit {
     console.log(data);
   }
 
+  search(e,key){
+    if(e){
+      this.clusterList = this.clusterCopyList.filter(function(val){
+        return val[key].indexOf(e) > -1;
+      })
+    }else{
+      this.clusterList = this.clusterCopyList;
+    }
+   
+  }
 }

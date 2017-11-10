@@ -11,7 +11,8 @@ import swal from 'sweetalert';
 })
 export class UserManagerComponent implements OnInit {
 
-  private userList: Array<any> = [];
+  public userList: Array<any> = [];
+  public userCopyList: Array<any> = [];
   public tableLoading: boolean = true;
 
   constructor(private userManagerService: UserManagerService, private msg: NzMessageService) { }
@@ -20,6 +21,7 @@ export class UserManagerComponent implements OnInit {
     this.userManagerService.getUserList().subscribe( 
       res => {
         this.userList = res;
+        this.userCopyList = [...this.userList];
         this.tableLoading = false;
     },
       error => {
@@ -76,6 +78,7 @@ export class UserManagerComponent implements OnInit {
           this.userList = this.userList.filter(function(val){
             return (val.id !== id)
           })
+          this.userCopyList = [...this.userList];
           swal(
             '删除成功!',
             '配置文件已经被移除.',
@@ -90,5 +93,15 @@ export class UserManagerComponent implements OnInit {
         }
       }
     })
+  }
+  //关键词搜索
+  search(e,key){
+    if(e){
+      this.userList = this.userCopyList.filter(function(val){
+        return val[key].indexOf(e) > -1;
+      })
+    }else{
+      this.userList = this.userCopyList;
+    }
   }
 }

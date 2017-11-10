@@ -9,7 +9,8 @@ import { BaseImageService } from './base-image.service';
 })
 export class  BaseImageComponent implements OnInit {
 
-  public clusterList: Array<any> = [];
+  public list: Array<any> = [];
+  public copyList: Array<any> = [];
   public tableLoading: boolean = true;
 
   constructor(private baseImageService:BaseImageService) {
@@ -19,7 +20,8 @@ export class  BaseImageComponent implements OnInit {
   ngOnInit() {
     this.baseImageService.getInfo({}).subscribe(
         res => {
-          this.clusterList = res;
+          this.list = res;
+          this.copyList = [...this.list];
           this.tableLoading = false;
       },
         error => {
@@ -27,9 +29,16 @@ export class  BaseImageComponent implements OnInit {
           console.log(error); 
         }
     );
-    //this.activeRoute.params.subscribe(
-    //    params => this.getUsersByPage(params['page'])
-    //);
   }
 
+  //关键词搜索
+  search(e,key){
+    if(e){
+      this.list = this.copyList.filter(function(val){
+        return val[key].indexOf(e) > -1;
+      })
+    }else{
+      this.list = this.copyList;
+    }
+  }
 }
