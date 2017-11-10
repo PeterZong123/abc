@@ -7,7 +7,6 @@ import { AngularWebStorageModule } from 'angular-web-storage';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { TranslateModule } from '@ngx-translate/core';
 //components
-import { PagingComponent } from './paging/paging.component';
 import { EnvModalComponent } from './modal/envModal/env-modal.component';
 import { ConfigModalComponent } from './modal/configModal/config-modal.component';
 import { ScaleClusterModalComponent } from './modal/scaleClusterModal/scale-cluster-modal.component';
@@ -25,7 +24,7 @@ import { ModalHelper } from './helper/modal.helper';
 const DIRECTIVES = [SparklineDirective,FileValidator,FileValueAccessor];
 const PIPES = [ KeysPipe, YNPipe];
 const HELPERS = [ ModalHelper ];
-const COMPONENTS = [PagingComponent,EnvModalComponent,ConfigModalComponent,ScaleClusterModalComponent,UserModalComponent,RoleModalComponent];
+const COMPONENTS = [EnvModalComponent,ConfigModalComponent,ScaleClusterModalComponent,UserModalComponent,RoleModalComponent];
 
 @NgModule({
     imports: [

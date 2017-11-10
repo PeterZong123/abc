@@ -87,12 +87,6 @@
                     </tr>
                     </tbody>
                   </table>
-
-                  <ul class="pagination">
-                    <paging (goPage)="gotoPage($event)"
-                               inputCurrentPage="{{searchParam.pageNo}}"
-                               countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
-                  </ul>
                 </div>
               </div>
 
@@ -157,11 +151,6 @@
                     </tbody>
                   </table>
 
-                  <ul class="pagination">
-                    <paging (goPage)="gotoPage($event)"
-                            inputCurrentPage="{{searchParam2.pageNo}}"
-                            countPerPage="{{searchParam2.pageSize}}" totalCount="{{totalSize2}}"></paging>
-                  </ul>
                 </div>
               </div>
 
