@@ -1,0 +1,7 @@
+<nz-dropdown [nzTrigger]="'click'" [nzClickHide]="false">
+    <i class="anticon anticon-filter" nz-dropdown></i>
+    <div nz-dropdown-custom class="custom-filter-dropdown">
+        <nz-input [nzPlaceHolder]="'Search name'" [(ngModel)]="searchValue"></nz-input>
+        <button nz-button [nzType]="'primary'" (click)="search()"><i class="anticon anticon-search"></i></button>
+    </div>
+</nz-dropdown>

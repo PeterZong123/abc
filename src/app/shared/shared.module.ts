@@ -12,6 +12,7 @@ import { ConfigModalComponent } from './modal/configModal/config-modal.component
 import { ScaleClusterModalComponent } from './modal/scaleClusterModal/scale-cluster-modal.component';
 import { UserModalComponent } from './modal/userModal/user-modal.component';
 import { RoleModalComponent } from './modal/roleModal/role-modal.component';
+import { CustomerFilterDropdownComponent } from './component/customer-filter-dropdown/customer-filter-dropdown.component';
 //directives
 import { SparklineDirective } from './directives/sparkline/sparkline.directive';
 import { FileValidator } from '@shared/fileValidator.directive';
@@ -24,7 +25,7 @@ import { ModalHelper } from './helper/modal.helper';
 const DIRECTIVES = [SparklineDirective,FileValidator,FileValueAccessor];
 const PIPES = [ KeysPipe, YNPipe];
 const HELPERS = [ ModalHelper ];
-const COMPONENTS = [EnvModalComponent,ConfigModalComponent,ScaleClusterModalComponent,UserModalComponent,RoleModalComponent];
+const COMPONENTS = [EnvModalComponent,ConfigModalComponent,ScaleClusterModalComponent,UserModalComponent,RoleModalComponent,CustomerFilterDropdownComponent];
 
 @NgModule({
     imports: [

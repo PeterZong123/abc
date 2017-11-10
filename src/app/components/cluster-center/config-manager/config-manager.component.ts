@@ -11,6 +11,7 @@ import {ConfigManagerService} from './config-manager.service';
 export class ConfigManagerComponent implements OnInit {
 
   public list: Array<any> = [];
+  public copyList: Array<any> = [];
   public tableLoading: boolean = true;
 
   constructor(private configManagerService:ConfigManagerService) {
@@ -21,6 +22,7 @@ export class ConfigManagerComponent implements OnInit {
     this.configManagerService.getInfo({}).subscribe(
         res => {
           this.list = res;
+          this.copyList = [...this.list];
           this.tableLoading = false;
       },
         error => {
@@ -59,6 +61,7 @@ export class ConfigManagerComponent implements OnInit {
           this.list = this.list.filter(function(val){
             return (val.Row_ID !== id)
           })
+          this.copyList = [...this.list];
           swal(
             '删除成功!',
             '配置文件已经被移除.',
@@ -73,6 +76,17 @@ export class ConfigManagerComponent implements OnInit {
         }
       }
     })
+   
+  }
+
+  search(e,key){
+    if(e){
+      this.list = this.copyList.filter(function(val){
+        return val[key].indexOf(e) > -1;
+      })
+    }else{
+      this.list = this.copyList;
+    }
    
   }
 }
