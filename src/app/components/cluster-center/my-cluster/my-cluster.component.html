@@ -30,7 +30,7 @@
             <div nz-col>
               <nz-card>
                 <ng-template #body>
-                  <nz-table #nzTable [nzDataSource]="clusterList" [nzPageSize]="10">
+                  <nz-table #nzTable [nzDataSource]="clusterList" [nzPageSize]="10" [nzLoading]="tableLoading">
                     <thead nz-thead>
                       <tr>
                         <th>应用名称</th>

@@ -15,39 +15,11 @@
 
       <div class="container-fluid">
         <div class="animated fadeIn">
-          <!-- <div class="row">
-            <div class="col-md-12 col-lg-12">
-              <div class="tab-content">
-                <div class="tab-pane active" id="home" role="tabpanel" aria-expanded="true">
-                  <table class="table">
-                    <thead>
-                    <tr>
-                      <th>序号</th>
-                      <th>镜像名称</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let post of clusterList">
-                      <td>{{post.id}}</td>
-                      <td>{{post.name}}</td>
-                    </tr>
-                    </tbody>
-                  </table>
-
-                  <ul class="pagination">
-                    <paging (goPage)="gotoPage($event)"
-                            inputCurrentPage="{{searchParam.pageNo}}"
-                            countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div> -->
           <div nz-row [nzGutter]="16">
             <div nz-col>
               <nz-card>
                 <ng-template #body>
-                  <nz-table #nzTable [nzDataSource]="clusterList" [nzPageSize]="10">
+                  <nz-table #nzTable [nzDataSource]="clusterList" [nzPageSize]="10" [nzLoading]="tableLoading">
                     <thead nz-thead>
                       <tr>
                         <th>序号</th>

@@ -29,7 +29,7 @@
             <div nz-col>
               <nz-card>
                 <ng-template #body>
-                  <nz-table #nzTable [nzDataSource]="list" [nzPageSize]="10">
+                  <nz-table #nzTable [nzDataSource]="list" [nzPageSize]="10" [nzLoading]="tableLoading">
                       <thead nz-thead>
                           <tr>
                             <th>镜像名称</th>
@@ -58,49 +58,6 @@
             </div>
           </div>
           
-          <!-- <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-block">
-                  <a [routerLink]="['../createImage']" class="btn btn-primary">构建新镜像</a>
-                </div>
-                <div class="card-header">*基于已编译的应用构建镜像</div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card card-block">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>镜像名称</th>
-                      <th>版本号</th>
-                      <th>构建状态</th>
-                      <th>创建时间</th>
-                      <th>操作</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let post of list">
-                      <td>{{post.name}}</td>
-                      <td>{{post.tag}}</td>
-                      <td>{{post.buildstatus}}</td>
-                      <td>{{post.createdat}}</td>
-                      <td>
-                        <button type="button" [routerLink]="['../queryImage',post.id]" class="btn btn-sm btn-fa" title="查看">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <ul class="pagination">
-                  <paging (goPage)="gotoPage($event)" inputCurrentPage="{{searchParam.pageNo}}" countPerPage="{{searchParam.pageSize}}" totalCount="{{totalSize}}"></paging>
-                </ul>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
       <!-- /.conainer-fluid -->

@@ -12,12 +12,19 @@ import swal from 'sweetalert';
 export class UserManagerComponent implements OnInit {
 
   private userList: Array<any> = [];
+  public tableLoading: boolean = true;
 
   constructor(private userManagerService: UserManagerService, private msg: NzMessageService) { }
 
   ngOnInit() {
-    this.userManagerService.getUserList().subscribe( res => {
+    this.userManagerService.getUserList().subscribe( 
+      res => {
         this.userList = res;
+        this.tableLoading = false;
+    },
+      error => {
+        this.tableLoading = false;
+        console.log(error);
     })
   }
 

@@ -3,16 +3,6 @@ import {MyImageService} from './my-image.service';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
 
-class SearchParam{
-  public pageNo:Number;
-  public pageSize:Number;
-
-  constructor(){
-    this.pageNo = 1;
-    this.pageSize = 10;
-  }
-}
-
 @Component({
   selector: 'app-my-image',
   templateUrl: './my-image.component.html',
@@ -22,27 +12,23 @@ class SearchParam{
 export class MyImageComponent implements OnInit {
 
   public list: Array<any> = [];
-  public searchParam:SearchParam;
-  public totalSize:Number;
+  public tableLoading: boolean = true;
 
   constructor(private myImageService: MyImageService, private router: Router) {
-     this.searchParam = new SearchParam();
+
   }
 
   ngOnInit() {
     this.myImageService.getInfo({}).subscribe(
         res => {
         this.list = res;
-          this.totalSize = this.list.length;
+        this.tableLoading = false;
       },
         error => {
-        console.log('clusterInfo get');
-        console.log(error); }
+          this.tableLoading = false;
+          console.log(error); 
+      }
     );
   }
 
-  gotoPage(pagingInfo){
-    this.searchParam.pageNo = pagingInfo.currentPage;
-    //this.queryData();
-  }
 }

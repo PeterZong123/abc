@@ -2,16 +2,6 @@ import { Component, OnInit,Inject } from '@angular/core';
 import swal from 'sweetAlert';
 import {ConfigManagerService} from './config-manager.service';
 
-class SearchParam{
-  public pageNo:Number;
-  public pageSize:Number;
-
-  constructor(){
-    this.pageNo = 1;
-    this.pageSize = 10;
-  }
-}
-
 @Component({
   selector: 'app-config-manager',
   templateUrl: './config-manager.component.html',
@@ -21,27 +11,23 @@ class SearchParam{
 export class ConfigManagerComponent implements OnInit {
 
   public list: Array<any> = [];
-  public searchParam:SearchParam;
-  public totalSize:Number;
+  public tableLoading: boolean = true;
 
   constructor(private configManagerService:ConfigManagerService) {
-    this.searchParam = new SearchParam();
+    
   }
 
   ngOnInit() {
     this.configManagerService.getInfo({}).subscribe(
         res => {
           this.list = res;
-          this.totalSize = this.list.length;
+          this.tableLoading = false;
       },
         error => {
-        console.log(error); }
+          this.tableLoading = false;
+          console.log(error); 
+      }
     );
-  }
-
-  gotoPage(pagingInfo){
-    this.searchParam.pageNo = pagingInfo.currentPage;
-    //this.queryData();
   }
 
   //删除配置

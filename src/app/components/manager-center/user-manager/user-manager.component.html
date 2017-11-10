@@ -25,7 +25,7 @@
                   <div nz-col>
                     <nz-card>
                       <ng-template #body>
-                        <nz-table #nzTable [nzDataSource]="userList" [nzPageSize]="10">
+                        <nz-table #nzTable [nzDataSource]="userList" [nzPageSize]="10" [nzLoading]="tableLoading">
                           <thead nz-thead>
                             <tr>
                               <th>ID</th>

@@ -3,16 +3,6 @@ import { ClusterService } from './my-cluster.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetAlert';
 
-class SearchParam{
-  public pageNo:Number;
-  public pageSize:Number;
-
-  constructor(){
-    this.pageNo = 1;
-    this.pageSize = 10;
-  }
-}
-
 @Component({
   selector: 'app-my-cluster',
   templateUrl: './my-cluster.component.html',
@@ -22,29 +12,25 @@ class SearchParam{
 export class MyClusterComponent implements OnInit {
 
   public clusterList: Array<any> = [];
-  public searchParam:SearchParam;
-  public totalSize:Number;
   public showScaleModal: Boolean = false;
+  public tableLoading: boolean = true;
 
   constructor(public clusterService: ClusterService,
               public router: Router,
               public activeRoute: ActivatedRoute) {
-    this.searchParam = new SearchParam();
+
   }
 
   ngOnInit() {
     this.clusterService.getInfo({}).subscribe(
         res => {
           this.clusterList = res;
-          this.totalSize = this.clusterList.length;
+          this.tableLoading = false;
       },
         error => {
-        console.log(error); }
+          this.tableLoading = false;
+          console.log(error); }
     );
-  }
-
-  gotoPage(pagingInfo){
-    this.searchParam.pageNo = pagingInfo.currentPage;
   }
 
   //删除应用
