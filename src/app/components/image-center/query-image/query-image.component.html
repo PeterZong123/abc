@@ -11,7 +11,41 @@
           </ol>
           <div class="container-fluid">
             <div class="animated fadeIn">
-              <div class="row">
+              <div nz-row [nzGutter]="16">
+                <div nz-col>
+                  <nz-card>
+                    <ng-template #title>
+                        <strong>镜像信息</strong>
+                    </ng-template>
+                    <ng-template #body>
+                      <form nz-form>
+                        <div nz-form-item nz-row>
+                            <label for="name">镜像名称</label>
+                            <span class="label-after-span">{{imageDetail.name}}</span>
+                        </div>
+                        <div nz-form-item nz-row>
+                            <label for="description">镜像描述</label>
+                            <span class="label-after-span">{{imageDetail.description}}</span>
+                        </div>
+                        <div nz-form-item nz-row>
+                            <label for="buildfrom">基础镜像</label>
+                            <span class="label-after-span">{{imageDetail.buildfrom}}</span>
+                        </div>
+                        <div nz-form-item nz-row>
+                            <label for="uploadfile">上传已编译好的应用</label>
+                            <span class="label-after-span">{{imageDetail.uploadfile}}</span>
+                        </div>
+                        <div nz-form-item nz-row>
+                            <label for="storepath">指定应用存放路径</label>
+                            <span class="label-after-span">{{imageDetail.storepath}}</span>
+                        </div>
+                      </form>
+                    </ng-template>
+                  </nz-card>
+                </div>
+              </div>
+
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header">
@@ -39,7 +73,7 @@
                     
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
           <!-- /.conainer-fluid -->

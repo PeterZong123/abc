@@ -11,66 +11,66 @@
         </ol>
         <div class="container-fluid">
           <div class="animated fadeIn">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="card">
-                  <div class="card-header">
+              <div nz-col>
+                <nz-card>
+                  <ng-template #title>
                     <strong>配置信息</strong>
-                  </div>
-                  <div class="card-block">
-                    <form enctype="multipart/form-data" class="form-horizontal ">
-                      <div class="form-group row">
-                        <label class="form-control-label col-md-12" for="text-input">配置名称： {{configDetail.name}}</label>
+                  </ng-template>
+                  <ng-template #body>
+                    <form nz-form>
+                      <div nz-form-item nz-row>
+                        <label for="name">配置名称</label>
+                        <span class="label-after-span">{{configDetail.name}}</span>
                       </div>
-                      <div class="form-group row">
-                        <label class="form-control-label col-md-12" for="text-input">配置描述： {{configDetail.des}}</label>
+                      <div nz-form-item nz-row>
+                        <label for="des">配置描述</label>
+                        <span class="label-after-span">{{configDetail.des}}</span>
                       </div>
-                      <div class="form-group row">
-                        <label class="form-control-label col-md-12" for="text-input">系统环境变量：</label>
+                      <div nz-form-item nz-row>
+                        <label for="envlist">系统环境变量</label>
                       </div>
-                      <div class="form-group row table-wrapper" *ngIf="configDetail.envlist.length > 0">
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>序号</th>
-                                <th>环境变量</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let env of configDetail.envlist;let i=index;">
-                                <td>{{i+1}}</td>
-                                <td>{{env['ENV_Key']}}={{env['ENV_Val']}}</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                      <div nz-form-item nz-row>
+                        <nz-table #envlist [nzDataSource]="configDetail.envlist" [nzPageSize]="10" [nzBordered]="true" [nzIsPagination]="false">
+                          <thead nz-thead>
+                            <tr>
+                              <th>序号</th>
+                              <th>环境变量</th>
+                            </tr>
+                          </thead>
+                          <tbody nz-tbody>
+                            <tr nz-tbody-tr *ngFor="let env of envlist.data;let i = index">
+                              <td>{{i+1}}</td>
+                              <td>{{env['ENV_Key']}}={{env['ENV_Val']}}</td>
+                            </tr>
+                          </tbody>
+                        </nz-table>
                       </div>
-                      <div class="form-group row">
-                        <label class="form-control-label col-md-12" for="text-input">配置文件：</label>
+                      <div nz-form-item nz-row>
+                        <label for="configfiles">配置文件</label>
                       </div>
-                      <div class="form-group row table-wrapper" *ngIf="configDetail.configfiles.length > 0">
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>序号</th>
-                                <th>文件名</th>
-                                <th>配置数据</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr *ngFor="let config of configDetail.configfiles;let i=index;">
-                                <td>{{i+1}}</td>
-                                <td>{{config.Config_File}}</td>
-                                <td>{{config.Config_Data}}</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                      <div nz-form-item nz-row>
+                        <nz-table #configfiles [nzDataSource]="configDetail.configfiles" [nzPageSize]="10" [nzBordered]="true" [nzIsPagination]="false">
+                          <thead nz-thead>
+                            <tr>
+                              <th>序号</th>
+                              <th>文件名</th>
+                              <th>配置数据</th>
+                            </tr>
+                          </thead>
+                          <tbody nz-tbody>
+                            <tr nz-tbody-tr *ngFor="let config of configfiles.data;let i = index">
+                              <td>{{i+1}}</td>
+                              <td>{{config.Config_File}}</td>
+                              <td>{{config.Config_Data}}</td>
+                            </tr>
+                          </tbody>
+                        </nz-table>
                       </div>
                     </form>
-                  </div>
-                  
-                </div>
+                  </ng-template>
+                </nz-card>
               </div>
-            </div>
+
           </div>
         </div>
         <!-- /.conainer-fluid -->
