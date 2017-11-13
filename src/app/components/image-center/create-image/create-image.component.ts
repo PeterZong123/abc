@@ -67,4 +67,8 @@ export class CreateImageComponent implements OnInit {
       }
     });
   }
+
+  getFormControl(name) {
+    return this.creatImgForm.controls[ name ];
+  }
 }
