@@ -1,6 +1,7 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
+
 import { FormValidatorService } from '../../../shared/formValidator.service';
 import { DeployNewClusterService } from './deploy-new-cluster.service';
 import { ConfigManagerService } from '../config-manager/config-manager.service';
@@ -18,6 +19,7 @@ export class DeployNewClusterComponent implements OnInit {
   configList: any;
   imageList: any;
   slideValue: number=0;
+  priceInfo: string;
 
   constructor(private deployNewClusterService: DeployNewClusterService,
               private configManagerService: ConfigManagerService,
@@ -82,5 +84,23 @@ export class DeployNewClusterComponent implements OnInit {
   //由于nzStep不同，所以应用规格变化，滑块初始化到默认位置
   flavorChange(){
     this.slideValue = 0;
+  }
+  //滑块改变
+  instanceChange(cluster){
+    let data = cluster.value;
+    let reginonid = Number.parseInt(data.regionid);
+    let flavor = Number.parseInt(data.flavor);
+    let instancenumber = Number.parseInt(data.instancenumber);
+    let storage = Number.parseInt(data.storage);
+    if(reginonid !=undefined && flavor != undefined && instancenumber && storage){
+      this.deployNewClusterService.getClusterprice(data).subscribe((res: any) =>{
+        if(res.code ===0){
+          this.priceInfo = res.detail;
+        }else{
+          console.log('获取应用价格信息失败！')
+        }
+      })
+    } 
+    
   }
 }

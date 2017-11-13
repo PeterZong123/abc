@@ -370,6 +370,15 @@ app.get('/dashboard/usercentre/delete', function(req, res){
   res.json(result);
 })
 
+//获取应用价格信息
+app.post('/dashboard/clustercentre/clustermng/newcluster/clusterprice', function(req, res){
+  var result = {
+    "code": 0,    
+    "detail": "VM price is  RMB-8.33/Hour"  
+  }
+  res.json(result);
+})
+
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
