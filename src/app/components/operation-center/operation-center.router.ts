@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HistoryComponent } from './history/history.component';
 import { LogComponent } from './log/log.component';
 import { MonitorComponent } from './monitor/monitor.component';
+import { MonitorDetailComponent } from './monitor-detail/monitor-detail.component';
 
 const routes: Routes = [
     {
@@ -19,8 +20,18 @@ const routes: Routes = [
     },
     {
         path: 'monitor', //监控告警
-        component: MonitorComponent,
-    },
+        children: [
+            {
+                path: '',
+                component: MonitorComponent,
+            },
+            {
+                path: ':name',
+                component:MonitorDetailComponent,
+            }
+        ]
+    }
+       
 ]
 
 export const OperationRoutes = RouterModule.forChild(routes);

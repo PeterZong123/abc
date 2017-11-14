@@ -8,9 +8,153 @@
         <li class="breadcrumb-item active">监控服务</li>
       </ol>
       <div class="container-fluid">
-        <div class="animated fadeIn">
-
-        </div>
+        <nz-card>
+          <ng-template #body>
+            <div class="animated fadeIn">
+              <nz-tabset>
+                <!--集群列表 -->
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    集群列表
+                  </ng-template>
+                  <nz-table #clusterTable [nzDataSource]="clusterList" [nzPageSize]="10" [nzLoading]="tableLoading">
+                    <thead nz-thead>
+                      <tr>
+                        <th nz-th [nzExpand]="true"></th>
+                        <th>
+                          应用名称                              
+                          <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                        </th>
+                        <th>CPU平均利用率</th>
+                        <th>内存平均利用率</th>
+                        <th>存储平均利用率</th>
+                        <th>网络平均流量</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody nz-tbody>
+                      <ng-template ngFor let-item [ngForOf]="clusterTable.data">
+                          <tr nz-tbody-tr >
+                            <td nz-td [nzExpand]="true">
+                              <nz-row-expand-icon [(nzExpand)]="item.expand"></nz-row-expand-icon>
+                            </td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.cpu}}</td>
+                            <td>{{item.memory}}</td>
+                            <td>{{item.store}}</td>
+                            <td>{{item.net}}</td>
+                            <td>
+                              <button nz-button [nzType]="'primary'" title="查看" [routerLink]="['./',item.name]">
+                                <i class="anticon anticon-search"></i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr nz-tbody-tr *ngIf="item.expand">
+                            <td nz-td></td>
+                            <td nz-td colspan="5">
+                              <nz-table [nzDataSource]="subList" [nzPageSize]="100" [nzLoading]="tableLoading">
+                                <thead nz-thead>
+                                  <tr>
+                                    <th>容器名称</th>
+                                    <th>CPU利用率</th>
+                                    <th>内存利用率</th>
+                                    <th>存储利用率</th>
+                                    <th>网络流量</th>
+                                  </tr>
+                                </thead>
+                                <tbody nz-tbody>
+  
+                                </tbody>
+                              </nz-table>
+                            </td>
+                          </tr>
+                      </ng-template>
+                    </tbody>
+                  </nz-table>
+                </nz-tab>
+                <!--监控告警 -->
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    监控告警
+                  </ng-template>
+                  <button nz-button [nzType]="'primary'" title="创建新告警" style="margin-bottom: 1rem;">
+                    创建新告警
+                  </button>
+                  <nz-table #monitorTable [nzDataSource]="monitorList" [nzPageSize]="10" [nzLoading]="tableLoading">
+                    <thead nz-thead>
+                      <tr>
+                        <th>
+                          告警名称
+                          <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                        </th>
+                        <th>关联应用</th>
+                        <th>触发条件</th>
+                        <th>告警方式</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody nz-tbody>
+                      <tr nz-tbody-tr *ngFor="let item of monitorTable.data">
+                        <td>{{item.name}}</td>
+                        <td>{{item.cluster}}</td>
+                        <td>{{item.condition}}</td>
+                        <td>{{item.way}}</td>
+                        <td>{{item.time}}</td>
+                        <td>
+                          <button nz-button [nzType]="'primary'" title="更新">
+                            <i class="anticon anticon-edit"></i>
+                          </button>
+                          <button nz-button [nzType]="'primary'" title="删除">
+                            <i class="anticon anticon-delete"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </nz-table>
+                </nz-tab>
+                <!--历史告警 -->
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    历史告警
+                  </ng-template>
+                  <nz-table #historyTable [nzDataSource]="historyList" [nzPageSize]="10" [nzLoading]="tableLoading">
+                    <thead nz-thead>
+                      <tr>
+                        <th>发送告警时间</th>
+                        <th>
+                          告警名称
+                          <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                        </th>
+                        <th>触发条件</th>
+                        <th>告警应用</th>
+                        <th>告警容器</th>
+                        <th>告警方式</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody nz-tbody>
+                      <tr nz-tbody-tr *ngFor="let item of historyTable.data">
+                        <td>{{item.sendTime}}</td>
+                        <td>{{item.alarmName}}</td>
+                        <td>{{item.condition}}</td>
+                        <td>{{item.cluster}}</td>
+                        <td>{{item.clusterContainer}}</td>
+                        <td>{{item.way}}</td>
+                        <td>
+                          <button nz-button [nzType]="'primary'" title="查看">
+                            <i class="anticon anticon-search"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </nz-table>
+                </nz-tab>
+              </nz-tabset>
+            </div>
+          </ng-template>
+        </nz-card>
+        
       </div>
       <!-- /.conainer-fluid -->
     </main>
