@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,6 +10,8 @@ export class MonitorDetailComponent implements OnInit {
   
   private appName: string;
   private cpuOption: any;
+  private echartsIntance: any;
+
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -77,4 +79,18 @@ export class MonitorDetailComponent implements OnInit {
     }
   }
   
+  ngAfterViewInit(){
+    this.resizeChart();
+  }
+
+  onChartInit(ec) {
+    this.echartsIntance = ec;
+  }                               
+  
+  resizeChart() {
+    if (this.echartsIntance) {
+      $(this.echartsIntance._dom).height($(window).height()*0.6);
+      this.echartsIntance.resize();
+    }
+  }
 }
