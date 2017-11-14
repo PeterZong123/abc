@@ -9,9 +9,35 @@
         <li class="breadcrumb-item active">{{appName}}</li>
       </ol>
       <div class="container-fluid">
-        <div class="animated fadeIn">
-
-        </div>
+        <nz-card>
+          <ng-template #body>
+            <div class="animated fadeIn">
+              <nz-tabset>
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    CPU
+                  </ng-template>
+                  <div echarts [options]="cpuOption" style="width:1100px;height:500px"></div>
+                </nz-tab>
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    内存
+                  </ng-template>
+                </nz-tab>
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    磁盘
+                  </ng-template>
+                </nz-tab>
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    网络
+                  </ng-template>
+                </nz-tab>
+              </nz-tabset>
+            </div>
+          </ng-template>
+        </nz-card>
       </div>
       <!-- /.conainer-fluid -->
     </main>
