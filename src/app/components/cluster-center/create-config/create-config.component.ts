@@ -1,7 +1,7 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
-import { FormValidatorService } from '../../../shared/formValidator.service';
+// import { FormValidatorService } from '../../../shared/formValidator.service';
 import { CreateConfigService } from './create-config.service';
 
 @Component({
@@ -19,19 +19,16 @@ export class CreateConfigComponent implements OnInit {
 
   constructor(private createConfigService: CreateConfigService,
     private router: Router,
-    private fb: FormBuilder,
-    private fValidatorService: FormValidatorService) {
-      this.formErrors = this.fValidatorService.formErrors;
+    private fb: FormBuilder) {
       this.envList = [];
       this.configList = [];
     }
 
   ngOnInit() {
     this.configForm = this.fb.group({
-    'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-z][a-z0-9.-]*[a-z]$|^[a-z]$/)]],
+      'configname':['',[Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-z][a-z0-9.-]*[a-z]$|^[a-z]$/)]],
       'configdescription':[''],
     })
-    this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
   }
 
   getFormControl(name) {
