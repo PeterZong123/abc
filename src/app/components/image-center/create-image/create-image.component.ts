@@ -3,9 +3,7 @@ import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import {CreateImageService} from './create-image.service';
 import { BaseImageService } from '../base-image/base-image.service';
 import {FileValidator} from '../../../shared/fileValidator.directive';
-import { FormValidatorService } from '../../../shared/formValidator.service';
 import {Router} from '@angular/router';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-create-image',
@@ -22,9 +20,8 @@ export class CreateImageComponent implements OnInit {
   constructor(private createImageService: CreateImageService,
     private baseImageService: BaseImageService,
     private router: Router,
-    private fb: FormBuilder,
-    private fvalidatorService: FormValidatorService) {
-      this.formErrors = fvalidatorService.formErrors;
+    private fb: FormBuilder) {
+      
   }
 
   ngOnInit() {
@@ -35,7 +32,6 @@ export class CreateImageComponent implements OnInit {
      'store_path':[''],
      'app_filename':['',FileValidator.validate],
    });
-   this.creatImgForm.valueChanges.subscribe(() => this.fvalidatorService.onValueChanges(this.creatImgForm));
 
    //获取基础镜像
    this.baseImageService.getInfo({}).subscribe(
