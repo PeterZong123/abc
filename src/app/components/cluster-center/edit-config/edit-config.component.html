@@ -16,7 +16,91 @@
           <div class="container-fluid">
     
             <div class="animated fadeIn">
-              <div class="row">
+              <nz-card>
+                <ng-template #title>
+                    <strong>修改新配置</strong>
+                </ng-template>
+                <ng-template #body>
+                  <form nz-form [formGroup]="configForm" (ngSubmit)="onSubmit(configForm)">
+                    <div nz-form-item nz-row>
+                      <div nz-form-label nz-col>
+                        <label for="configname" nz-form-item-required>配置名称</label>
+                      </div>
+                      <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('configname')">
+                        <nz-input formControlName="configname" [nzId]="'configname'" [nzPlaceHolder]="'配置名称'" [(ngModel)]="configDetail.configname" [nzReadonly]="true"></nz-input>
+                        <div nz-form-explain *ngIf="getFormControl('configname').dirty&&getFormControl('configname').hasError('required')">应用名称不能为空！</div>
+                        <div nz-form-explain *ngIf="getFormControl('configname').dirty&&getFormControl('configname').hasError('maxlength')">应用名称最多为50个字符！</div>
+                        <div nz-form-explain *ngIf="getFormControl('configname').dirty&&getFormControl('configname').hasError('pattern')">应用名称由小写字母开头并结尾，可包含数字、小写字母、“-”和“.”字符！</div>
+                      </div>                        
+                    </div>
+                    <div nz-form-item nz-row>
+                      <div nz-form-label nz-col>
+                        <label for="configdescription">配置描述</label>
+                      </div>
+                      <div nz-form-control nz-col>
+                        <nz-input formControlName="configdescription" [nzId]="'configdescription'" [nzPlaceHolder]="'配置描述'" [(ngModel)]="configDetail.configdescription"></nz-input>
+                      </div>                        
+                    </div>
+                    <div nz-form-item nz-row>
+                      <div nz-form-label nz-col>
+                        <label for="configdescription">系统环境变量</label>
+                        <env-modal (addEnv)="addEnv($event)"></env-modal>
+                      </div>
+                      <div nz-form-control nz-col>
+                          <nz-table #envTable [nzDataSource]="envList" [nzBordered]="true" [nzIsPagination]="false" *ngIf="envList.length > 0">
+                            <thead nz-thead>
+                              <tr>
+                                <th>序号</th>
+                                <th>环境变量</th>
+                                <th>操作</th>
+                              </tr>
+                            </thead>
+                            <tbody nz-tbody>
+                              <tr nz-tbody-tr *ngFor="let item of envTable.data;let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item}}</td>
+                                <td><i class="fa fa-trash" (click)="delEnv(i)"></i></td>
+                              </tr>
+                            </tbody>
+                          </nz-table>
+                      </div>                        
+                    </div>
+                    <div nz-form-item nz-row>
+                      
+                    </div>
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                          <label for="configdescription">配置文件</label>
+                          <config-modal (addConfig)="addConfig($event)"></config-modal>
+                        </div>
+                        <div nz-form-control nz-col>
+                            <nz-table #configTable [nzDataSource]="configList" [nzBordered]="true" [nzIsPagination]="false" *ngIf="configList.length > 0">
+                            <thead nz-thead>
+                              <tr>
+                                <th>序号</th>
+                                <th>文件名</th>
+                                <th>配置数据</th>
+                                <th>操作</th>
+                              </tr>
+                            </thead>
+                            <tbody nz-tbody>
+                              <tr nz-tbody-tr *ngFor="let item of configTable.data;let i=index">
+                                <td>{{i+1}}</td>
+                                <td>{{item.Config_File}}</td>
+                                <td>{{item.Config_Data}}</td>
+                                <td><i class="fa fa-trash" (click)="delConfigfile(i)"></i></td>
+                              </tr>
+                            </tbody>
+                          </nz-table>
+                        </div> 
+                    </div>
+                    <div nz-row [nzType]="'flex'" [nzJustify]="'center'">
+                        <button nz-button [nzType]="'primary'" [disabled]="configForm.invalid">修改</button>
+                    </div>
+                  </form>
+                </ng-template>
+              </nz-card>
+              <!-- <div class="row">
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header">
@@ -95,14 +179,8 @@
                     
                   </div>
                 </div>
-              </div>
-    
-    
+              </div> -->
             </div>
-    
-    
-    
-    
           </div>
           <!-- /.conainer-fluid -->
         </main>

@@ -1,7 +1,6 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
-// import { FormValidatorService } from '../../../shared/formValidator.service';
 import { CreateConfigService } from './create-config.service';
 
 @Component({
