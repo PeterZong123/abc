@@ -34,6 +34,10 @@ export class CreateConfigComponent implements OnInit {
     this.configForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.configForm));
   }
 
+  getFormControl(name) {
+    return this.configForm.controls[ name ];
+  }
+
   onSubmit(config){
     if(config.inValid){
       return;

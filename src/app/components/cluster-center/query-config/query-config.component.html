@@ -30,7 +30,7 @@
                         <label for="envlist">系统环境变量</label>
                       </div>
                       <div nz-form-item nz-row>
-                        <nz-table #envlist [nzDataSource]="configDetail.envlist" [nzPageSize]="10" [nzBordered]="true" [nzIsPagination]="false">
+                        <nz-table #envlist [nzDataSource]="configDetail.envlist" [nzBordered]="true" [nzIsPagination]="false">
                           <thead nz-thead>
                             <tr>
                               <th>序号</th>
@@ -49,7 +49,7 @@
                         <label for="configfiles">配置文件</label>
                       </div>
                       <div nz-form-item nz-row>
-                        <nz-table #configfiles [nzDataSource]="configDetail.configfiles" [nzPageSize]="10" [nzBordered]="true" [nzIsPagination]="false">
+                        <nz-table #configfiles [nzDataSource]="configDetail.configfiles" [nzBordered]="true" [nzIsPagination]="false">
                           <thead nz-thead>
                             <tr>
                               <th>序号</th>
