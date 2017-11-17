@@ -47,7 +47,7 @@
                         <env-modal (addEnv)="addEnv($event)"></env-modal>
                       </div>
                       <div nz-form-control nz-col>
-                          <nz-table #envTable [nzDataSource]="envList" [nzBordered]="true" [nzIsPagination]="false" *ngIf="envList.length > 0">
+                          <nz-table #envTable [nzDataSource]="envList" [nzBordered]="true" [nzIsPagination]="false">
                             <thead nz-thead>
                               <tr>
                                 <th>序号</th>
@@ -74,7 +74,7 @@
                           <config-modal (addConfig)="addConfig($event)"></config-modal>
                         </div>
                         <div nz-form-control nz-col>
-                            <nz-table #configTable [nzDataSource]="configList" [nzBordered]="true" [nzIsPagination]="false" *ngIf="configList.length > 0">
+                            <nz-table #configTable [nzDataSource]="configList" [nzBordered]="true" [nzIsPagination]="false">
                             <thead nz-thead>
                               <tr>
                                 <th>序号</th>
