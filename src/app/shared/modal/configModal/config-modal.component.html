@@ -1,28 +1,33 @@
 <!-- 添加配置文件Modal -->
 <ng-template #modalContent>
-    <form enctype="multipart/form-data" class="form-horizontal " [formGroup]="configForm">
-        <div class="form-group row">
-            <label class="col-md-2 form-control-label" for="text-input">文件名</label>
-            <div class="col-md-10">
-                <input type="text" name="configfile" class="form-control " placeholder="file name and its absolute path" formControlName="configfile" [(ngModel)]="configfile">
-                <small class="txt-error animated fadeIn" *ngIf="formErrors['configfile']">{{formErrors['configfile']}}</small>
+    <form nz-form [formGroup]="configForm">
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="3">
+                <label for="configfile" nz-form-item-required>文件名</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="21" nzHasFeedback [nzValidateStatus]="getFormControl('configfile')">
+                <nz-input formControlName="configfile" [nzId]="'configfile'" [nzPlaceHolder]="'file name and its absolute path'"></nz-input>
+                <div nz-form-explain *ngIf="getFormControl('configfile').dirty&&getFormControl('configfile').hasError('requuired')">请输入配置文件的名称和绝对路径！</div>
+                <div nz-form-explain *ngIf="getFormControl('configfile').dirty&&getFormControl('configfile').hasError('pattern')">配置文件及其路径应为linux合法多级绝对路径，并以文件名结尾；不可以以/等非法路径的字符结尾！</div>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-md-2 form-control-label" for="text-input">配置数据</label>
-            <div class="col-md-10">
-                <textarea rows="8" class="form-control" placeholder="config data" formControlName="configdata" [(ngModel)]="configdata"></textarea>                      
-                <small class="txt-error animated fadeIn" *ngIf="formErrors['configdata']">{{formErrors['configdata']}}</small>
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="3">
+                <label for="configdata" nz-form-item-required>配置数据</label>
             </div>
-        </div>      
+            <div nz-form-control nz-col [nzSpan]="21" nzHasFeedback [nzValidateStatus]="getFormControl('configdata')">
+                <nz-input formControlName="configdata" [nzId]="'configdata'" [nzPlaceHolder]="'config data'" [nzType]="'textarea'" [nzRows]="'8'" ></nz-input>
+                <div nz-form-explain *ngIf="getFormControl('configdata').dirty&&getFormControl('configdata').hasError('required')">配置数据不能为空！</div>
+            </div>
+        </div>
+        
     </form>
 </ng-template>
 <ng-template #modalFooter>
-    <div>
-        <button class="btn btn-sm btn-primary" type="submit" [disabled]="configForm.invalid" (click)="onSubmit(configForm,$event)">
-            <i class="fa fa-dot-circle-o"></i>&nbsp;&nbsp;保存
-        </button>
-    </div>
+    <button nz-button [nzType]="'primary'" [disabled]="configForm.invalid" (click)="onSubmit(configForm,$event)">保存</button>
 </ng-template>
 
 <span class="input-group-addon fa fa-plus" (click)="showConfigModal(modalContent,modalFooter)"></span>
+<!-- <button nz-button [nzType]="'primary'" (click)="showConfigModal(modalContent,modalFooter)">
+    <i class="anticon anticon-plus"></i>
+</button> -->

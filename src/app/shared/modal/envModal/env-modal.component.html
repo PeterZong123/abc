@@ -1,21 +1,23 @@
 <!-- 添加环境变量Modal -->
 <ng-template #modalContent>
-    <form enctype="multipart/form-data" class="form-horizontal " [formGroup]="configForm">
-        <div class="form-group row">
-            <label class="col-md-2 form-control-label" for="text-input">环境变量</label>
-            <div class="col-md-10">
-                <input type="text" name="envvariable" class="form-control" placeholder="key = value" formControlName="envvariable" [(ngModel)]="envvariable">
-                <small class="txt-error animated fadeIn" *ngIf="formErrors['envvariable']">{{formErrors['envvariable']}}</small>
+    <form nz-form [formGroup]="configForm">
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSpan]="4">
+                <label for="envvariable" nz-form-item-required>环境变量</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="20" nzHasFeedback [nzValidateStatus]="getFormControl('envvariable')">
+                <nz-input formControlName="envvariable" [nzId]="'envvariable'" [nzPlaceHolder]="'环境变量'"></nz-input>
+                <div nz-form-explain *ngIf="getFormControl('envvariable').dirty&&getFormControl('envvariable').hasError('required')">请输入系统环境变量！</div>
+                <div nz-form-explain *ngIf="getFormControl('envvariable').dirty&&getFormControl('envvariable').hasError('pattern')">环境变量格式必须为键值对格式输入！</div>
             </div>
         </div>
     </form>
 </ng-template>
 <ng-template #modalFooter>
-    <div>
-        <button class="btn btn-sm btn-primary" type="submit" [disabled]="configForm.invalid" (click)="onSubmit(configForm,$event)">
-            <i class="fa fa-dot-circle-o"></i>&nbsp;&nbsp;保存
-        </button>
-    </div>
+    <button nz-button [nzType]="'primary'" [disabled]="configForm.invalid" (click)="onSubmit(configForm,$event)">保存</button>
 </ng-template>
 
 <span class="input-group-addon fa fa-plus" (click)="showEnvModal(modalContent,modalFooter)"></span>
+<!-- <button nz-button [nzType]="'primary'" (click)="showEnvModal(modalContent,modalFooter)">
+    <i class="anticon anticon-plus"></i>
+</button> -->
