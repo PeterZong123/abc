@@ -11,6 +11,9 @@ export class RoleModalComponent implements OnInit {
 
   public validateForm: FormGroup;
   public currentModal;
+  public imageOptions: Array<any>;
+  public configOptions: Array<any>;
+  public clusterOptions: Array<any>;
 
   @Input()
   public type: number;
@@ -22,10 +25,30 @@ export class RoleModalComponent implements OnInit {
 
   ngOnInit() {
     this.validateForm = this.fb.group({
-      'userName':[null,[Validators.required]],
-      'age':[null,[Validators.required,Validators.pattern(/^[1-9]\d?\d?$/)]],
-      'address':[null,[Validators.required]],
+      'name':[null,[Validators.required]],
+      'description':[null],
+      'imageOptions':[null],
+      'configOptions':[null],
+      'clusterOptions':[null],
     })
+    this.imageOptions = [
+      { label: 'create', value: 'create', checked: false },
+      { label: 'read', value: 'read', checked: false},
+      { label: 'update', value: 'update', checked: false },
+      { label: 'delete', value: 'delete', checked: false }
+    ];
+    this.configOptions = [
+      { label: 'create', value: 'create', checked: false },
+      { label: 'read', value: 'read', checked: false},
+      { label: 'update', value: 'update', checked: false },
+      { label: 'delete', value: 'delete', checked: false }
+    ];
+    this.clusterOptions = [
+      { label: 'create', value: 'create', checked: false },
+      { label: 'read', value: 'read', checked: false},
+      { label: 'update', value: 'update', checked: false },
+      { label: 'delete', value: 'delete', checked: false }
+    ];
   }
 
   getFormControl(name) {
@@ -40,10 +63,36 @@ export class RoleModalComponent implements OnInit {
     });
   }
  
+  setPermissin(validateForm){
+    let formValue = validateForm.value;
+    formValue.permission = {
+      CICD: "",
+      ClusterConfiguration: "",
+      Cluster: ""
+    };
+    formValue.imageOptions.forEach(element => {
+      if(element.checked){
+        formValue.permission['CICD'] += element.value + ",";
+      }
+    });
+    formValue.configOptions.forEach(element => {
+      if(element.checked){
+        formValue.permission['configOptions'] += element.value + ",";
+      }
+    });
+    formValue.clusterOptions.forEach(element => {
+      if(element.checked){
+        formValue.permission['ClusterConfiguration'] += element.value + ",";
+      }
+    });
+  }
+
   onSubmit(validateForm){
     if(validateForm.inValid){
       return;
     }
+   
+    this.setPermissin(validateForm);
     this.currentModal.destroy('onOk');
     this.currentModal = null;
     this.roleEmitter.emit(validateForm.value);
