@@ -2,7 +2,6 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms";
 
-import { FormValidatorService } from '../../../shared/formValidator.service';
 import { DeployNewClusterService } from './deploy-new-cluster.service';
 import { ConfigManagerService } from '../config-manager/config-manager.service';
 import { MyImageService } from '../../image-center/my-image/my-image.service';
@@ -20,14 +19,13 @@ export class DeployNewClusterComponent implements OnInit {
   imageList: any;
   slideValue: number=0;
   priceInfo: string;
+  flavorValue: string;
 
   constructor(private deployNewClusterService: DeployNewClusterService,
               private configManagerService: ConfigManagerService,
               private myImageService: MyImageService,
               private router: Router,
-              private fb: FormBuilder,
-              private fValidatorService: FormValidatorService) {
-      this.formErrors = fValidatorService.formErrors;
+              private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -44,7 +42,6 @@ export class DeployNewClusterComponent implements OnInit {
       'storagepath':[''],
       'cmd':['',Validators.required]
     })
-    this.clusterForm.valueChanges.subscribe(() => this.fValidatorService.onValueChanges(this.clusterForm));
 
     //获取配置数据
     this.configManagerService.getInfo({}).subscribe(res => {
@@ -55,9 +52,16 @@ export class DeployNewClusterComponent implements OnInit {
     //获取应用数据
     this.myImageService.getInfo({}).subscribe( res => {
       this.imageList = res;
+      this.imageList.forEach(element => {
+        element.tagName = element.name + ":" + element.tag;
+      });
     }, error => {
       console.log(error);
     })
+  }
+
+  getFormControl(name) {
+    return this.clusterForm.controls[ name ];
   }
 
   onSubmit(cluster){
