@@ -379,6 +379,60 @@ app.post('/dashboard/clustercentre/clustermng/newcluster/clusterprice', function
   res.json(result);
 })
 
+//添加角色
+app.post('/dashboard/usercentre/registerrole', function(req, res){
+  var result = {
+    "code": 0,    
+    "detail": "register success"    
+  }
+  res.json(result);
+})
+
+//修改角色
+app.post('/dashboard/usercentre/modifyrole', function(req, res){
+  var result = {
+    "code": 0,    
+    "detail": "modify success"    
+  }
+  res.json(result);
+})
+
+//删除角色
+app.post('/dashboard/usercentre/deleterole', function(req, res){
+  var result = {
+    "code": 0,    
+    "detail": "delete success"    
+  }
+  res.json(result);
+})
+
+//获取角色列表
+app.get('/dashboard/usercentre/listrole', function(req, res){
+  var result = [
+    {
+        "id":"1",
+        "name":"test",    
+        "description":"testrole",
+        "permission": {
+            "CICD": "read",
+            "ClusterConfiguration": "read",
+            "Cluster": "read"
+        }       
+    },
+    {
+        "id":"2",
+        "name":"test2",    
+        "description":"test2role",
+        "permission": {
+            "CICD": "read",
+            "ClusterConfiguration": "read",
+            "Cluster": "read"
+        }       
+    }
+  ]
+  res.json(result);
+})
+
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

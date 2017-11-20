@@ -16,7 +16,7 @@
                 <div nz-col>
                   <nz-card [nzNoHovering]="true">
                     <ng-template #body>
-                      <role-modal type="1" (roleEmitter)="addRole()"></role-modal>
+                      <role-modal type="1" (roleEmitter)="addRole($event)"></role-modal>
                     </ng-template>
                   </nz-card>
                 </div>
@@ -25,20 +25,23 @@
                 <div nz-col>
                   <nz-card>
                     <ng-template #body>
-                      <nz-table #nzTable [nzDataSource]="userList" [nzPageSize]="10" [nzLoading]="tableLoading">
+                      <nz-table #nzTable [nzDataSource]="roleList" [nzPageSize]="10" [nzLoading]="tableLoading">
                         <thead nz-thead>
                           <tr>
-                            <th>角色名</th>
-                            <th>年龄</th>
-                            <th>地址</th>
+                            <th>
+                              角色名
+                              <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                            </th>
+                            <th>描述</th>
+                            <th>权限</th>
                             <th>操作</th>
                           </tr>
                         </thead>
                         <tbody nz-tbody>
                           <tr nz-tbody-tr *ngFor="let data of nzTable.data">
                             <td nz-td> {{data.name}} </td>
-                            <td nz-td> {{data.age}} </td>
-                            <td nz-td> {{data.address}} </td>
+                            <td nz-td> {{data.description}} </td>
+                            <td nz-td> {{data.permission}} </td>
                             <td nz-td>
                               <role-modal type="2" (roleEmitter)="editRole()"></role-modal>
                               <button nz-button [nzType]="'primary'" title="删除" (click)="deleteRole(data.id)">

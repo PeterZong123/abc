@@ -72,17 +72,29 @@ export class RoleModalComponent implements OnInit {
     };
     formValue.imageOptions.forEach(element => {
       if(element.checked){
-        formValue.permission['CICD'] += element.value + ",";
+        if(formValue.permission['CICD'] == ""){
+          formValue.permission['CICD'] = element.value;
+        }else{
+          formValue.permission['CICD'] += "," + element.value;
+        }
       }
     });
     formValue.configOptions.forEach(element => {
       if(element.checked){
-        formValue.permission['configOptions'] += element.value + ",";
+        if( formValue.permission['ClusterConfiguration'] == ""){
+          formValue.permission['ClusterConfiguration'] =  element.value;
+        }else{
+          formValue.permission['ClusterConfiguration'] += "," + element.value;
+        }
       }
     });
     formValue.clusterOptions.forEach(element => {
       if(element.checked){
-        formValue.permission['ClusterConfiguration'] += element.value + ",";
+        if(formValue.permission['Cluster'] ==""){
+          formValue.permission['Cluster'] = element.value;
+        }else{
+          formValue.permission['Cluster'] += "," + element.value ;
+        }
       }
     });
   }

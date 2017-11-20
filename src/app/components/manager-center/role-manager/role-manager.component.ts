@@ -1,35 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert';
+import { NzMessageService } from 'ng-zorro-antd';
+import { RoleManagerService } from './role-manager.service';
 
 @Component({
   selector: 'app-role-manager',
   templateUrl: './role-manager.component.html',
-  styleUrls: ['./role-manager.component.scss']
+  styleUrls: ['./role-manager.component.scss'],
+  providers: [RoleManagerService]
 })
 export class RoleManagerComponent implements OnInit {
 
-  userList = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-    }, {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-    }, {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-    }
-  ];
+  public roleList: Array<any> = [];
+  public roleCopyList: Array<any> = [];
+  public tableLoading: boolean = true;
   
-  constructor() { }
+  constructor(private roleManagerService: RoleManagerService, private msg: NzMessageService) { }
 
   ngOnInit() {
+    this.roleManagerService.getRoleList().subscribe(res => {
+      this.roleList = res;
+      this.roleCopyList = [...this.roleList];
+      this.tableLoading = false;
+    })
+  }
+
+  addRole(e){
+    console.log(e);
   }
 
   deleteRole(id){
@@ -51,17 +48,16 @@ export class RoleManagerComponent implements OnInit {
     })
     .then(willDelete => {
       if(willDelete){
-        swal(
-          '删除成功!',
-          '配置文件已经被移除.',
-          'success'
-        )
+        return this.roleManagerService.deleteRole(id).toPromise();
       }
     })
     .then(res => {
       if(res){
         if(res.code === 0){
-         
+          this.roleList = this.roleList.filter(function(val){
+            return (val.id !== id)
+          })
+          this.roleCopyList = [...this.roleList];
           swal(
             '删除成功!',
             '配置文件已经被移除.',
@@ -76,5 +72,16 @@ export class RoleManagerComponent implements OnInit {
         }
       }
     })
+  }
+
+  //关键词搜索
+  search(e,key){
+    if(e){
+      this.roleList = this.roleCopyList.filter(function(val){
+        return val[key].indexOf(e) > -1;
+      })
+    }else{
+      this.roleList = this.roleCopyList;
+    }
   }
 }
