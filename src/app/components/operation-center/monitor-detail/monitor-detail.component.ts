@@ -8,9 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MonitorDetailComponent implements OnInit {
   
-  private appName: string;
-  private cpuOption: any;
-  private echartsIntance: any;
+  public appName: string;
+  public cpuOption: any;
+  public echartsIntance: any;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
