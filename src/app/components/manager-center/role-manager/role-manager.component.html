@@ -77,7 +77,7 @@
                               </button>
                             </td>
                             <td nz-td>
-                              <role-modal type="2" (roleEmitter)="editRole()"></role-modal>
+                              <role-modal type="2" [roleData]="data" (roleEmitter)="editRole($event)"></role-modal>
                               <button nz-button [nzType]="'primary'" title="删除" (click)="deleteRole(data.id)">
                                 <i class="anticon anticon-delete"></i>
                               </button>

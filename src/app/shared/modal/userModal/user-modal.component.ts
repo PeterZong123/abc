@@ -58,6 +58,9 @@ export class UserModalComponent implements OnInit {
     }
     this.currentModal.destroy('onOk');
     this.currentModal = null;
+    if(this.type == 2){
+      validateForm.value.id = this.userInfo.id;
+    }
     this.userEmitter.emit(validateForm.value);
   }
   

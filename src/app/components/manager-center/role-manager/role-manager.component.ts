@@ -27,7 +27,23 @@ export class RoleManagerComponent implements OnInit {
   }
 
   addRole(e){
-    console.log(e);
+    this.roleManagerService.addRole(e).subscribe(res => {
+      if(res.code === 0){
+        this.msg.info('添加角色成功!')
+      }else{
+        this.msg.info('添加角色失败!')
+      }
+    })
+  }
+
+  editRole(e){
+    this.roleManagerService.modifyRole(e).subscribe(res => {
+      if(res.code === 0){
+        this.msg.info('修改角色成功!')
+      }else{
+        this.msg.info('修改角色失败!')
+      }
+    })
   }
 
   deleteRole(id){

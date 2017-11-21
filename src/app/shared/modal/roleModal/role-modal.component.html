@@ -39,7 +39,8 @@
 </ng-template>
 <ng-template #modalFooter>
     <button nz-button [nzType]="'primary'" [disabled]="validateForm.pristine || validateForm.invalid" (click)="onSubmit(validateForm)">
-        <span>新增角色</span>
+        <span *ngIf="type == 1">新增角色</span>
+        <span *ngIf="type == 2">修改</span>
     </button>
 </ng-template>
 

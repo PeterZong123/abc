@@ -17,6 +17,8 @@ export class RoleModalComponent implements OnInit {
 
   @Input()
   public type: number;
+  @Input()
+  public roleData: any;
   @Output()
   public roleEmitter: EventEmitter<any> = new EventEmitter();
 
@@ -32,23 +34,40 @@ export class RoleModalComponent implements OnInit {
       'clusterOptions':[null],
     })
     this.imageOptions = [
-      { label: 'create', value: 'create', checked: false },
-      { label: 'read', value: 'read', checked: false},
-      { label: 'update', value: 'update', checked: false },
-      { label: 'delete', value: 'delete', checked: false }
+      { label: 'create', value: 'create', checked: this.setCheckStatus('CICD','create')},
+      { label: 'read', value: 'read', checked: this.setCheckStatus('CICD','read')},
+      { label: 'update', value: 'update', checked: this.setCheckStatus('CICD','update')},
+      { label: 'delete', value: 'delete', checked: this.setCheckStatus('CICD','delete')}
     ];
     this.configOptions = [
-      { label: 'create', value: 'create', checked: false },
-      { label: 'read', value: 'read', checked: false},
-      { label: 'update', value: 'update', checked: false },
-      { label: 'delete', value: 'delete', checked: false }
+      { label: 'create', value: 'create', checked: this.setCheckStatus('ClusterConfiguration','create') },
+      { label: 'read', value: 'read', checked: this.setCheckStatus('ClusterConfiguration','read')},
+      { label: 'update', value: 'update', checked: this.setCheckStatus('ClusterConfiguration','update') },
+      { label: 'delete', value: 'delete', checked: this.setCheckStatus('ClusterConfiguration','delete') }
     ];
     this.clusterOptions = [
-      { label: 'create', value: 'create', checked: false },
-      { label: 'read', value: 'read', checked: false},
-      { label: 'update', value: 'update', checked: false },
-      { label: 'delete', value: 'delete', checked: false }
+      { label: 'create', value: 'create', checked: this.setCheckStatus('Cluster','create') },
+      { label: 'read', value: 'read', checked: this.setCheckStatus('Cluster','read')},
+      { label: 'update', value: 'update', checked: this.setCheckStatus('Cluster','update')},
+      { label: 'delete', value: 'delete', checked: this.setCheckStatus('Cluster','delete') }
     ];
+    //如果是修改modal,需要赋值
+    if(this.type == 2){
+      console.log(this.roleData);
+      this.validateForm.patchValue({
+        'name': this.roleData.name,
+        'description': this.roleData.description,
+      })
+    }
+  }
+
+  //检测权限勾选状态
+  setCheckStatus(key,target){
+    if(this.type == 1){
+      return false;
+    }else{
+      return this.roleData.permission[key].indexOf(target) > -1 ? true: false;
+    }
   }
 
   getFormControl(name) {
@@ -63,7 +82,7 @@ export class RoleModalComponent implements OnInit {
     });
   }
  
-  setPermissin(validateForm){
+  setPermission(validateForm){
     let formValue = validateForm.value;
     formValue.permission = {
       CICD: "",
@@ -103,10 +122,12 @@ export class RoleModalComponent implements OnInit {
     if(validateForm.inValid){
       return;
     }
-   
-    this.setPermissin(validateForm);
+    this.setPermission(validateForm);
     this.currentModal.destroy('onOk');
     this.currentModal = null;
+    if(this.type == 2){
+      validateForm.value.id = this.roleData.id;
+    }
     this.roleEmitter.emit(validateForm.value);
   }
   
