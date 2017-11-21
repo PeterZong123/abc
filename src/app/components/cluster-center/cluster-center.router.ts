@@ -7,7 +7,7 @@ import { QueryConfigComponent } from './query-config/query-config.component';
 import { QueryClusterComponent } from './query-cluster/query-cluster.component';
 import { EditConfigComponent } from './edit-config/edit-config.component';
 import { LoadBalanceComponent } from './load-balance/loadbalance.component';
-
+import { EditClusterComponent } from './edit-cluster/edit-cluster.component';
 const routes: Routes = [
   // {
   //   path: '',
@@ -51,6 +51,10 @@ const routes: Routes = [
         path: 'queryCluster/:id', //我的应用--查询应用
         component: QueryClusterComponent,
       },
+      {
+        path: 'editCluster/:id', //我的应用--修改应用
+        component: EditClusterComponent
+      }
     ]
   },
   

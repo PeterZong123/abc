@@ -42,7 +42,7 @@ export class QueryClusterComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       let clusterid = params['id'];
        //获取集群信息
-      this.queryClusterService.QueryCluster(clusterid).subscribe( res => {
+      this.queryClusterService.queryCluster(clusterid).subscribe( res => {
         this.clusterDetail = res;
       })
       //获取副本列表

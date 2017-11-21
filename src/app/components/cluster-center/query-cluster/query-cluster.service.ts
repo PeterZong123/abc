@@ -12,7 +12,7 @@ export class QueryClusterService {
     this.token = localStorage.getItem('token');
   }
 
-  QueryCluster(clusterid: string){
+  queryCluster(clusterid: string){
     return this.http.get(AppUtil.BACKEND_API_ROOT_URL + '/dashboard/clustercentre/clustermng/querycluster?token='+this.token+'&clusterid='+clusterid)
     .map((res: Response) =>{
       return res.json();

@@ -1,0 +1,254 @@
+<div class="app flex-row align-items-center">
+
+  <div class="app-body">
+
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- Breadcrumb -->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">应用中心</li>
+        <li class="breadcrumb-item active">我的应用</li>
+        <li class="breadcrumb-item active">修改应用</li>
+      </ol>
+
+
+      <div class="container-fluid">
+
+        <div class="animated fadeIn">
+            <nz-card>
+              <ng-template #title>
+                  <strong>修改应用</strong>
+              </ng-template>
+              <ng-template #body>
+                  <form nz-form (ngSubmit)="onSubmit(clusterForm)" [formGroup]="clusterForm">
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="clustername" nz-form-item-required>镜像名称</label>
+                        </div>
+                        <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('clustername')">
+                          <nz-input formControlName="clustername" [nzId]="'clustername'" [nzPlaceHolder]="'cluster name'"></nz-input>
+                          <div nz-form-explain *ngIf="getFormControl('clustername').dirty&&getFormControl('clustername').hasError('required')">应用名称不能为空！</div>
+                          <div nz-form-explain *ngIf="getFormControl('clustername').dirty&&getFormControl('clustername').hasError('maxlength')">应用名称最多为50个字符！</div>
+                          <div nz-form-explain *ngIf="getFormControl('clustername').dirty&&getFormControl('clustername').hasError('pattern')">应用名称由小写字母开头并结尾，可包含数字、小写字母、“-”和“.”字符！</div>
+                        </div>
+                      </div>
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="clusterdescription">应用描述</label>
+                        </div>
+                        <div nz-form-control nz-col>
+                          <nz-input formControlName="clusterdescription" [nzId]="'clusterdescription'" [nzPlaceHolder]="'cluster description'"></nz-input>
+                        </div>
+                      </div>
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="imageid" nz-form-item-required>选择镜像</label>
+                        </div>
+                        <div nz-form-control nz-col [nzValidateStatus]="getFormControl('imageid')">
+                          <nz-select formControlName="imageid">
+                              <nz-option  [nzValue]="item.id" [nzLabel]="item.tagName" *ngFor="let item of imageList "></nz-option>
+                          </nz-select>
+                          <div nz-form-explain *ngIf="getFormControl('imageid').dirty&&getFormControl('imageid').hasError('required')">请选择一个镜像！</div>
+                        </div>
+                      </div>
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="configid" nz-form-item-required>挂载配置信息</label>
+                        </div>
+                        <div nz-form-control nz-col [nzValidateStatus]="getFormControl('configid')">
+                            <nz-select formControlName="configid">
+                                <nz-option  [nzValue]="item.Row_ID" [nzLabel]="item.Config_Name" *ngFor="let item of configList "></nz-option>
+                            </nz-select>
+                            <div nz-form-explain *ngIf="getFormControl('configid').dirty&&getFormControl('configid').hasError('required')">请选择挂载的配置信息！</div>
+                        </div>
+                      </div>
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="regionid" nz-form-item-required>部署区域</label>
+                        </div>
+                        <div nz-form-control nz-col [nzValidateStatus]="getFormControl('regionid')">
+                            <nz-select formControlName="regionid">
+                                <nz-option  [nzValue]="0" [nzLabel]="'上海'"></nz-option>
+                                <nz-option  [nzValue]="1" [nzLabel]="'北京'"></nz-option>
+                                <nz-option  [nzValue]="2" [nzLabel]="'广州'"></nz-option>
+                                <nz-option  [nzValue]="3" [nzLabel]="'香港'"></nz-option>
+                                <nz-option  [nzValue]="4" [nzLabel]="'多伦多'"></nz-option>
+                            </nz-select>
+                            <div nz-form-explain *ngIf="getFormControl('regionid').dirty&&getFormControl('regionid').hasError('required')">请选择部署区域！</div>
+                        </div>
+                      </div>
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="flavor" nz-form-item-required>硬件规格</label>
+                        </div>
+                        <div nz-form-control nz-col [nzValidateStatus]="getFormControl('flavor')">
+                            <nz-select formControlName="flavor" [(ngModel)]="flavorValue" (ngModelChange)="flavorChange()">
+                                <nz-option  [nzValue]="1" [nzLabel]="'1核2G'"></nz-option>
+                                <nz-option  [nzValue]="2" [nzLabel]="'2核4G'"></nz-option>
+                                <nz-option  [nzValue]="3" [nzLabel]="'3核6G'"></nz-option>
+                                <nz-option  [nzValue]="4" [nzLabel]="'4核8G'"></nz-option>
+                            </nz-select>
+                            <div nz-form-explain *ngIf="getFormControl('flavor').dirty&&getFormControl('flavor').hasError('required')">请选择硬件规格！</div>
+                        </div>
+                      </div>
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="instancenumber" nz-form-item-required>副本数量</label>
+                            <span> {{priceInfo}} </span>
+                        </div>
+                        <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('instancenumber')">
+                            <div nz-row>
+                              <div nz-col>
+                                  <nz-slider [nzStep]="flavorValue==2 ? 3: 2" formControlName="instancenumber" [(ngModel)]="slideValue" (ngModelChange)="instanceChange(clusterForm)"></nz-slider>
+                              </div>
+                            </div>
+                            <div nz-form-explain *ngIf="getFormControl('instancenumber').dirty&&getFormControl('instancenumber').hasError('min')">副本数量不能为零！</div>
+                        </div>
+                      </div>
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="text-input" nz-form-item-required>持久化存储</label>
+                        </div>
+                        <div nz-form-control nz-col>
+                            <div nz-row [nzGutter]="16">
+                              <div nz-col [nzSpan]="16">
+                                <nz-input formControlName="storage" [nzId]="'storage'" [nzPlaceHolder]="'30g'"></nz-input>
+                              </div>
+                              <div nz-col [nzSpan]="8" >
+                                <nz-input formControlName="storagepath" [nzId]="'storagepath'" [nzPlaceHolder]="'挂载位置，例如/home/appuser'"></nz-input>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div nz-form-item nz-row>
+                        <div nz-form-label nz-col>
+                            <label for="cmd">实例启动命令</label>
+                        </div>
+                        <div nz-form-control nz-col>
+                          <nz-input formControlName="cmd" [nzId]="'cmd'" [nzPlaceHolder]="'run cmd'"></nz-input>
+                        </div>
+                      </div>
+                      <div nz-row [nzType]="'flex'" [nzJustify]="'center'">
+                        <button nz-button [nzType]="'primary'" [disabled]="clusterForm.invalid || clusterForm.pristine">开始部署</button>
+                      </div>
+                  </form>
+              </ng-template>
+            </nz-card>
+          <!-- <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <strong>部署新应用</strong>
+                </div>
+                <div class="card-block">
+                  <form enctype="multipart/form-data" class="form-horizontal" (ngSubmit)="onSubmit(clusterForm)" [formGroup]="clusterForm">
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">应用名称</label>
+                      <div class="col-md-9">
+                        <input type="text" name="clustername" class="form-control" placeholder="cluster name" formControlName="clustername">
+                        <small *ngIf="formErrors['clustername']" class="txt-error animated fadeIn">{{formErrors['clustername']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">应用描述</label>
+                      <div class="col-md-9">
+                        <input type="text" name="clusterdescription" class="form-control" placeholder="cluster description" formControlName="clusterdescription">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">选择镜像</label>
+                      <div class="col-md-9">
+                        <select name="imageid" class="form-control" size="1" formControlName="imageid">
+                          <option value="{{image.id}}" *ngFor="let image of imageList">{{image.name}} : {{image.tag}}</option>
+                        </select>
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['imageid']">{{formErrors['imageid']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">挂载配置信息</label>
+                      <div class="col-md-9">
+                        <select name="configid" class="form-control" size="1" formControlName="configid">
+                            <option value="{{config.Row_ID}}" *ngFor="let config of configList">{{config.Config_Name}}</option>
+                        </select>
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['configid']">{{formErrors['configid']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">部署区域</label>
+                      <div class="col-md-9">
+                        <select name="regionid" class="form-control" size="1" formControlName="regionid">
+                          <option value="0">上海</option>
+                          <option value="1">北京</option>
+                          <option value="2">广州</option>
+                          <option value="3">香港</option>
+                          <option value="3">多伦多</option>
+                        </select>
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['regionid']">{{formErrors['regionid']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">硬件规格</label>
+                      <div class="col-md-9">
+                        <select name="flavor" class="form-control" size="1" formControlName="flavor" #flavor (ngModelChange)="flavorChange()">
+                          <option value="1">1核2G</option>
+                          <option value="2">2核4G</option>
+                          <option value="3">3核6G</option>
+                          <option value="4">4核8G</option>
+                        </select>
+                        <small class="txt-error animated fadeIn" *ngIf="formErrors['flavor']">{{formErrors['flavor']}}</small>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">副本数量</label>
+                      <div class="col-md-9">
+                        <div nz-row>
+                          <div nz-col [nzSpan]="20">
+                              <nz-slider [nzStep]="flavor.value==2 ? 3: 2" formControlName="instancenumber" [(ngModel)]="slideValue" (ngModelChange)="instanceChange(clusterForm)"></nz-slider>
+                              <small class="txt-error animated fadeIn" *ngIf="formErrors['instancenumber']">{{formErrors['instancenumber']}}</small>
+                          </div>
+                          <div nz-col [nzSpan]="4">
+                              {{priceInfo}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">持久化存储</label>
+                      <div class="col-md-4">
+                        <input type="text" name="storage" class="form-control" placeholder="30g" formControlName="storage">
+                      </div>
+                      <div class="col-md-5">
+                        <input type="text" name="storagepath" class="form-control" placeholder="挂载位置，例如/home/appuser" formControlName="storagepath">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-md-3 form-control-label" for="text-input">实例启动命令</label>
+                      <div class="col-md-9">
+                        <input type="text" name="cmd" class="form-control" placeholder="run cmd" formControlName="cmd">
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-sm btn-primary" [disabled]="clusterForm.invalid"><i class="fa fa-dot-circle-o"></i> 开始部署</button>
+                    </div>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <!-- /.conainer-fluid -->
+    </main>
+
+  </div>
+
+</div>
+
+
+
+
+
+

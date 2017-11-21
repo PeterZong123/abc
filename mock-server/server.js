@@ -101,7 +101,7 @@ app.get('/dashboard/imagecentre/myimages/listimages',function(req,res){
   var result =
   [
     {
-        "id": 13,
+        "id": 1,
         "tenantid": 1,
         "name": "android_push_beta",
         "description": "android push service test image",
@@ -224,7 +224,7 @@ app.get('/dashboard/clustercentre/configmng/queryconfig',function(req, res){
 app.get('/dashboard/clustercentre/clustermng/querycluster', function(req, res){
   var result = {
     "App_ID":2,
-    "App_Name":"testcluster3",
+    "App_Name":"testcluster",
     "App_Des":"testcluster3",
     "User_ID":1,
     "Tenant_ID":1,
@@ -433,6 +433,14 @@ app.get('/dashboard/usercentre/listrole', function(req, res){
   res.json(result);
 })
 
+//修改应用
+app.post('/dashboard/clustercentre/clustermng/modifycluster', function(req,res){
+  var result = {
+    "code": 0,  
+    "detail": "modify cluster success"  
+  }
+  res.json(result);
+})
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
