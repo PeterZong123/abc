@@ -101,6 +101,7 @@ export class EditClusterComponent implements OnInit {
     data.storage = Number.parseInt(data.storage);
     this.editClusterService.editCluster(data).subscribe((res: any) => {
       if(res.code === 0){
+        this.msg.info('修改应用成功！');
         this.router.navigate(['/content/cluster-center/myCluster']);
       }else{
         this.msg.error('修改应用失败');

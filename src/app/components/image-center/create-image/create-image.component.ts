@@ -4,6 +4,7 @@ import {CreateImageService} from './create-image.service';
 import { BaseImageService } from '../base-image/base-image.service';
 import {FileValidator} from '../../../shared/fileValidator.directive';
 import {Router} from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-create-image',
@@ -20,7 +21,8 @@ export class CreateImageComponent implements OnInit {
   constructor(private createImageService: CreateImageService,
     private baseImageService: BaseImageService,
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private msg: NzMessageService) {
       
   }
 
@@ -57,9 +59,10 @@ export class CreateImageComponent implements OnInit {
 
     this.createImageService.createImg(formData).subscribe((res: any) =>{
       if(res.code === 0){
+        this.msg.info('构建新镜像成功！')
         this.router.navigate(['/content/image-center/myImage']);
       }else{
-        alert("构建新镜像失败");
+        this.msg.error("构建新镜像失败！");
       }
     });
   }

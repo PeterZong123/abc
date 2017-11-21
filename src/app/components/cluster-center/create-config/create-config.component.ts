@@ -2,6 +2,7 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import { CreateConfigService } from './create-config.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-create-config',
@@ -18,7 +19,8 @@ export class CreateConfigComponent implements OnInit {
 
   constructor(private createConfigService: CreateConfigService,
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private msg: NzMessageService) {
       this.envList = [];
       this.configList = [];
     }
@@ -44,9 +46,10 @@ export class CreateConfigComponent implements OnInit {
     data.configfile = this.filterConfigList(this.configList);
     this.createConfigService.addconfig(data).subscribe((res: any) => {
       if(res.code === 0){
+        this.msg.info('创建新配置成功！')
         this.router.navigate(['/content/cluster-center/configManager']);
       }else{
-        alert('创建新配置失败');
+        this.msg.error('创建新配置失败！');
       }
     })
   }

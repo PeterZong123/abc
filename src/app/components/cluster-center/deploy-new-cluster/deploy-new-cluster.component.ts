@@ -5,6 +5,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from "@angular/forms"
 import { DeployNewClusterService } from './deploy-new-cluster.service';
 import { ConfigManagerService } from '../config-manager/config-manager.service';
 import { MyImageService } from '../../image-center/my-image/my-image.service';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-deploy-new-cluster',
@@ -25,7 +26,8 @@ export class DeployNewClusterComponent implements OnInit {
               private configManagerService: ConfigManagerService,
               private myImageService: MyImageService,
               private router: Router,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private msg: NzMessageService) {
   }
 
   ngOnInit() {
@@ -78,6 +80,7 @@ export class DeployNewClusterComponent implements OnInit {
     data.token = localStorage.getItem('token');
     this.deployNewClusterService.addCluster(data).subscribe((res: any) => {
       if(res.code === 0){
+        this.msg.info('部署应用成功！');
         this.router.navigate(['/content/cluster-center/myCluster']);
       }else{
         alert('部署新应用失败');

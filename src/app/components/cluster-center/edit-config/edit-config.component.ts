@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 import { EditConfigService } from './edit-config.service';
+import { NzMessageService } from 'ng-zorro-antd';
+
 @Component({
   selector: 'app-edit-config',
   templateUrl: './edit-config.component.html',
@@ -19,7 +21,8 @@ export class EditConfigComponent implements OnInit {
   constructor(private editConfigService: EditConfigService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private msg: NzMessageService) {
       this.envList = [];
       this.configList = [];
   }
@@ -70,9 +73,10 @@ export class EditConfigComponent implements OnInit {
     data.configfile = this.filterConfigList(this.configList);
     this.editConfigService.editconfig(data).subscribe((res: any) => {
       if(res.code === 0){
+        this.msg.info('修改配置成功！');
         this.router.navigate(['/content/cluster-center/configManager']);
       }else{
-        alert(res.detail);
+        this.msg.error('修改配置失败！');
       }
     })
   }
