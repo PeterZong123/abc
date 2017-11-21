@@ -62,7 +62,7 @@
                           <button nz-button [nzType]="'primary'" [routerLink]="['../editCluster',post.Cluster_Id]" title="修改" >
                               <i class="anticon anticon-edit"></i>
                           </button>
-                          <scale-cluster-modal (scaleCluster)="scaleCluster($event)"></scale-cluster-modal>
+                          <scale-cluster-modal [flavor]="post.Replicas" (scaleCluster)="scaleCluster(post.Cluster_Id,$event)"></scale-cluster-modal>
                           <button nz-button [nzType]="'primary'"  title="删除" (click)="delCluster(post.Cluster_Id)">
                             <i class="anticon anticon-delete"></i>
                           </button>

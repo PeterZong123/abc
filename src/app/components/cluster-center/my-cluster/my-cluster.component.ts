@@ -1,13 +1,16 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { ClusterService } from './my-cluster.service';
+import { QueryClusterService } from '../query-cluster/query-cluster.service'
+import { EditClusterService } from '../edit-cluster/edit-cluster.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetAlert';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-my-cluster',
   templateUrl: './my-cluster.component.html',
   styleUrls: ['./my-cluster.component.scss'],
-  providers: [ClusterService]
+  providers: [ClusterService,EditClusterService,QueryClusterService]
 })
 export class MyClusterComponent implements OnInit {
 
@@ -17,8 +20,11 @@ export class MyClusterComponent implements OnInit {
   public tableLoading: boolean = true;
 
   constructor(public clusterService: ClusterService,
+              public queryClusterService: QueryClusterService,
+              public editClusterService: EditClusterService,
               public router: Router,
-              public activeRoute: ActivatedRoute) {
+              public activeRoute: ActivatedRoute,
+              public msg: NzMessageService) {
 
   }
 
@@ -81,8 +87,29 @@ export class MyClusterComponent implements OnInit {
     })
   }
 
-  scaleCluster(data){
-    console.log(data);
+  scaleCluster(id,data){
+    this.queryClusterService.queryCluster(id).subscribe(res => {
+      let json = {
+        clustername: res.App_Name,
+        clusterdescription: res.App_Des,
+        imageid: res.Image_ID,
+        configid: res.Config_ID,
+        regionid: res.ENV_ID,
+        flavor: res.Flavor, 
+        instancenumber: data.instancenumber,
+        storage: res.Storage,
+        // storagepath: res.storage,
+        cmd: res.CMD
+      }
+      this.editClusterService.editCluster(json).subscribe((res:any) =>{
+        if(res.code === 0){
+          this.msg.info('应用扩容成功！');
+          this.router.navigate(['/content/cluster-center/myCluster']);
+        }else{
+          this.msg.error('应用扩容失败！');
+        }
+      })
+    })
   }
 
   search(e,key){

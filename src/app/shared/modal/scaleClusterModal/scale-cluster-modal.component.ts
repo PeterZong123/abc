@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input,Output } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd';
 import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
 
@@ -12,6 +12,8 @@ export class ScaleClusterModalComponent implements OnInit {
   public validateForm: FormGroup;
   public currentModal;
 
+  @Input()
+  public flavor: number;
   @Output()
   public scaleCluster: EventEmitter<any> = new EventEmitter();
 
@@ -22,6 +24,7 @@ export class ScaleClusterModalComponent implements OnInit {
     this.validateForm = this.fb.group({
       'instancenumber':[0,[Validators.min(1)]],
     })
+    console.log(this.flavor);
   }
 
   getFormControl(name) {

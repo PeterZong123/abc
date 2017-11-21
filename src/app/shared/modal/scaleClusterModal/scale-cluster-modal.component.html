@@ -6,7 +6,7 @@
                 <label for="instancenumber" nz-form-item-required>副本数量</label>   
             </div>
             <div nz-form-control nz-col [nzSpan]="20" [nzValidateStatus]="getFormControl('instancenumber')" [ngClass]="{'has-error':getFormControl('instancenumber').dirty && getFormControl('instancenumber').hasError('min')}">
-                <nz-slider formControlName="instancenumber"></nz-slider>
+                <nz-slider formControlName="instancenumber" [nzDefaultValue]="flavor"></nz-slider>
                 <div nz-form-explain *ngIf="getFormControl('instancenumber').dirty && getFormControl('instancenumber').hasError('min')">副本数量不能为空!</div>
             </div>
         </div>
