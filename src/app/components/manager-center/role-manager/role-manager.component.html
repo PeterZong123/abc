@@ -53,17 +53,17 @@
                                 </div>
                                 <div nz-row [nzGutter]="32" [nzType]="'flex'" [nzAlign]="'center'">
                                     配置管理：
-                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;create</span>
-                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;read</span>
-                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;update</span>
-                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;delete</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.ClusterConfiguration.indexOf('create')>=0}"></i>&nbsp;create</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.ClusterConfiguration.indexOf('read')>=0}"></i>&nbsp;read</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.ClusterConfiguration.indexOf('update')>=0}"></i>&nbsp;update</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.ClusterConfiguration.indexOf('delete')>=0}"></i>&nbsp;delete</span>
                                 </div>
                                 <div nz-row [nzGutter]="32" [nzType]="'flex'" [nzAlign]="'center'">
                                     我的应用：
-                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;create</span>
-                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;read</span>
-                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;update</span>
-                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;delete</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.Cluster.indexOf('create')>=0}"></i>&nbsp;create</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.Cluster.indexOf('read')>=0}"></i>&nbsp;read</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.Cluster.indexOf('update')>=0}"></i>&nbsp;update</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.Cluster.indexOf('delete')>=0}"></i>&nbsp;delete</span>
                                 </div>
                               </ng-template>
                               <ng-template #modalFooter>
