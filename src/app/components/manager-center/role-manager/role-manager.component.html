@@ -41,7 +41,41 @@
                           <tr nz-tbody-tr *ngFor="let data of nzTable.data">
                             <td nz-td> {{data.name}} </td>
                             <td nz-td> {{data.description}} </td>
-                            <td nz-td> {{data.permission}} </td>
+                            <td nz-td> 
+                              <!-- 查看权限modal start -->
+                              <ng-template #modalContent>
+                                <div nz-row [nzGutter]="32" [nzType]="'flex'" [nzAlign]="'center'">
+                                    我的镜像：
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.CICD.indexOf('create')>=0}"></i>&nbsp;create</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.CICD.indexOf('read')>=0}"></i>&nbsp;read</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.CICD.indexOf('update')>=0}"></i>&nbsp;update</span>
+                                    <span nz-col><i class="anticon anticon-close-circle-o" [ngClass]="{'anticon-check-circle-o':data.permission.CICD.indexOf('delete')>=0}"></i>&nbsp;delete</span>
+                                </div>
+                                <div nz-row [nzGutter]="32" [nzType]="'flex'" [nzAlign]="'center'">
+                                    配置管理：
+                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;create</span>
+                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;read</span>
+                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;update</span>
+                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;delete</span>
+                                </div>
+                                <div nz-row [nzGutter]="32" [nzType]="'flex'" [nzAlign]="'center'">
+                                    我的应用：
+                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;create</span>
+                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;read</span>
+                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;update</span>
+                                    <span nz-col><i class="anticon anticon-check-circle-o"></i>&nbsp;delete</span>
+                                </div>
+                              </ng-template>
+                              <ng-template #modalFooter>
+                                  <button nz-button [nzType]="'primary'" (click)="closePermissionModal()">
+                                      <span>确定</span>
+                                  </button>
+                              </ng-template>
+                               <!-- 查看权限modal end -->
+                              <button nz-button [nzType]="'primary'" title="详情" (click)="showPermissionModal(data.name,modalContent,modalFooter)">
+                                <i class="anticon anticon-search"></i>
+                              </button>
+                            </td>
                             <td nz-td>
                               <role-modal type="2" (roleEmitter)="editRole()"></role-modal>
                               <button nz-button [nzType]="'primary'" title="删除" (click)="deleteRole(data.id)">

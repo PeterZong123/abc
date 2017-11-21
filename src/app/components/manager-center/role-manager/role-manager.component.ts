@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { RoleManagerService } from './role-manager.service';
 
 @Component({
@@ -14,8 +14,9 @@ export class RoleManagerComponent implements OnInit {
   public roleList: Array<any> = [];
   public roleCopyList: Array<any> = [];
   public tableLoading: boolean = true;
-  
-  constructor(private roleManagerService: RoleManagerService, private msg: NzMessageService) { }
+  public permissionModal: any;
+
+  constructor(private roleManagerService: RoleManagerService, private msg: NzMessageService, private modal: NzModalService) { }
 
   ngOnInit() {
     this.roleManagerService.getRoleList().subscribe(res => {
@@ -83,5 +84,19 @@ export class RoleManagerComponent implements OnInit {
     }else{
       this.roleList = this.roleCopyList;
     }
+  }
+
+  //查询权限
+  showPermissionModal(title,modalContent,modalFooter){
+    this.permissionModal = this.modal.open({
+      title: title + '权限',
+      content: modalContent,
+      footer:modalFooter,
+    })
+  }
+  //关闭modal
+  closePermissionModal(){
+    this.permissionModal.destroy('onOk');
+    this.permissionModal = null;
   }
 }
