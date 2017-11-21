@@ -11,7 +11,7 @@ export class EditProfileService {
     }
 
     public modifyUser(json: any): Observable<any>{
-        return this.http.post(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/modify',{
+        return this.http.post(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/modifyuser',{
             token: this.token,
             name: json.name,
             password: json.new_password ? json.new_password : json.old_password ,

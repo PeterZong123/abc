@@ -11,7 +11,7 @@ export class UserManagerService {
     }
 
     public getUserList(): Observable<any>{
-        return this.http.get(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/list?token=' + this.token )
+        return this.http.get(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/listuser?token=' + this.token )
         .map((res: Response) => {
             return res.json();
         })
@@ -21,7 +21,7 @@ export class UserManagerService {
     }
 
     public addUser(json: any): Observable<any>{
-        return this.http.post(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/register',{
+        return this.http.post(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/registeruser',{
             token: this.token,
             name: json.name,      
             password: json.password,
@@ -37,7 +37,7 @@ export class UserManagerService {
     }
 
     public modifyUser(json: any): Observable<any>{
-        return this.http.post(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/modify',{
+        return this.http.post(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/modifyuser',{
             token: this.token,
             id: json.id,
             name: json.name,      
@@ -54,7 +54,7 @@ export class UserManagerService {
     }
 
     public deleteUser(id: string): Observable<any>{
-        return this.http.get(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/delete?token=' + this.token + '&id=' + id)
+        return this.http.get(Const.BACKEND_API_ROOT_URL + '/dashboard/usercentre/deleteuser?token=' + this.token + '&id=' + id)
         .map((res: Response) => {
             return res.json();
         })

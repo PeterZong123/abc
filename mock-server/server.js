@@ -323,7 +323,7 @@ app.get('/dashboard/clustercentre/clustermng/podlogs', function(req, res){
 })
 
 //获取用户列表
-app.get('/dashboard/usercentre/list', function(req, res){
+app.get('/dashboard/usercentre/listuser', function(req, res){
   var result = [
     {
     "id":"1",
@@ -344,7 +344,7 @@ app.get('/dashboard/usercentre/list', function(req, res){
 })
 
 //添加用户
-app.post('/dashboard/usercentre/register', function(req, res){
+app.post('/dashboard/usercentre/registeruser', function(req, res){
   var result = {
     "code": 0,  
     "detail": "register success"    
@@ -353,7 +353,7 @@ app.post('/dashboard/usercentre/register', function(req, res){
 })
 
 //修改用户
-app.post('/dashboard/usercentre/modify', function(req, res){
+app.post('/dashboard/usercentre/modifyuser', function(req, res){
   var result = {
     "code": 0,  
     "detail": "modify success"  
@@ -362,7 +362,7 @@ app.post('/dashboard/usercentre/modify', function(req, res){
 })
 
 //删除用户
-app.get('/dashboard/usercentre/delete', function(req, res){
+app.get('/dashboard/usercentre/deleteuser', function(req, res){
   var result = {
     "code": 0,  
     "detail": "delete success"  
