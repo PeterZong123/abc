@@ -58,7 +58,7 @@ export class QueryClusterComponent implements OnInit {
     this.showCard = 2;
     this.currentPod.name = podname;
     this.queryClusterService.podlogs(podname).subscribe( res =>{
-      this.currentPod.log = res.log;
+      this.currentPod.log = res?res.log:'';
     })
   }
 

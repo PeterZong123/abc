@@ -26,7 +26,7 @@ export class UserManagerComponent implements OnInit {
     },
       error => {
         this.tableLoading = false;
-        console.log(error);
+        console.log('获取用户列表接口出错！');
     })
   }
 
