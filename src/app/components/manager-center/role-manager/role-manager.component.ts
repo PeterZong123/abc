@@ -23,6 +23,10 @@ export class RoleManagerComponent implements OnInit {
       this.roleList = res;
       this.roleCopyList = [...this.roleList];
       this.tableLoading = false;
+    },
+    error => {
+      this.tableLoading = false;
+      console.log('获取角色列表接口出错！');
     })
   }
 
