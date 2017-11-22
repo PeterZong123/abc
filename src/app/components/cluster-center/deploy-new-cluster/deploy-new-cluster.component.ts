@@ -36,7 +36,7 @@ export class DeployNewClusterComponent implements OnInit {
       'clustername':['', [Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-z][a-z0-9.-]*[a-z]$|^[a-z]$/)]],
       'clusterdescription':[''],
       'imageid':['', Validators.required],
-      'configid':['', Validators.required],
+      'configid':[''],
       'regionid':['', Validators.required],
       'flavor':['', Validators.required],
       'instancenumber':['', Validators.min(1)],

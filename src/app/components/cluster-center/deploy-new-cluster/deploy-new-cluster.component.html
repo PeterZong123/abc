@@ -55,13 +55,12 @@
                       </div>
                       <div nz-form-item nz-row>
                         <div nz-form-label nz-col>
-                            <label for="configid" nz-form-item-required>挂载配置信息</label>
+                            <label for="configid">挂载配置信息</label>
                         </div>
-                        <div nz-form-control nz-col [nzValidateStatus]="getFormControl('configid')">
+                        <div nz-form-control nz-col>
                             <nz-select formControlName="configid">
                                 <nz-option  [nzValue]="item.Row_ID" [nzLabel]="item.Config_Name" *ngFor="let item of configList "></nz-option>
                             </nz-select>
-                            <div nz-form-explain *ngIf="getFormControl('configid').dirty&&getFormControl('configid').hasError('required')">请选择挂载的配置信息！</div>
                         </div>
                       </div>
                       <div nz-form-item nz-row>
@@ -109,7 +108,7 @@
                       </div>
                       <div nz-form-item nz-row>
                         <div nz-form-label nz-col>
-                            <label for="text-input" nz-form-item-required>持久化存储</label>
+                            <label for="text-input">存储</label>
                         </div>
                         <div nz-form-control nz-col>
                             <div nz-row [nzGutter]="16">

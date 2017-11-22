@@ -47,7 +47,7 @@ export class QueryClusterComponent implements OnInit {
       })
       //获取副本列表
       this.queryClusterService.listpods(clusterid).subscribe( res => {
-        this.replicaList = res;
+        this.replicaList = res?res:[];
       })
     })
     
