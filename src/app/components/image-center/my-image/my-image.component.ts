@@ -22,7 +22,7 @@ export class MyImageComponent implements OnInit {
   ngOnInit() {
     this.myImageService.getInfo({}).subscribe(
         res => {
-        this.list = res;
+        this.list = res?res:[];
         this.copyList = [...this.list];
         this.tableLoading = false;
       },
