@@ -57,10 +57,10 @@ export class CreateImageComponent implements OnInit {
     formData.append("store_path",form.value.store_path);
     formData.append("app_filename",form.value.app_filename[0]);
 
+    this.router.navigate(['/content/image-center/myImage']);
     this.createImageService.createImg(formData).subscribe((res: any) =>{
       if(res.code === 0){
-        this.msg.info('构建新镜像成功！')
-        this.router.navigate(['/content/image-center/myImage']);
+        this.msg.info('开始构建新镜像！')
       }else{
         this.msg.error("构建新镜像失败！");
       }

@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import * as AppUtil from 'app/config/const';
+import 'rxjs/add/operator/timeout'
 
 @Injectable()
 export class CreateImageService {
@@ -26,7 +27,11 @@ export class CreateImageService {
 
   //构建新镜像
   createImg(formData: FormData): Observable<Response>{
-    return this.http.post(AppUtil.BACKEND_API_ROOT_URL + '/dashboard/imagecentre/myimages/newimage/build?token='+this.token,formData).map((res: Response) => {
+    // let headers = new Headers({'timeout':60*1000});
+    // let options = new RequestOptions({headers: headers});
+    return this.http.post(AppUtil.BACKEND_API_ROOT_URL + '/dashboard/imagecentre/myimages/newimage/build?token='+this.token,formData)
+    .timeout(5*60*1000)
+    .map((res: Response) => {
       return res.json();
     }).catch((error: Response) => {
       alert('构建新镜像失败');
