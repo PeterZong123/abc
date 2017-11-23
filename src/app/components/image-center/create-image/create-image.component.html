@@ -68,7 +68,7 @@
                       </div>
                       <div nz-form-item nz-row>
                         <div nz-form-label nz-col>
-                            <label for="store_path">指定应用存放路径</label>
+                            <label for="store_path" nz-form-item-required>指定应用存放路径</label>
                         </div>
                         <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('store_path')">
                           <nz-input formControlName="store_path" [nzId]="'store_path'" [nzPlaceHolder]="'默认路径为/opt/app'"></nz-input>
