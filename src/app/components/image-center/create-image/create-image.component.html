@@ -39,10 +39,11 @@
                       </div>
                       <div nz-form-item nz-row>
                         <div nz-form-label nz-col>
-                            <label for="image_description">镜像描述</label>
+                            <label for="image_description" nz-form-item-required>镜像描述</label>
                         </div>
                         <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('image_description')">
                           <nz-input formControlName="image_description" [nzId]="'image_description'" [nzPlaceHolder]="'描述信息'"></nz-input>
+                          <div nz-form-explain *ngIf="getFormControl('image_description').dirty&&getFormControl('image_description').hasError('required')">描述内容不能为空！</div>
                         </div>
                       </div>
                       <div nz-form-item nz-row>
@@ -71,6 +72,7 @@
                         </div>
                         <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('store_path')">
                           <nz-input formControlName="store_path" [nzId]="'store_path'" [nzPlaceHolder]="'默认路径为/opt/app'"></nz-input>
+                          <div nz-form-explain *ngIf="getFormControl('store_path').dirty&&getFormControl('store_path').hasError('required')">请填写应用存放路径！</div>
                         </div>
                       </div>
                       <div nz-row [nzType]="'flex'" [nzJustify]="'center'">

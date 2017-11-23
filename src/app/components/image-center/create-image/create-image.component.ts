@@ -29,9 +29,9 @@ export class CreateImageComponent implements OnInit {
   ngOnInit() {
    this.creatImgForm = this.fb.group({
      'image_name':['',[Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-zA-Z]+[a-zA-Z0-9.-]*[a-zA-Z0-9]+$|^[a-zA-Z]+$/)]],
-     'image_description':[''],
+     'image_description':['',Validators.required],
      'basic_image':['',Validators.required],
-     'store_path':[''],
+     'store_path':['',Validators.required],
      'app_filename':['',FileValidator.validate],
    });
 
