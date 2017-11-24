@@ -9,13 +9,13 @@ import { LoginComponent } from './pages/login.component';
 const rootRouterConfig: Routes = [
     {
         path: '',
-        redirectTo: 'index',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
-    {
-        path: 'index',
-        component: IndexComponent,
-    },
+    // {
+    //     path: 'index',
+    //     component: IndexComponent,
+    // },
     {
         path: 'login',
         component: LoginComponent,
