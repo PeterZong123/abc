@@ -27,7 +27,7 @@
                         <label for="configname" nz-form-item-required>配置名称</label>
                       </div>
                       <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('configname')">
-                        <nz-input formControlName="configname" [nzId]="'configname'" [nzPlaceHolder]="'配置名称'" [(ngModel)]="configDetail.configname" [nzReadonly]="true"></nz-input>
+                        <nz-input formControlName="configname" [nzId]="'configname'" [nzPlaceHolder]="'配置名称'" [(ngModel)]="configDetail.configname" [nzDisabled]="true"></nz-input>
                         <div nz-form-explain *ngIf="getFormControl('configname').dirty&&getFormControl('configname').hasError('required')">应用名称不能为空！</div>
                         <div nz-form-explain *ngIf="getFormControl('configname').dirty&&getFormControl('configname').hasError('maxlength')">应用名称最多为50个字符！</div>
                         <div nz-form-explain *ngIf="getFormControl('configname').dirty&&getFormControl('configname').hasError('pattern')">应用名称由小写字母开头并结尾，可包含数字、小写字母、“-”和“.”字符！</div>

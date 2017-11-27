@@ -68,7 +68,7 @@
                             <label for="regionid" nz-form-item-required>部署区域</label>
                         </div>
                         <div nz-form-control nz-col [nzValidateStatus]="getFormControl('regionid')">
-                            <nz-select formControlName="regionid">
+                            <nz-select [nzDisabled]="true" formControlName="regionid">
                                 <nz-option  [nzValue]="0" [nzLabel]="'上海'"></nz-option>
                                 <nz-option  [nzValue]="1" [nzLabel]="'北京'"></nz-option>
                                 <nz-option  [nzValue]="2" [nzLabel]="'广州'"></nz-option>
@@ -83,7 +83,7 @@
                             <label for="flavor" nz-form-item-required>硬件规格</label>
                         </div>
                         <div nz-form-control nz-col [nzValidateStatus]="getFormControl('flavor')">
-                            <nz-select formControlName="flavor" [(ngModel)]="flavorValue" (ngModelChange)="flavorChange()">
+                            <nz-select [nzDisabled]="true" formControlName="flavor" [(ngModel)]="flavorValue" (ngModelChange)="flavorChange()">
                                 <nz-option  [nzValue]="1" [nzLabel]="'1核2G'"></nz-option>
                                 <nz-option  [nzValue]="2" [nzLabel]="'2核4G'"></nz-option>
                                 <nz-option  [nzValue]="3" [nzLabel]="'3核6G'"></nz-option>
@@ -100,7 +100,7 @@
                         <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('instancenumber')">
                             <div nz-row>
                               <div nz-col>
-                                  <nz-slider [nzStep]="flavorValue==2 ? 3: 2" formControlName="instancenumber" [(ngModel)]="slideValue" (ngModelChange)="instanceChange(clusterForm)"></nz-slider>
+                                  <nz-slider [nzDisabled]="true" [nzStep]="flavorValue==2 ? 3: 2" formControlName="instancenumber" [(ngModel)]="slideValue" (ngModelChange)="instanceChange(clusterForm)"></nz-slider>
                               </div>
                             </div>
                             <div nz-form-explain *ngIf="getFormControl('instancenumber').dirty&&getFormControl('instancenumber').hasError('min')">副本数量不能为零！</div>
@@ -113,10 +113,10 @@
                         <div nz-form-control nz-col>
                             <div nz-row [nzGutter]="16">
                               <div nz-col [nzSpan]="16">
-                                <nz-input formControlName="storage" [nzId]="'storage'" [nzPlaceHolder]="'30g'"></nz-input>
+                                <nz-input [nzDisabled]="true" formControlName="storage" [nzId]="'storage'" [nzPlaceHolder]="'30g'"></nz-input>
                               </div>
                               <div nz-col [nzSpan]="8" >
-                                <nz-input formControlName="storagepath" [nzId]="'storagepath'" [nzPlaceHolder]="'挂载位置，例如/home/appuser'"></nz-input>
+                                <nz-input [nzDisabled]="true" formControlName="storagepath" [nzId]="'storagepath'" [nzPlaceHolder]="'挂载位置，例如/home/appuser'"></nz-input>
                               </div>
                             </div>
                         </div>
