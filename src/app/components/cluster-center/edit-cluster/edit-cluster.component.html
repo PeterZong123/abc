@@ -100,7 +100,7 @@
                         <div nz-form-control nz-col nzHasFeedback [nzValidateStatus]="getFormControl('instancenumber')">
                             <div nz-row>
                               <div nz-col>
-                                  <nz-slider [nzDisabled]="true" [nzStep]="flavorValue==2 ? 3: 2" formControlName="instancenumber" [(ngModel)]="slideValue" (ngModelChange)="instanceChange(clusterForm)"></nz-slider>
+                                  <nz-slider [nzDisabled]="true" [nzStep]="flavorValue==2 ? 3: 2" formControlName="instancenumber" [(ngModel)]="slideValue"></nz-slider>
                               </div>
                             </div>
                             <div nz-form-explain *ngIf="getFormControl('instancenumber').dirty&&getFormControl('instancenumber').hasError('min')">副本数量不能为零！</div>

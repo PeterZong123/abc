@@ -2,11 +2,12 @@
 <ng-template #modalContent>
     <form nz-form [formGroup]="validateForm" >
         <div nz-form-item nz-row>
-            <div nz-form-label nz-col [nzSpan]="4">
-                <label for="instancenumber" nz-form-item-required>副本数量</label>   
+            <div nz-form-label nz-col>
+                <label for="instancenumber" nz-form-item-required>副本数量</label>
+                <span>(数量：{{clusterInfo.Replicas}}) {{priceInfo}} </span>   
             </div>
-            <div nz-form-control nz-col [nzSpan]="20" [nzValidateStatus]="getFormControl('instancenumber')" [ngClass]="{'has-error':getFormControl('instancenumber').dirty && getFormControl('instancenumber').hasError('min')}">
-                <nz-slider formControlName="instancenumber" [nzDefaultValue]="flavor"></nz-slider>
+            <div nz-form-control nz-col [nzValidateStatus]="getFormControl('instancenumber')" [ngClass]="{'has-error':getFormControl('instancenumber').dirty && getFormControl('instancenumber').hasError('min')}">
+                <nz-slider [nzStep]="clusterInfo.Flavor==2 ? 3: 2" formControlName="instancenumber" [(ngModel)]="clusterInfo.Replicas"></nz-slider>
                 <div nz-form-explain *ngIf="getFormControl('instancenumber').dirty && getFormControl('instancenumber').hasError('min')">副本数量不能为空!</div>
             </div>
         </div>

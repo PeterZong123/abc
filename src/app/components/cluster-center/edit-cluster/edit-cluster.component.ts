@@ -82,6 +82,12 @@ export class EditClusterComponent implements OnInit {
     }, error => {
       console.log(error);
     })
+
+    this.clusterForm.controls['instancenumber'].valueChanges
+    .debounceTime(400)
+    .distinctUntilChanged().subscribe(res => {
+      this.instanceChange(this.clusterForm);
+    })
   }
 
   getFormControl(name) {

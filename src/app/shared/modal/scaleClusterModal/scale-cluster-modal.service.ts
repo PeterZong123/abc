@@ -8,20 +8,19 @@ import 'rxjs/add/operator/catch';
 import * as AppUtil from '../../../config/const';
 
 @Injectable()
-export class DeployNewClusterService {
+export class ScaleClusterModalService {
   token: string;
   constructor(private http: Http) { 
     this.token = localStorage.getItem('token');
   }
-
-  //部署新应用
-  addCluster(json: any): Observable<Response>{
-    return this.http.post(AppUtil.BACKEND_API_ROOT_URL+ '/dashboard/clustercentre/clustermng/newcluster/addcluster?token='+this.token,json)
-    .map((res: Response) => {
+  //查询应用
+  queryCluster(clusterid: string){
+    return this.http.get(AppUtil.BACKEND_API_ROOT_URL + '/dashboard/clustercentre/clustermng/querycluster?token='+this.token+'&clusterid='+clusterid)
+    .map((res: Response) =>{
       return res.json();
     })
-    .catch((res: Response) => {
-      return Observable.throw('部署新应用失败')
+    .catch((res: Response) =>{
+      return Observable.throw('查询应用信息失败');
     })
   }
   //获取应用价格
