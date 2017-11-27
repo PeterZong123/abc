@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild, AfterViewInit, Inject} from '@angular/core
 import {MyImageService} from './my-image.service';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
+import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-my-image',
@@ -20,19 +21,25 @@ export class MyImageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.myImageService.getInfo({}).subscribe(
-        res => {
-        this.list = res?res:[];
-        this.copyList = [...this.list];
-        this.tableLoading = false;
-      },
-        error => {
-          this.tableLoading = false;
-          console.log(error); 
-      }
-    );
+    this.getList();
+    setInterval(()=>{
+      this.getList();
+    },5*60*1000)
   }
 
+  //获取列表
+  getList(){
+    this.myImageService.getInfo({}).subscribe(
+      res => {
+      this.list = res?res:[];
+      this.copyList = [...this.list];
+      this.tableLoading = false;
+    },
+      error => {
+        this.tableLoading = false;
+        console.log(error); 
+    });
+  }
   //关键词搜索
   search(e,key){
     if(e){

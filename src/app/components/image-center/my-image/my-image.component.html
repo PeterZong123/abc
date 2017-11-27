@@ -46,7 +46,12 @@
                           <tr nz-tbody-tr *ngFor="let post of nzTable.data">
                             <td>{{post.name}}</td>
                             <td>{{post.tag}}</td>
-                            <td>{{post.buildstatus}}</td>
+                            <td>
+                              <!-- {{post.buildstatus}} -->
+                              <i class="anticon anticon-close-circle" style="color:#f04134" *ngIf="post.buildstatus=='FAILURE'"></i>
+                              <i class="anticon anticon-check-circle" style="color:#00a854" *ngIf="post.buildstatus=='SUCCESS'"></i>
+                              <customer-progress [buildStatus]="post.buildstatus" *ngIf="post.buildstatus=='BUILDING'"></customer-progress>
+                            </td>
                             <td>{{post.createdat}}</td>
                             <td>
                               <button nz-button [nzType]="'primary'" [routerLink]="['./queryImage',post.id]" title="查看">
