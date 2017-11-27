@@ -29,22 +29,22 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
-    this.str1 = 'str1';
-    this.str2 = 'str2';
-    this.str3 = 'str3';
-    this.str4 = 'str4';
-    this.str5 = 'str5';
-    this.str6 = 'str6';
-    this.str7 = 'str7';
-    this.str8 = 'str8';
-    this.str9 = 'str9';
-    this.str10 = 'str10';
-    this.str11 = 'str11';
-    this.str12 = 'str12';
-    this.str13 = 'str13';
-    this.str14 = 'str14';
-    this.str15 = 'str15';
-    this.str16 = 'str16';
+    this.str1 = '0';
+    this.str2 = '0';
+    this.str3 = '0';
+    this.str4 = '0';
+    this.str5 = '0';
+    this.str6 = '0';
+    this.str7 = '0';
+    this.str8 = '0';
+    this.str9 = '0';
+    this.str10 = '0';
+    this.str11 = '0';
+    this.str12 = '0';
+    this.str13 = '0';
+    this.str14 = '0';
+    this.str15 = '0';
+    this.str16 = '0';
   }
 
 }
