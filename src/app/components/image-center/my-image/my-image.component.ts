@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild, AfterViewInit, Inject} from '@angular/core
 import {MyImageService} from './my-image.service';
 import {Router} from '@angular/router';
 import * as $ from 'jquery';
-import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-my-image',

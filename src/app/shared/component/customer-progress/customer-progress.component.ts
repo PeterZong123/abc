@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter,Input } from '@angular/core';
-import { setInterval, clearInterval } from 'timers';
 
 @Component({
   selector: 'customer-progress',
