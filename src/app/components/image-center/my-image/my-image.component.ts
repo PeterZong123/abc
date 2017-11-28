@@ -23,7 +23,7 @@ export class MyImageComponent implements OnInit {
     this.getList();
     setTimeout(() => {
       this.setImageTimer();
-    }, 10*1000);
+    }, 60*1000);
   }
 
   ngOnDestroy(){
@@ -42,7 +42,7 @@ export class MyImageComponent implements OnInit {
     if(flag){
       this.timer = setInterval(()=>{
         this.getList();
-      },10*1000)
+      },5*60*1000)
     }
   }
   //获取列表
