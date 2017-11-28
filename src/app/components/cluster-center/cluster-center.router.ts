@@ -60,7 +60,13 @@ const routes: Routes = [
   
   {
     path: 'loadBalance', //负载均衡
-    component: LoadBalanceComponent,
+    children: [
+      {
+        path: '',
+        component: LoadBalanceComponent,
+      }
+    ]
+   
   },
 ]
 

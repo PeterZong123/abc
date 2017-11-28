@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild, AfterViewInit, Inject} from '@angular/core';
+import {Component, OnInit, ViewChild, Inject, OnDestroy} from '@angular/core';
 import {MyImageService} from './my-image.service';
-import {Router} from '@angular/router';
+import {Router, NavigationStart} from '@angular/router';
 import * as $ from 'jquery';
 
 @Component({
@@ -14,18 +14,37 @@ export class MyImageComponent implements OnInit {
   public list: Array<any> = [];
   public copyList: Array<any> = [];
   public tableLoading: boolean = true;
+  public timer: any;
 
   constructor(private myImageService: MyImageService, private router: Router) {
-
   }
 
   ngOnInit() {
     this.getList();
-    setInterval(()=>{
-      this.getList();
-    },5*60*1000)
+    setTimeout(() => {
+      this.setImageTimer();
+    }, 10*1000);
   }
 
+  ngOnDestroy(){
+    clearInterval(this.timer);
+  }
+
+  //设置定时器
+  setImageTimer(){
+    let flag = false;
+    this.list.forEach(element => {
+      if(element.buildstatus == 'BUILDING'){
+        flag = true;
+        return;
+      }
+    });
+    if(flag){
+      this.timer = setInterval(()=>{
+        this.getList();
+      },10*1000)
+    }
+  }
   //获取列表
   getList(){
     this.myImageService.getInfo({}).subscribe(

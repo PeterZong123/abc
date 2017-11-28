@@ -7,12 +7,6 @@ import * as Const from '../../../config/const';
 export class LoadBalanceService {
   constructor(public http: Http) { }
 
-  public getInfo(json: any):Observable<any>{
 
-    return this.http.post(Const.BACKEND_API_ROOT_URL + '/getBalance',{})
-      .map((res: Response) => {
-        return res.json();
-      });
-  }
 
 }

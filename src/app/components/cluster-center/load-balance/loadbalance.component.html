@@ -13,7 +13,7 @@
       <div class="container-fluid">
 
         <div class="animated fadeIn">
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-3">
               <div class="card">
                 <div class="card-block">
@@ -34,25 +34,6 @@
               <div class="card card-accent-success">
                 <div class="card-header">外部负载均衡</div>
                 <div class="card-block">
-
-                  <!--<p-dataTable  class="table" [value]="loadbalanceListOut"  [rows]="3" [paginator]="true" [pageLinks]="3"   dataKey="name">-->
-                    <!--<p-column field="name" header="负载均衡名称" ></p-column>-->
-                    <!--<p-column field="balance" header="所属应用"  ></p-column>-->
-                    <!--<p-column field="dns" header="dns"></p-column>-->
-                    <!--<p-column field="protocol" header="协议" ></p-column>-->
-                    <!--<p-column field="port" header="端口" ></p-column>-->
-                    <!--<p-column field="state" header="状态" ></p-column>-->
-                    <!--<p-column field="createTime" header="创建时间" ></p-column>-->
-                    <!--<p-column field="button" header="操作">-->
-                      <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
-                        <!--<span>Dribbble</span>-->
-                      <!--</button>-->
-                      <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
-                        <!--<span>Dribbble</span>-->
-                      <!--</button>-->
-                    <!--</p-column>-->
-                  <!--</p-dataTable>-->
-
                   <table class="table">
                     <thead>
                     <tr>
@@ -98,23 +79,6 @@
               <div class="card card-accent-primary">
                 <div class="card-header">内部负载均衡</div>
                 <div class="card-block">
-                  <!--<p-dataTable  class="table" [value]="loadbalanceListIn"  [rows]="3" [paginator]="true" [pageLinks]="5"   dataKey="name">-->
-                    <!--<p-column field="name" header="负载均衡名称" ></p-column>-->
-                    <!--<p-column field="balance" header="所属应用"  ></p-column>-->
-                    <!--<p-column field="dns" header="dns"></p-column>-->
-                    <!--<p-column field="protocol" header="协议" ></p-column>-->
-                    <!--<p-column field="port" header="端口" ></p-column>-->
-                    <!--<p-column field="state" header="状态" ></p-column>-->
-                    <!--<p-column field="createTime" header="创建时间" ></p-column>-->
-                    <!--&lt;!&ndash;<p-column header="操作" [sortable]="false">-->
-                      <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
-                        <!--<span>Dribbble</span>-->
-                      <!--</button>-->
-                      <!--<button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">-->
-                        <!--<span>Dribbble</span>-->
-                      <!--</button>-->
-                    <!--</p-column>&ndash;&gt;-->
-                  <!--</p-dataTable>-->
                   <table class="table">
                     <thead>
                     <tr>
@@ -155,7 +119,72 @@
               </div>
 
             </div>
-          </div>
+          </div> -->
+
+          <nz-card>
+            <ng-template #body>
+              <nz-tabset>
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    外部负载均衡
+                  </ng-template>
+                  <button nz-button [nzType]="'primary'" title="创建外部负载均衡" style="margin-bottom: 1rem;">
+                    创建外部负载均衡
+                  </button>
+                  <nz-table #outBalance [nzDataSource]="outBalacneList" [nzPageSize]="10" [nzLoading]="tableLoading">
+                    <thead nz-thead>
+                      <tr>
+                        <th nz-th [nzExpand]="true"></th>
+                        <th>
+                          负载均衡名称                              
+                          <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                        </th>
+                        <th>所属应用</th>
+                        <th>dns</th>
+                        <th>协议</th>
+                        <th>端口</th>
+                        <th>状态</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody nz-tbody>
+
+                    </tbody>
+                  </nz-table>
+                </nz-tab>
+                <nz-tab>
+                  <ng-template #nzTabHeading>
+                    内部负载均衡
+                  </ng-template>
+                  <button nz-button [nzType]="'primary'" title="创建内部负载均衡" style="margin-bottom: 1rem;">
+                    创建内部负载均衡
+                  </button>
+                  <nz-table #outBalance [nzDataSource]="inBalacneList" [nzPageSize]="10" [nzLoading]="tableLoading">
+                    <thead nz-thead>
+                      <tr>
+                        <th nz-th [nzExpand]="true"></th>
+                        <th>
+                          负载均衡名称                              
+                          <customer-filter-dropdown (searchEmitter)="search($event,'name')"></customer-filter-dropdown>
+                        </th>
+                        <th>所属应用</th>
+                        <th>VIP</th>
+                        <th>协议</th>
+                        <th>端口</th>
+                        <th>状态</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody nz-tbody>
+
+                    </tbody>
+                  </nz-table>
+                </nz-tab>
+              </nz-tabset>
+            </ng-template>
+          </nz-card>
         </div>
 
       </div>

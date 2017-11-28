@@ -13,7 +13,7 @@ export class CustomerProgressComponent implements OnInit {
   public buildStatus:string;
   ngOnInit() {
     if(this.buildStatus == 'BUILDING'){
-      this.changeValue(40,90);
+      this.changeValue(10,90);
     }
   }
 
@@ -25,6 +25,6 @@ export class CustomerProgressComponent implements OnInit {
       }else{
         clearInterval(timer);
       }
-    },2000)
+    },1000)
   }
 }
