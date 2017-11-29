@@ -22,7 +22,6 @@ import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './pages/login.component';
 
 import { LoginService } from './pages/service/login.service';
-import { FormValidatorService } from './shared/formValidator.service';
 import { HttpModule } from '@angular/http';
 import { CanActivateGuard } from './shared/routerControl/can-activate-guard';
 import { AppRoute } from './app.router';
@@ -80,7 +79,6 @@ export function StartupServiceFactory(startupService: StartupService): Function 
         SelectivePreloadingStrategy,
         LoginService,
         AuthHttp,
-        FormValidatorService
         //end
     ],
     bootstrap: [AppComponent]
