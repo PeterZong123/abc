@@ -9,7 +9,52 @@
       </ol>
       <div class="container-fluid">
         <div class="animated fadeIn">
-
+          <nz-card [nzNoHovering]="true">
+            <ng-template #body>
+              <strong>选择时间：</strong>
+              <nz-datepicker style="width: 220px;" (ngModelChange)="_startDate=$event;_startValueChange()" [ngModel]="_startDate" [nzDisabledDate]="_disabledStartDate" [nzShowTime]="true" [nzFormat]="'YYYY-MM-DD'" [nzPlaceHolder]="'Start date'"></nz-datepicker>
+              <nz-datepicker style="width: 220px;" (ngModelChange)="_endDate=$event;_endValueChange()" [ngModel]="_endDate" [nzDisabledDate]="_disabledEndDate" [nzShowTime]="_endTime" [nzFormat]="'YYYY-MM-DD'" [nzPlaceHolder]="'End date'"></nz-datepicker>
+              <button nz-button [nzType]="'primary'">
+                <span>查询</span>
+              </button>
+            </ng-template>
+          </nz-card>
+          <nz-card>
+            <ng-template #body>
+              <nz-table #historyTable [nzDataSource]="historyList" [nzPageSize]="10" [nzLoading]="tableLoading">
+                <thead nz-thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>User_ID</th>
+                    <th>Tenant_ID</th>
+                    <th>Service_ID</th>
+                    <th>Operation</th>
+                    <th>Resource_Type</th>
+                    <th>Resource_ID</th>
+                    <th>Created_AT</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody nz-tbody>
+                  <tr nz-tbody-tr *ngFor="let item of historyTable.data">
+                    <td nz-td>{{item.ID}}</td>
+                    <td nz-td>{{item.User_ID}}</td>
+                    <td nz-td>{{item.Tenant_ID}}</td>
+                    <td nz-td>{{item.Service_ID}}</td>
+                    <td nz-td>{{item.Operation}}</td>
+                    <td nz-td>{{item.Resource_Type}}</td>
+                    <td nz-td>{{item.Resource_ID}}</td>
+                    <td nz-td>{{item.Created_AT}}</td>
+                    <td nz-td>
+                      <button nz-button [nzType]="'primary'"  title="查看">
+                        <i class="anticon anticon-search"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </ng-template>
+          </nz-card>
         </div>
       </div>
       <!-- /.conainer-fluid -->    

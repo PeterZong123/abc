@@ -476,6 +476,34 @@ app.post('/dashboard/clustercentre/clustermng/modifycluster', function(req,res){
   }
   res.json(result);
 })
+
+//获取历史记录
+app.get('/dashboard/listhistorys', function(req,res){
+  var result = [
+    {
+        "ID": 1,
+        "User_ID": 1,
+        "Tenant_ID": 1,
+        "Service_ID": 1,
+        "Operation": "create",
+        "Resource_Type": "configmap",
+        "Resource_ID": 1,
+        "Created_AT": "2017-11-15T10:44:50.684958Z"
+    },
+    {
+        "ID": 2,
+        "User_ID": 1,
+        "Tenant_ID": 1,
+        "Service_ID": 1,
+        "Operation": "delete",
+        "Resource_Type": "configmap",
+        "Resource_ID": 1,
+        "Created_AT": "2017-11-15T10:46:50.684958Z"
+    }
+  ]
+  res.json(result);
+})
+
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
