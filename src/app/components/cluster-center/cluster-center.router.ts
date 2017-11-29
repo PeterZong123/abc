@@ -8,12 +8,9 @@ import { QueryClusterComponent } from './query-cluster/query-cluster.component';
 import { EditConfigComponent } from './edit-config/edit-config.component';
 import { LoadBalanceComponent } from './load-balance/loadbalance.component';
 import { EditClusterComponent } from './edit-cluster/edit-cluster.component';
+import { CreateExternallbComponent } from './create-external-lb/create-external-lb.component';
+
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'configManager',
-  //   pathMatch: 'full'
-  // },
   {
     path: 'configManager',  //配置管理
     children: [
@@ -64,6 +61,10 @@ const routes: Routes = [
       {
         path: '',
         component: LoadBalanceComponent,
+      },
+      {
+        path: 'createExternallb',
+        component: CreateExternallbComponent,
       }
     ]
    

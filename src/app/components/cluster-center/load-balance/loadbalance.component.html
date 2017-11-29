@@ -13,113 +13,6 @@
       <div class="container-fluid">
 
         <div class="animated fadeIn">
-          <!-- <div class="row">
-            <div class="col-md-3">
-              <div class="card">
-                <div class="card-block">
-                  <a href="create-external-lb.html" class="btn btn-primary">创建外部负载均衡</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="card">
-                <div class="card-block">
-                  <a href="create-internal-lb.html" class="btn btn-success">创建内部负载均衡</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="card card-accent-success">
-                <div class="card-header">外部负载均衡</div>
-                <div class="card-block">
-                  <table class="table">
-                    <thead>
-                    <tr>
-                      <th>负载均衡名称</th>
-                      <th>所属应用</th>
-                      <th>VIP</th>
-                      <th>协议</th>
-                      <th>端口</th>
-                      <th>状态</th>
-                      <th>创建时间</th>
-                      <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr *ngFor="let post of loadbalanceListOut">
-                      <td>{{post.name}}</td>
-                      <td>{{post.balance}}</td>
-                      <td>{{post.dns}}</td>
-                      <td>{{post.protocol}}</td>
-                      <td>{{post.port}}</td>
-                      <td>{{post.state}}</td>
-                      <td>{{post.createTime}}</td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">
-                          <span>Dribbble</span>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">
-                          <span>Dribbble</span>
-                        </button>
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card card-accent-primary">
-                <div class="card-header">内部负载均衡</div>
-                <div class="card-block">
-                  <table class="table">
-                    <thead>
-                    <tr>
-                      <th>负载均衡名称</th>
-                      <th>所属应用</th>
-                      <th>dns</th>
-                      <th>协议</th>
-                      <th>端口</th>
-                      <th>状态</th>
-                      <th>创建时间</th>
-                      <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr *ngFor="let post of loadbalanceListIn">
-                      <td>{{post.name}}</td>
-                      <td>{{post.balance}}</td>
-                      <td>{{post.dns}}</td>
-                      <td>{{post.protocol}}</td>
-                      <td>{{post.port}}</td>
-                      <td>{{post.state}}</td>
-                      <td>{{post.createTime}}</td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">
-                          <span>Dribbble</span>
-                        </button>
-                        <button type="button" class="btn btn-sm btn-dribbble icon" style="margin-bottom: 4px">
-                          <span>Dribbble</span>
-                        </button>
-                      </td>
-                    </tr>
-
-                    </tbody>
-                  </table>
-
-                </div>
-              </div>
-
-            </div>
-          </div> -->
 
           <nz-card>
             <ng-template #body>
@@ -128,7 +21,7 @@
                   <ng-template #nzTabHeading>
                     外部负载均衡
                   </ng-template>
-                  <button nz-button [nzType]="'primary'" title="创建外部负载均衡" style="margin-bottom: 1rem;">
+                  <button nz-button [nzType]="'primary'" title="创建外部负载均衡" [routerLink]="['./createExternallb']" style="margin-bottom: 1rem;">
                     创建外部负载均衡
                   </button>
                   <nz-table #outBalance [nzDataSource]="outBalacneList" [nzPageSize]="10" [nzLoading]="tableLoading">

@@ -11,6 +11,7 @@ import { QueryConfigComponent } from './query-config/query-config.component';
 import { QueryClusterComponent } from './query-cluster/query-cluster.component';
 import { EditConfigComponent } from './edit-config/edit-config.component';
 import { LoadBalanceComponent } from './load-balance/loadbalance.component';
+import { CreateExternallbComponent } from './create-external-lb/create-external-lb.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { LoadBalanceComponent } from './load-balance/loadbalance.component';
         QueryConfigComponent,
         QueryClusterComponent,
         EditConfigComponent,
-        LoadBalanceComponent
+        LoadBalanceComponent,
+        CreateExternallbComponent
     ],
     imports: [
         SharedModule,
