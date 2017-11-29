@@ -16,7 +16,7 @@ export class CanActivateGuard implements  CanActivateChild{
       return true;
     }else{
       this.router.navigateByUrl('/login');
-      this.msg.error('用户token已过期！')
+      this.msg.error('用户token已过期,请重新登陆！')
       return false;
     }
   }
