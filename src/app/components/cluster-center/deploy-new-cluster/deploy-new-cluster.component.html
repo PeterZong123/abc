@@ -69,11 +69,11 @@
                         </div>
                         <div nz-form-control nz-col [nzValidateStatus]="getFormControl('regionid')">
                             <nz-select formControlName="regionid">
-                                <nz-option  [nzValue]="0" [nzLabel]="'上海'"></nz-option>
-                                <nz-option  [nzValue]="1" [nzLabel]="'北京'"></nz-option>
-                                <nz-option  [nzValue]="2" [nzLabel]="'广州'"></nz-option>
-                                <nz-option  [nzValue]="3" [nzLabel]="'香港'"></nz-option>
-                                <nz-option  [nzValue]="4" [nzLabel]="'多伦多'"></nz-option>
+                                <nz-option  [nzValue]="1" [nzLabel]="'上海'"></nz-option>
+                                <nz-option  [nzValue]="2" [nzLabel]="'北京'"></nz-option>
+                                <nz-option  [nzValue]="3" [nzLabel]="'广州'"></nz-option>
+                                <nz-option  [nzValue]="4" [nzLabel]="'香港'"></nz-option>
+                                <nz-option  [nzValue]="5" [nzLabel]="'多伦多'"></nz-option>
                             </nz-select>
                             <div nz-form-explain *ngIf="getFormControl('regionid').dirty&&getFormControl('regionid').hasError('required')">请选择部署区域！</div>
                         </div>
