@@ -23,11 +23,13 @@ export class CreateExternallbComponent implements OnInit {
 
   ngOnInit() {
     this.validateForm = this.fb.group({
-      'lbname':['',[Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-z][a-z0-9.-]*[a-z]$|^[a-z]$/)]],
-      'clustername':['',[Validators.required]],
-      'dns':['',[Validators.required]],
-      'protocol':['',[Validators.required]],
+      'name':['',[Validators.required,Validators.maxLength(50),Validators.pattern(/^[a-z][a-z0-9.-]*[a-z]$|^[a-z]$/)]],
+      'description':['',[Validators.required]],
       'port':['',[Validators.required]],
+      'protocol':['',[Validators.required]],
+      'strategy':['',[Validators.required]],
+      'appname':['',[Validators.required]],
+      'serviceport':['',[Validators.required]],
     })
   }
 
@@ -40,7 +42,7 @@ export class CreateExternallbComponent implements OnInit {
       return;
     }
     let data = config.value;
-    this.createConfigService.addconfig(data).subscribe((res: any) => {
+    this.createConfigService.addexternal(data).subscribe((res: any) => {
       if(res.code === 0){
         this.msg.info('创建外部负载均衡成功！')
         this.router.navigate(['/content/cluster-center/loadBalance']);

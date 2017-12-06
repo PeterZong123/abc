@@ -13,13 +13,22 @@ export class CreateExternallbService {
   }
 
   //创建新配置
-  addconfig(json: any): Observable<Response>{
-    return this.http.post(AppUtil.BACKEND_API_ROOT_URL + '/dashboard/clustercentre/configmng/newconfig/addconfig?token=' + this.token,json)
+  addexternal(json: any): Observable<Response>{
+    return this.http.post(AppUtil.BACKEND_API_ROOT_URL + '/dashboard/clustercentre/configmng/newconfig/addconfig',{
+      "token": this.token,
+      "name": json.name,
+      "description": json.description,
+      "port":json.port,
+      "protocol":json.protocol,
+      "strategy":json.strategy,
+      "appname":json.appname,
+      "serviceport": json.serviceport
+    })
     .map((res: Response) => {
       return res.json();
     })
     .catch((res: Response) => {
-      return Observable.throw('创建新配置失败');
+      return Observable.throw('创建外部负载均衡失败！');
     })
   }
 }

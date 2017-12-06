@@ -504,6 +504,24 @@ app.get('/dashboard/listhistorys', function(req,res){
   res.json(result);
 })
 
+//创建外部负载均衡
+app.post('/dashboard/clustercentre/loadbalancemng/addexternal', function(req, res){
+  var result = {
+    "code": 0,  
+    "detail": "create success"  
+  }
+  res.json(result);
+})
+
+//创建内部负载均衡
+app.post('/dashboard/clustercentre/loadbalancemng/addinternal', function(req, res){
+  var result = {
+    "code": 0,  
+    "detail": "create success"  
+  } 
+  res.json(result);
+})
+
 app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
