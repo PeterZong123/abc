@@ -49,7 +49,7 @@
                   <ng-template #nzTabHeading>
                     内部负载均衡
                   </ng-template>
-                  <button nz-button [nzType]="'primary'" title="创建内部负载均衡" style="margin-bottom: 1rem;">
+                  <button nz-button [nzType]="'primary'" [routerLink]="['./createInternallb']" title="创建内部负载均衡" style="margin-bottom: 1rem;">
                     创建内部负载均衡
                   </button>
                   <nz-table #outBalance [nzDataSource]="inBalacneList" [nzPageSize]="10" [nzLoading]="tableLoading">

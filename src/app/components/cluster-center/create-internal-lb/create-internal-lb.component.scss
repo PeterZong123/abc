@@ -1,0 +1,20 @@
+.form-margin-bottom{
+    margin-bottom: 1rem;
+}
+.input-group-addon{
+    color:#fff;
+    cursor: pointer;
+    &.fa-plus{
+       background: #4dbd74;
+    }
+    &.fa-trash{
+        background: #ea4c89;
+    }
+}
+table{
+    margin-top: .5rem;
+    .fa{
+        cursor: pointer;
+    }
+}
+

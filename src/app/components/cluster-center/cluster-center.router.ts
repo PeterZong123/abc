@@ -9,6 +9,7 @@ import { EditConfigComponent } from './edit-config/edit-config.component';
 import { LoadBalanceComponent } from './load-balance/loadbalance.component';
 import { EditClusterComponent } from './edit-cluster/edit-cluster.component';
 import { CreateExternallbComponent } from './create-external-lb/create-external-lb.component';
+import { CreateInternallbComponent } from './create-internal-lb/create-internal-lb.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,10 @@ const routes: Routes = [
       {
         path: 'createExternallb',
         component: CreateExternallbComponent,
+      },
+      {
+        path: 'createInternallb',
+        component: CreateInternallbComponent,
       }
     ]
    

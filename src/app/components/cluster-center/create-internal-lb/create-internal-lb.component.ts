@@ -1,20 +1,20 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
-import { CreateExternallbService } from './create-external-lb.service';
+import { CreateInternallbService } from './create-internal-lb.service';
 import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'app-create-external-lb',
-  templateUrl: './create-external-lb.component.html',
-  styleUrls: ['./create-external-lb.component.scss'],
-  providers: [CreateExternallbService]
+  selector: 'app-create-internal-lb',
+  templateUrl: './create-internal-lb.component.html',
+  styleUrls: ['./create-internal-lb.component.scss'],
+  providers: [CreateInternallbService]
 })
-export class CreateExternallbComponent implements OnInit {
+export class CreateInternallbComponent implements OnInit {
 
   validateForm: FormGroup;
 
-  constructor(private createExternallbService: CreateExternallbService,
+  constructor(private createInternallbService: CreateInternallbService,
     private router: Router,
     private fb: FormBuilder,
     private msg: NzMessageService) {
@@ -27,9 +27,7 @@ export class CreateExternallbComponent implements OnInit {
       'description':['',[Validators.required]],
       'port':['',[Validators.required]],
       'protocol':['',[Validators.required]],
-      'strategy':['',[Validators.required]],
       'appname':['',[Validators.required]],
-      'serviceport':['',[Validators.required]],
     })
   }
 
@@ -42,12 +40,12 @@ export class CreateExternallbComponent implements OnInit {
       return;
     }
     let data = config.value;
-    this.createExternallbService.addexternal(data).subscribe((res: any) => {
+    this.createInternallbService.addinternal(data).subscribe((res: any) => {
       if(res.code === 0){
-        this.msg.info('创建外部负载均衡成功！')
+        this.msg.info('创建内部负载均衡成功！')
         this.router.navigate(['/content/cluster-center/loadBalance']);
       }else{
-        this.msg.error('创建外部负载均衡失败！');
+        this.msg.error('创建内部负载均衡失败！');
       }
     })
   }
