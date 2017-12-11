@@ -1,26 +1,21 @@
 import { Routes, RouterModule } from '@angular/router';
-import { CacheServiceComponent } from './cache-service/cache-service.component';
-import { CommonServiceComponent } from './common-service/common-service.component';
-import { DataServiceComponent } from './data-service/data-service.component';
+import { MyServiceComponent } from './my-service/my-service.component';
+import { PlatServiceComponent } from './plat-service/plat-service.component';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'cacheService',
+        redirectTo: 'myService',
         pathMatch: 'full'
     },
     {
-        path: 'cacheService', //缓存服务
-        component: CacheServiceComponent,
+        path: 'myService', //我的服务
+        component: MyServiceComponent,
     },
     {
-        path: 'commonService', //通用服务
-        component: CommonServiceComponent,
-    },
-    {
-        path: 'dataService', //数据服务
-        component: DataServiceComponent,
-    },
+        path: 'platService', //平台服务
+        component: PlatServiceComponent,
+    }
 ]
 
 export const ServiceRoutes = RouterModule.forChild(routes);
