@@ -23,6 +23,8 @@ import { KeysPipe } from './pipes/keys.pipe';
 import { YNPipe } from './pipes/yn.pipe';
 import { ModalHelper } from './helper/modal.helper';
 
+//interceptor
+
 const DIRECTIVES = [SparklineDirective,FileValidator,FileValueAccessor];
 const PIPES = [ KeysPipe, YNPipe];
 const HELPERS = [ ModalHelper ];
