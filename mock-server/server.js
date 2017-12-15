@@ -19,24 +19,20 @@ app.use('/*', function (req, res, next) {
 app.get('/dashboard/clustercentre/clustermng/listclusters',function(req,res){
   var result =
     [{
-      "Cluster_Id":1,
-      "Cluster_Name":"test",
-      "Config_Name":"test2",
-      "Flavor":1,
-      "Storage":32,
-      "Replicas":2,
-      "Create_At":"2017-09-27T11:09:08Z",
-      "Valid":true
-    },
-    {
-      "Cluster_Id":2,
-      "Cluster_Name":"testcluster3",
-      "Config_Name":"test2",
-      "Flavor":2,
-      "Storage":32,
-      "Replicas":8,
-      "Create_At":"2017-09-27T13:49:42Z",
-      "Valid":true
+      "OrderId":"Order 1",
+      "Description":"Order 1 Description",
+      "Status":"Packaged",
+      "CreateAt":"2017-12-15T11:09:08Z"
+    },{
+      "OrderId":"Order 2",
+      "Description":"Order 2 Description",
+      "Status":"Deliveried",
+      "CreateAt":"2017-12-15T11:14:08Z"
+    },{
+      "OrderId":"Order 3",
+      "Description":"Order 3 Description",
+      "Status":"Packaged",
+      "CreateAt":"2017-12-15T11:15:08Z"
     }];
   res.json(result);
 });
