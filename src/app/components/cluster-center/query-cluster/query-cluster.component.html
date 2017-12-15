@@ -2,7 +2,7 @@
       <div class="app-body">
         <!-- Main content -->
         <main class="main">
-    
+
           <!-- Breadcrumb -->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">应用中心</li>
@@ -81,13 +81,17 @@
                             <td>{{item.podip}}</td>
                             <td>{{item.status}}</td>
                             <td>{{item.starttime}}</td>
-                            <td>
-                              <button nz-button [nzType]="'primary'"  (click)="showLog(item.podname)" title="日志">
-                                <i class="anticon anticon-search"></i>
-                              </button>
-                            </td>
+                            <!--<td>-->
+                              <!--<button nz-button [nzType]="'primary'"  (click)="showLog(item.podname)" title="日志">-->
+                                <!--<i class="anticon anticon-search"></i>-->
+                              <!--</button>-->
+                            <!--</td>-->
                           </tr>
                         </tbody>
+
+                          <button nz-button [nzType]="'primary'" [routerLink]="['../deployCluster']">
+                              <span>Package</span>
+                          </button>
                       </nz-table>
                     </ng-template>
                   </nz-card>
@@ -116,14 +120,13 @@
           </div>
           <!-- /.conainer-fluid -->
         </main>
-    
+
       </div>
-    
+
     </div>
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
