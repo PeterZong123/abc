@@ -255,15 +255,15 @@ app.get('/dashboard/clustercentre/configmng/queryconfig',function(req, res){
 app.get('/dashboard/clustercentre/clustermng/querycluster', function(req, res){
   var result = {
     "App_ID":2,
-    "App_Name":"testcluster",
-    "App_Des":"testcluster3",
+    "App_Name":"order 1",
+    "App_Des":"5",
     "User_ID":1,
     "Tenant_ID":1,
     "ENV_ID":1,
     "Image_ID":1,
-    "Image_Name":"test",
+    "Image_Name":"4.5kg",
     "Image_Url":"/",
-    "Config_ID":1,
+    "Config_ID":"fresh&normal",
     "Flavor":2,
     "Storage":32,
     "Persistent":true,
@@ -330,16 +330,39 @@ app.get('/dashboard/clustercentre/clustermng/deletecluster', function(req, res){
 app.get('/dashboard/clustercentre/clustermng/listpods', function(req, res){
   var result = [
     {
-      "podip": "",
-      "podname": "test-web-3119570437-5xd0r",
-      "starttime": "2017-11-01T10:58:46Z",
-      "status": "Failed"
+      "podip": "1kg",
+      "podname": "Fish",
+      "starttime": "10",
+      "status": "10"
+      "cat":"fresh"
     },
     {
-        "podip": "121.93.47.27",
-        "podname": "test-web-3119570437-8yugf",
-        "starttime": "2017-11-01T10:58:42Z",
-        "status": "Running"
+      "podip": "1kg",
+      "podname": "Apple",
+      "starttime": "10",
+      "status": "10"
+      "cat":"fresh"
+    },
+    {
+      "podip": "0.5kg",
+      "podname": "book",
+      "starttime": "20",
+      "status": "10"
+      "cat":"normal"
+    },
+    {
+      "podip": "1kg",
+      "podname": "book",
+      "starttime": "30",
+      "status": "10"
+      "cat":"normal"
+    },
+    {
+      "podip": "1kg",
+      "podname": "glass",
+      "starttime": "20",
+      "status": "40"
+      "cat":"fresh"
     }
   ]
   res.json(result);
